@@ -17,14 +17,6 @@ class ArrayObject {
     }
     
     /**
-     * コンストラクタ.
-     * @param array $array
-     */
-    public function __construct(array $array) {
-        $this->array = $array;
-    }
-    
-    /**
      * 内部に配列をセットする.
      * @param array $array
      */
