@@ -4,17 +4,9 @@
  * 連想配列オブジェクトクラス.
  * @author hiro
  */
-class ArrayObject {
+class ArrayObjecta {
     
     private $array;
-    
-    /**
-     * コンストラクタ.
-     * @param array $array
-     */
-    public function __construct(array $array) {
-        $this->array = $array;
-    }
     
     /**
      * コンストラクタ.
