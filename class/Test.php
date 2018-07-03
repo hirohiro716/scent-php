@@ -1,6 +1,6 @@
 <?php
 
-namespace Scent;
+namespace hirohiro716\Scent;
 
 class Test
 {
