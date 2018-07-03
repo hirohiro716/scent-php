@@ -1,16 +1,17 @@
 {
 
     "name": "hirohiro716/scent-php",
-    "type": "library",
     
-    "require": {
-        "phpmailer/phpmailer": "^6.0"
-    },
+    "type": "library",
     
     "autoload": {
         "psr-4": {
             "hirohiro716\\Scent\\": "class/"
         }
+    },
+    
+    "require": {
+        "phpmailer/phpmailer": "^6.0"
     }
     
 }
