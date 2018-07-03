@@ -4,7 +4,7 @@
  * 連想配列オブジェクトクラス.
  * @author hiro
  */
-class ArrayObjecta {
+class SmartArray {
     
     private $array;
     
@@ -12,7 +12,7 @@ class ArrayObjecta {
      * コンストラクタ.
      * @param array $array
      */
-    public function __construct(array $array) {
+    public function __construct(array $array = array()) {
         $this->array = $array;
     }
     
@@ -37,7 +37,7 @@ class ArrayObjecta {
      * @param string $key
      * @param object $value
      */
-    public function put(string $key, object $value) {
+    public function put(string $key, $value) {
         $this->array[$key] = $value;
     }
     
