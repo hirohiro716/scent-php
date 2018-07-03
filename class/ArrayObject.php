@@ -18,13 +18,6 @@ class ArrayObject {
     
     /**
      * コンストラクタ.
-     */
-    public function __construct() {
-        $this(Array());
-    }
-    
-    /**
-     * コンストラクタ.
      * @param array $array
      */
     public function __construct(array $array) {
