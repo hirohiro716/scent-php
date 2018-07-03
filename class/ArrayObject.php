@@ -6,6 +6,8 @@
  */
 class ArrayObject {
     
+    private $array;
+    
     /**
      * コンストラクタ.
      * @param array $array
@@ -21,7 +23,13 @@ class ArrayObject {
         $this(Array());
     }
     
-    private $array;
+    /**
+     * コンストラクタ.
+     * @param array $array
+     */
+    public function __construct(array $array) {
+        $this->array = $array;
+    }
     
     /**
      * 内部に配列をセットする.
