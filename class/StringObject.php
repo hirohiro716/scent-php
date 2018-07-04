@@ -1,7 +1,9 @@
 <?php
+namespace hirohiro716\Scent;
 
 /**
  * 文字列のクラス.
+ *
  * @author hiro
  */
 class StringObject
@@ -18,7 +20,7 @@ class StringObject
     {
         $this->value = $value;
     }
-    
+
     /**
      * stringを取得する.
      *
@@ -51,7 +53,7 @@ class StringObject
 
     /**
      * 末尾に文字列を追加する.
-     * 
+     *
      * @param string $value
      */
     public function append(string $value)

@@ -1,7 +1,11 @@
 <?php
+namespace hirohiro716\Scent;
+
+use Iterator;
 
 /**
  * 連想配列オブジェクトクラス.
+ *
  * @author hiro
  */
 class Hash implements Iterator
@@ -174,7 +178,7 @@ class Hash implements Iterator
      */
     public function join(string $delimiter): string
     {
-        $joinValues = new StringObject();
+        $joinValues = new String();
         foreach ($this->array as $value) {
             if ($joinValues->length() > 0) {
                 $joinValues->append($delimiter);
