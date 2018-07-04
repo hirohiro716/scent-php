@@ -42,6 +42,16 @@ class Datetime
                 break;
         }
     }
+    
+    /**
+     * toStringの実装.
+     * 
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toDatetimeString();
+    }
 
     /**
      * 年を変更する.
@@ -58,7 +68,7 @@ class Datetime
      *
      * @return int
      */
-    public function getYear(): int
+    public function toYear(): int
     {
         $this->setTimestamp($this->getTimestamp());
         return $this->year;
@@ -79,7 +89,7 @@ class Datetime
      *
      * @return int
      */
-    public function getMonth(): int
+    public function toMonth(): int
     {
         $this->setTimestamp($this->getTimestamp());
         return $this->month;
@@ -100,7 +110,7 @@ class Datetime
      *
      * @return int
      */
-    public function getDay(): int
+    public function toDay(): int
     {
         $this->setTimestamp($this->getTimestamp());
         return $this->day;
@@ -135,7 +145,7 @@ class Datetime
      *
      * @return int
      */
-    public function getHour(): int
+    public function toHour(): int
     {
         $this->setTimestamp($this->getTimestamp());
         return $this->hour;
@@ -156,7 +166,7 @@ class Datetime
      *
      * @return int
      */
-    public function getMinute(): int
+    public function toMinute(): int
     {
         $this->setTimestamp($this->getTimestamp());
         return $this->minute;
@@ -177,7 +187,7 @@ class Datetime
      *
      * @return int
      */
-    public function getSecond(): int
+    public function toSecond(): int
     {
         $this->setTimestamp($this->getTimestamp());
         return $this->second;
@@ -202,7 +212,7 @@ class Datetime
      *
      * @return int (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
      */
-    public function getWeek(): int
+    public function toWeek(): int
     {
         return date('w', $this->getTimestamp());
     }
@@ -333,7 +343,7 @@ class Datetime
      *
      * @return int
      */
-    public function getTimestamp(): int
+    public function toTimestamp(): int
     {
         return mktime($this->hour, $this->minute, $this->second, $this->month, $this->day, $this->year);
     }
@@ -343,7 +353,7 @@ class Datetime
      *
      * @return string
      */
-    public function getDatetimeString(): string
+    public function toDatetimeString(): string
     {
         $datetime = mktime($this->hour, $this->minute, $this->second, $this->month, $this->day, $this->year);
         return date($this->pattern, $datetime);
