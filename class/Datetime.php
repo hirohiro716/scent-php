@@ -421,4 +421,13 @@ class Datetime
         }
         return $clone;
     }
+    
+    /**
+     * 現時刻のタイムスタンプを取得する.
+     * @return int
+     */
+    public static function now(): int
+    {
+        return time();
+    }
 }
