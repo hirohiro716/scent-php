@@ -10,9 +10,9 @@ use Iterator;
  */
 class Hash implements Iterator
 {
-
+    
     private $array;
-
+    
     /**
      * コンストラクタ.
      *
@@ -22,7 +22,7 @@ class Hash implements Iterator
     {
         $this->array = $array;
     }
-
+    
     /**
      * 内部に配列をセットする.
      *
@@ -66,7 +66,17 @@ class Hash implements Iterator
     {
         $this->array[$key] = $value;
     }
-
+    
+    /**
+     * キーを指定せずに値をセットする.
+     * 
+     * @param mixed $value
+     */
+    public function add($value): void
+    {
+        $this->array[] = $value;
+    }
+    
     /**
      * キーに対する値を取得する.
      *
@@ -178,7 +188,7 @@ class Hash implements Iterator
      */
     public function join(string $delimiter): string
     {
-        $joinValues = new String();
+        $joinValues = new StringObject();
         foreach ($this->array as $value) {
             if ($joinValues->length() > 0) {
                 $joinValues->append($delimiter);
