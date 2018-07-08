@@ -256,16 +256,16 @@ class Datetime
     /**
      * タイムスタンプをセットする.
      *
-     * @param int $datetime
+     * @param int $timestamp
      */
-    public function setTimestamp(int $datetime): void
+    public function setTimestamp(int $timestamp): void
     {
-        $this->year = intval(Date('Y', $datetime));
-        $this->month = intval(Date('m', $datetime));
-        $this->day = intval(Date('d', $datetime));
-        $this->hour = intval(Date('H', $datetime));
-        $this->minute = intval(Date('i', $datetime));
-        $this->second = intval(Date('s', $datetime));
+        $this->year = intval(Date('Y', $timestamp));
+        $this->month = intval(Date('m', $timestamp));
+        $this->day = intval(Date('d', $timestamp));
+        $this->hour = intval(Date('H', $timestamp));
+        $this->minute = intval(Date('i', $timestamp));
+        $this->second = intval(Date('s', $timestamp));
     }
 
     /**

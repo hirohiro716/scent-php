@@ -31,7 +31,7 @@ class Session
             // 有効期限を過ぎているならID変更
             if ($_SESSION[self::KEY_SID_LIMIT] < Datetime::now()) {
                 $datetime = new Datetime();
-                $datetime->addSecond(30);
+                $datetime->addSecond(5);
                 $_SESSION[self::KEY_SID_LIMIT] = $datetime->toTimestamp();
                 session_regenerate_id(true);
             }

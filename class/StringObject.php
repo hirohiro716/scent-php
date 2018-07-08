@@ -14,10 +14,13 @@ class StringObject
     /**
      * コンストラクタ.
      *
-     * @param string $value
+     * @param mixed $value
      */
-    public function __construct(string $value = "")
+    public function __construct($value = "")
     {
+        if ($value === null) {
+            $value = "";
+        }
         $this->value = $value;
     }
 
@@ -71,7 +74,7 @@ class StringObject
      */
     public function subString(int $start, int $length = null, string $encoding = null): StringObject
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
         return new StringObject(mb_substr($this->value, $start, $length, $encoding));
@@ -155,7 +158,7 @@ class StringObject
      */
     public function toLower(string $encoding = null): StringObject
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
         return new StringObject(mb_strtolower($this->value, $encoding));
@@ -169,7 +172,7 @@ class StringObject
      */
     public function toUpper(string $encoding = null): StringObject
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
         return new StringObject(mb_strtoupper($this->value, $encoding));
@@ -183,7 +186,7 @@ class StringObject
      */
     public function toHalf(string $encoding = null): StringObject
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
         return new StringObject(mb_convert_kana($this->value, "ask", $encoding));
@@ -197,24 +200,90 @@ class StringObject
      */
     public function toWide(string $encoding = null): StringObject
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
         return new StringObject(mb_convert_kana($this->value, "ASK", $encoding));
     }
-
+    
     /**
-     * 文字列が等しいか取得する.
+     * 文字列内のカタカナをひらがなに変換した結果を取得する.
      *
-     * @param string $compare
-     *            比較対象
-     * @return bool
+     * @param string $encoding
+     * @return StringObject
      */
-    public function equals(string $compare): bool
+    public function toHiragana(string $encoding = null): StringObject
     {
-        return strcmp($this->value, $compare);
+        if ($encoding === null) {
+            $encoding = mb_internal_encoding();
+        }
+        return new StringObject(mb_convert_kana($this->value, "Hc", $encoding));
     }
-
+    
+    /**
+     * 文字列内のひらがなをカタカナに変換した結果を取得する.
+     *
+     * @param string $encoding
+     * @return StringObject
+     */
+    public function toKatakana(string $encoding = null): StringObject
+    {
+        if ($encoding === null) {
+            $encoding = mb_internal_encoding();
+        }
+        return new StringObject(mb_convert_kana($this->value, "KC", $encoding));
+    }
+    
+    /**
+     * 文字列をサニタイジングした結果を取得する.
+     * 
+     * @return StringObject
+     */
+    public function sanitize(): StringObject
+    {
+        return new StringObject(htmlspecialchars($this->value));
+    }
+    
+    /**
+     * 内部の値を整数に変換する. 変換できなかった場合はnullを返す.
+     * 
+     * @return int|null
+     */
+    public function toInteger()
+    {
+        if (ValueValidator::isInteger($this->value)) {
+            return (int) $this->value;
+        }
+        return null;
+    }
+    
+    /**
+     * 内部の値を整数または少数に変換する. 変換できなかった場合はnullを返す.
+     *
+     * @return float|null
+     */
+    public function toFloat()
+    {
+        if (ValueValidator::isDecimal($this->value)) {
+            return (float) $this->value;
+        }
+        return null;
+    }
+    
+    /**
+     * 内部の値をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す.
+     * 
+     * @return int|null
+     */
+    public function toTimestamp()
+    {
+        $timestamp = strtotime($this->value);
+        if ($timestamp == -1) {
+            return null;
+        }
+        return $timestamp;
+    }
+    
     /**
      * 文字列を区切り文字で分割して配列を取得する.
      *
@@ -235,7 +304,7 @@ class StringObject
      */
     public function length(string $encoding = null): int
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
         return mb_strlen($this->value, $encoding);
@@ -250,10 +319,14 @@ class StringObject
      */
     public function indexOf(string $search, string $encoding = null): int
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
-        return mb_strpos($this->value, $needle, $encoding);
+        $index = mb_strpos($this->value, $search, null, $encoding);
+        if ($index === false) {
+            return -1;
+        }
+        return $index;
     }
 
     /**
@@ -265,9 +338,37 @@ class StringObject
      */
     public function lastIndexOf(string $search, string $encoding = null): int
     {
-        if ($encoding == null) {
+        if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
-        return mb_strrpos($this->value, $needle, $encoding);
+        $index = mb_strrpos($this->value, $search, null, $encoding);
+        if ($index === false) {
+            return -1;
+        }
+        return $index;
     }
+    
+    /**
+     * 文字列が等しいか判定する.
+     *
+     * @param string $compare
+     *            比較対象
+     * @return bool
+     */
+    public function equals(string $compare): bool
+    {
+        return strcmp($this->value, $compare);
+    }
+    
+    /**
+     * 正規表現に一致するか判定する.
+     * 
+     * @param string $regexPattern 正規表現のパターン
+     * @return bool
+     */
+    public function isRegexMatch(string $regexPattern): bool
+    {
+        return mb_ereg_match($regexPattern, $this->value);
+    }
+    
 }
