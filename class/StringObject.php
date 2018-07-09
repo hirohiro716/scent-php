@@ -371,4 +371,22 @@ class StringObject
         return mb_ereg_match($regexPattern, $this->value);
     }
     
+    private static $randomBase = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789";
+    
+    /**
+     * ランダムな英数字で構成された文字列を作成する.
+     * 
+     * @param int $length
+     * @return StringObject
+     */
+    public static function createRandomString(int $length): StringObject
+    {
+        $base = new StringObject(self::$randomBase);
+        $value = new StringObject();
+        for ($i = 0; $i < $length; $i++) {
+            $value->append($base->subString(mt_rand(0, 61), 1));
+        }
+        return $value;
+    }
+    
 }
