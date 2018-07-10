@@ -49,7 +49,7 @@ class StringObject
      *
      * @param string $value
      */
-    public function set(string $value)
+    public function set(string $value): void
     {
         $this->value = $value;
     }
@@ -59,7 +59,7 @@ class StringObject
      *
      * @param string $value
      */
-    public function append(string $value)
+    public function append(string $value): void
     {
         $this->value .= $value;
     }

@@ -76,7 +76,7 @@ class ValueValidator
     /**
      * 空白チェックを予約する.
      */
-    public function addBlankCheck()
+    public function addBlankCheck(): void
     {
         $this->parameters->put(self::BLANK, null);
     }
@@ -84,7 +84,7 @@ class ValueValidator
     /**
      * 数値有効性チェックを予約する.
      */
-    public function addIntegerCheck()
+    public function addIntegerCheck(): void
     {
         $this->parameters->put(self::INTEGER, null);
     }
@@ -92,7 +92,7 @@ class ValueValidator
     /**
      * 少数値有効性チェックを予約する.
      */
-    public function addDecimalCheck()
+    public function addDecimalCheck(): void
     {
         $this->parameters->put(self::DECIMAL, null);
     }
@@ -102,7 +102,7 @@ class ValueValidator
      *
      * @param int $length
      */
-    public function addLengthCheck(int $length)
+    public function addLengthCheck(int $length): void
     {
         $this->parameters->put(self::LENGTH, $length);
     }
@@ -112,7 +112,7 @@ class ValueValidator
      *
      * @param int $maxLength
      */
-    public function addMaxLengthCheck(int $maxLength)
+    public function addMaxLengthCheck(int $maxLength): void
     {
         $this->parameters->put(self::MAX_LENGTH, $maxLength);
     }
@@ -122,7 +122,7 @@ class ValueValidator
      *
      * @param int $minLength
      */
-    public function addMinLengthCheck(int $minLength)
+    public function addMinLengthCheck(int $minLength): void
     {
         $this->parameters->put(self::MIN_LENGTH, $minLength);
     }
@@ -130,7 +130,7 @@ class ValueValidator
     /**
      * ゼロチェックを予約する.
      */
-    public function addZeroCheck()
+    public function addZeroCheck(): void
     {
         $this->parameters->put(self::ZERO, null);
     }
@@ -140,7 +140,7 @@ class ValueValidator
      *
      * @param int $maxValue
      */
-    public function addMaxValueCheck(int $maxValue)
+    public function addMaxValueCheck(int $maxValue): void
     {
         $this->parameters->put(self::MAX_VALUE, $maxValue);
     }
@@ -150,7 +150,7 @@ class ValueValidator
      *
      * @param int $minValue
      */
-    public function addMinValueCheck(int $minValue)
+    public function addMinValueCheck(int $minValue): void
     {
         $this->parameters->put(self::MIN_VALUE, $minValue);
     }
@@ -158,7 +158,7 @@ class ValueValidator
     /**
      * メールアドレスに使用できる文字だけで構成されているかのチェックを予約する.
      */
-    public function addMailCharsCheck()
+    public function addMailCharsCheck(): void
     {
         $this->parameters->put(self::MAIL_CHARS, null);
     }
@@ -166,7 +166,7 @@ class ValueValidator
     /**
      * 日付有効性チェックを予約する.
      */
-    public function addDatetimeCheck()
+    public function addDatetimeCheck(): void
     {
         $this->parameters->put(self::DATETIME, null);
     }
@@ -174,7 +174,7 @@ class ValueValidator
     /**
      * 数字とハイフン以外の文字が含まれていないかのチェックを予約する.
      */
-    public function addTelephoneNumberCheck()
+    public function addTelephoneNumberCheck(): void
     {
         $this->parameters->put(self::TELEPHONE, null);
     }
@@ -184,7 +184,7 @@ class ValueValidator
      *
      * @param string $regexPattern
      */
-    public function addRegexCheck(string $regexPattern)
+    public function addRegexCheck(string $regexPattern): void
     {
         $this->parameters->put(self::REGEX, $regexPattern);
     }
@@ -194,7 +194,7 @@ class ValueValidator
      *
      * @param string $regexPattern
      */
-    public function addRegexReverseCheck(string $regexPattern)
+    public function addRegexReverseCheck(string $regexPattern): void
     {
         $this->parameters->put(self::REGEX_REVERSE, $regexPattern);
     }
@@ -202,7 +202,7 @@ class ValueValidator
     /**
      * 予約済みのチェックをクリアする.
      */
-    public function clear()
+    public function clear(): void
     {
         $this->parameters->clear();
     }
@@ -418,6 +418,18 @@ class ValueValidator
             return false;
         }
     }
+    
+    /**
+     * 配列として有効かどうかをチェックする.
+     * 
+     * @param mixed $array
+     * @return bool
+     */
+    public static function isArray($array): bool
+    {
+        return is_array($array);
+    }
+    
 }
 
 /**
