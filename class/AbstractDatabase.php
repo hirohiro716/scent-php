@@ -38,7 +38,7 @@ abstract class AbstractDatabase
      * 
      * @return string 接続文字列
      */
-    abstract public function buildConnectionString(): string;
+    abstract protected function buildConnectionString(): string;
     
     /**
      * データベースに接続する.
@@ -46,7 +46,8 @@ abstract class AbstractDatabase
     public function connect(): void
     {
         $this->pdo = new PDO($this->buildConnectionString());
-        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); // インジェクション対策
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // エラーはExceptionでください
     }
     
     /**
@@ -190,6 +191,22 @@ abstract class AbstractDatabase
      * トランザクションをロールバックする.
      */
     abstract public function rollback(): void;
+    
+    /**
+     * テーブルが存在するか確認する.
+     *
+     * @param string $tableName
+     * @return array
+     */
+    abstract public function isExistTable(string $tableName): array;
+    
+    /**
+     * テーブルのカラムをすべて取得する.
+     * 
+     * @param string $tableName
+     * @return array
+     */
+    abstract public function fetchColumns(string $tableName): array;
     
     /**
      * 連想配列を元にCASE文を作成する.
