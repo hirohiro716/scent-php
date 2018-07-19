@@ -74,7 +74,7 @@ abstract class AbstractDatabase
     public function fetchOne(string $sql, array $parameters = array())
     {
         $statement = $this->pdo->prepare($sql);
-        $result = $statement->execute($params);
+        $statement->execute($parameters);
         $row = $statement->fetch(PDO::FETCH_NUM);
         return $row[0];
     }
@@ -89,7 +89,7 @@ abstract class AbstractDatabase
     public function fetchRow(string $sql, array $parameters = array()): array
     {
         $statement = $this->pdo->prepare($sql);
-        $result = $statement->execute($params);
+        $statement->execute($parameters);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
     
@@ -103,7 +103,7 @@ abstract class AbstractDatabase
     public function fetchRows(string $sql, array $parameters = array()): array
     {
         $statement = $this->pdo->prepare($sql);
-        $result = $statement->execute($params);
+        $statement->execute($parameters);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
     
@@ -131,7 +131,7 @@ abstract class AbstractDatabase
         $sql->append(" (");
         $columnsString = new StringObject();
         $valuesString = new StringObject();
-        foreach ($values as $columnName => $value) {
+        foreach ($values->getKeys() as $columnName) {
             if ($columnsString->length() > 0) {
                 $columnsString->append(", ");
                 $valuesString->append(", ");
@@ -159,7 +159,7 @@ abstract class AbstractDatabase
         $sql->append($tableName);
         $sql->append(" SET ");
         $valuesString = new StringObject();
-        foreach ($values as $columnName => $value) {
+        foreach ($values->getKeys() as $columnName) {
             if ($valuesString->length() > 0) {
                 $valuesString->append(", ");
             }

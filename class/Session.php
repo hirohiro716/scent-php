@@ -23,7 +23,8 @@ class Session
             session_start();
             // 別のブラウザからのアクセスなら初期化
             if ($_SESSION[self::KEY_AGENT] != $_SERVER['HTTP_USER_AGENT']) {
-                foreach ($_SESSION as $key => $val) {
+                $hash = new Hash($_SESSION);
+                foreach ($hash->getKeys() as $key) {
                     unset($_SESSION[$key]);
                 }
             }
