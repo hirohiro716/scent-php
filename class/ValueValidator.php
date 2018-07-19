@@ -400,10 +400,10 @@ class ValueValidator
             return false;
         }
     }
-    
+
     /**
      * ハイフン付き電話番号として有効かどうかチェックする.
-     * 
+     *
      * @param string $value
      * @return bool
      */
@@ -418,10 +418,10 @@ class ValueValidator
             return false;
         }
     }
-    
+
     /**
      * 配列として有効かどうかをチェックする.
-     * 
+     *
      * @param mixed $array
      * @return bool
      */
@@ -429,7 +429,6 @@ class ValueValidator
     {
         return is_array($array);
     }
-    
 }
 
 /**

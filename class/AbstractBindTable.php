@@ -36,7 +36,7 @@ abstract class AbstractBindTable
      * 
      * @return string
      */
-    abstract public function getTableName(): string;
+    public abstract function getTableName(): string;
     
     /**
      * テーブル名を取得する.
@@ -54,14 +54,14 @@ abstract class AbstractBindTable
      * 
      * @return array
      */
-    abstract public function getColumns(): array;
+    public abstract function getColumns(): array;
     
     /**
      * カラムの物理名をキー・各カラムの初期値を値とする配列を取得する.
      * 
      * @return array
      */
-    abstract public function createDefaultRow(): array;
+    public abstract function createDefaultRow(): array;
     
     private $whereSet = null;
     
@@ -89,12 +89,12 @@ abstract class AbstractBindTable
     /**
      * 保持している連想配列がレコードとして有効か検証する.
      */
-    abstract public function validate(): void;
+    public abstract function validate(): void;
     
     /**
      * 保持している連想配列を標準化（全角を半角に変換したり）する.
      */
-    abstract public function normalize(): void;
+    public abstract function normalize(): void;
     
     /**
      * レコードを検索して結果を２次元連想配列で取得する.
