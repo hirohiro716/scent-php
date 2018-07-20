@@ -59,9 +59,9 @@ abstract class AbstractBindTable
     /**
      * カラムの物理名をキー・各カラムの初期値を値とする配列を取得する.
      * 
-     * @return array
+     * @return Hash
      */
-    public abstract function createDefaultRow(): array;
+    public abstract function createDefaultRow(): Hash;
     
     private $whereSet = null;
     

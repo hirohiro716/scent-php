@@ -25,11 +25,11 @@ abstract class AbstractBindTableRow extends AbstractBindTable
     private $row;
     
     /**
-     * 現在の行情報を取得する.
+     * 行情報を取得する.
      * 
-     * @return array
+     * @return Hash
      */
-    public function getRow(): array
+    public function getRow(): Hash
     {
         return $this->row;
     }
@@ -37,9 +37,9 @@ abstract class AbstractBindTableRow extends AbstractBindTable
     /**
      * 行情報をセットする.
      * 
-     * @param array $row
+     * @param Hash $row
      */
-    public function setRow(array $row): void
+    public function setRow(Hash $row): void
     {
         $this->row = $row;
     }
@@ -57,16 +57,15 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     public function insert(): void
     {
-        $values = new Hash($this->row);
-        $this->getDatabase()->insert($values, $this->getTableName());
+        $this->getDatabase()->insert($this->row, $this->getTableName());
     }
     
     /**
-     * 行情報を連想配列として取得して排他処理する.
+     * WhereSetに従って取得して行情報を連想配列として取得して内部にセットして排他処理する.
      * 
      * @return array 編集した行情報
      */
-    public abstract function fetchEditRow(): array;
+    protected abstract function fetchEditRowAndHold(): void;
     
     /**
      * 行情報を取得して編集を開始する.
@@ -75,7 +74,7 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     public function edit(): void
     {
-        $this->setRow($this->fetchEditRow());
+        $this->fetchEditRowAndHold();
         if ($this->isDeleted() == true) {
             throw new DataNotFoundException();
         }

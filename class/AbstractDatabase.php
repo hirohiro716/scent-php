@@ -152,7 +152,7 @@ abstract class AbstractDatabase
         $sql->append($columnsString);
         $sql->append(") VALUES (");
         $sql->append($valuesString);
-        $sql->append(";");
+        $sql->append(");");
         $this->execute($sql, $values->getValues());
     }
 
@@ -183,7 +183,7 @@ abstract class AbstractDatabase
         $sql->append(" WHERE ");
         $sql->append($whereSet->buildParameterClause());
         $sql->append(";");
-        $parameters = $values->getArray();
+        $parameters = $values->getValues();
         foreach ($whereSet->buildParameters() as $parameter) {
             $parameters[] = $parameter;
         }
