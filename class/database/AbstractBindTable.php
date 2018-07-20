@@ -1,5 +1,8 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Database;
+
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
 
 /**
  * テーブルとオブジェクトをマッピングする抽象クラス.

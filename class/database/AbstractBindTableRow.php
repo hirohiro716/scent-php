@@ -1,7 +1,10 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Database;
 
 use Exception;
+
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
 
 /**
  * テーブル行をオブジェクトにマッピングする抽象クラス.

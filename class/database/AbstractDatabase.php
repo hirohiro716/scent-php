@@ -1,8 +1,11 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Database;
 
 use PDO;
 use PDOException;
+
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
 
 /**
  * データベースをPDOで操作する抽象クラス.

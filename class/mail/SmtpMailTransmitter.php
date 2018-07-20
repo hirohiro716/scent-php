@@ -1,5 +1,8 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Mail;
+
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

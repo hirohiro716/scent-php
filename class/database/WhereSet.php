@@ -1,5 +1,9 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Database;
+
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
+use hirohiro716\Scent\ValueValidator;
 
 /**
  * 複数のカラムをANDで連結するWHERE条件クラス.

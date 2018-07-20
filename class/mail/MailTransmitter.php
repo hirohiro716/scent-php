@@ -1,5 +1,8 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Mail;
+
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
 
 /**
  * mb_send_mailを利用したメール送信クラス.
