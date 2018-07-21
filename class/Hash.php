@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent;
 
+use ArrayHelper;
 use Iterator;
 
 /**
@@ -119,7 +120,7 @@ class Hash implements Iterator
      */
     public function isExistKey($key): bool
     {
-        return array_key_exists($key, $this->array);
+        return ArrayHelper::isExistKey($this->array, $key);
     }
 
     /**
@@ -130,10 +131,7 @@ class Hash implements Iterator
      */
     public function isExistValue($value): bool
     {
-        if (array_search($value, $this->array, true) === false) {
-            return false;
-        }
-        return true;
+        return ArrayHelper::isExistValue($this->array, $value);
     }
 
     /**
@@ -144,7 +142,7 @@ class Hash implements Iterator
     public function removeKey($key): void
     {
         if ($this->isExistKey($key)) {
-            unset($this->array[$key]);
+            ArrayHelper::removeKey($this->array, $key);
         }
     }
 
@@ -155,11 +153,7 @@ class Hash implements Iterator
      */
     public function removeValue($value): void
     {
-        $key = array_search($value, $this->array, true);
-        while ($key !== false) {
-            unset($this->array[$key]);
-            $key = array_search($value, $this->array, true);
-        }
+        ArrayHelper::removeValue($this->array, $value);
     }
 
     /**

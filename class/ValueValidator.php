@@ -229,6 +229,12 @@ class ValueValidator
         return "";
     }
 
+    /**
+     * 予約された値の検証を実行する.
+     * 
+     * @param mixed $value
+     * @throws ValidationException
+     */
     public function execute($value): void
     {
         $val = new StringObject($value);
@@ -419,16 +425,6 @@ class ValueValidator
         }
     }
 
-    /**
-     * 配列として有効かどうかをチェックする.
-     *
-     * @param mixed $array
-     * @return bool
-     */
-    public static function isArray($array): bool
-    {
-        return is_array($array);
-    }
 }
 
 /**

@@ -2,8 +2,8 @@
 namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\Helper;
 use hirohiro716\Scent\StringObject;
-use hirohiro716\Scent\ValueValidator;
 
 /**
  * 複数のカラムをANDで連結するWHERE条件クラス.
@@ -240,7 +240,7 @@ class Where
         $comparisonObject = new StringObject($comparison);
         $this->comparison = $comparisonObject->toUpper()->trim()->get();
         if ($values !== null) {
-            if (ValueValidator::isArray($values)) {
+            if (Helper::isArray($values)) {
                 $this->values = $values;
             } else {
                 $this->values = array($values);

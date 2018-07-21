@@ -430,4 +430,20 @@ class Datetime
     {
         return time();
     }
+    
+    /**
+     * 文字列をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す.
+     * 
+     * @param string $datetimeString
+     * @return int|null
+     */
+    public static function stringToTimestamp(string $datetimeString)
+    {
+        $timestamp = strtotime($datetimeString);
+        if ($timestamp == -1) {
+            return null;
+        }
+        return $timestamp;
+    }
+    
 }

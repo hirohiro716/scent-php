@@ -277,11 +277,7 @@ class StringObject
      */
     public function toTimestamp()
     {
-        $timestamp = strtotime($this->value);
-        if ($timestamp == -1) {
-            return null;
-        }
-        return $timestamp;
+        return Datetime::stringToTimestamp($this->value);
     }
     
     /**
