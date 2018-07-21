@@ -2,6 +2,7 @@
 namespace hirohiro716\Scent\Database;
 
 use Exception;
+use PDOException;
 
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
@@ -66,13 +67,6 @@ abstract class AbstractBindTableRows extends AbstractBindTable
     }
     
     /**
-     * WhereSetに従って取得したすべての行情報を連想配列として取得して内部にセットして排他処理する.
-     * 
-     * @param string $afterWherePart ORDER句などでFROM句の後に入力するオプション
-     */
-    protected abstract function fetchEditRowsAndHold(string $afterWherePart = ""): void;
-    
-    /**
      * WhereSetに従って取得したすべての行情報を取得して編集を開始する.
      * 
      * @param string ...$orderByColumns 並び替えを指定（ASC・DESCを含むカラム名）
@@ -82,11 +76,29 @@ abstract class AbstractBindTableRows extends AbstractBindTable
         $afterWherePart = new StringObject();
         $columns = new Hash($orderByColumns);
         if ($columns->size() > 0) {
-            $afterWherePart->append("ORDER BY ");
+            $afterWherePart->append(" ORDER BY ");
             $afterWherePart->append($columns->join(", "));
         }
         $this->clearRows();
-        $this->fetchEditRowsAndHold($afterWherePart);
+        $sql = new StringObject("SELECT * FROM ");
+        $sql->append($this->getTableName());
+        try {
+            // 検索条件ありの複数レコード編集
+            $whereSet = $this->getWhereSet();
+            $sql->append(" WHERE ");
+            $sql->append($whereSet->buildParameterClause());
+            $sql->append($afterWherePart);
+            $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
+        } catch (PDOException $exception) {
+            throw $exception;
+        } catch (Exception $exception) {
+            // 検索条件なしの全レコード編集
+            if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
+                throw new Exception("All records edit is not permited.");
+            }
+            $sql->append($afterWherePart);
+            $this->rows = $this->getDatabase()->fetchRows($sql);
+        }
     }
     
     /**

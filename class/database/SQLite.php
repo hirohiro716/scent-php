@@ -1,7 +1,5 @@
 <?php
-namespace hirohiro716\Scent\Database\SQLite;
-
-use hirohiro716\Scent\Database\AbstractDatabase;
+namespace hirohiro716\Scent\Database;
 
 /**
  * SQLiteをPDOで操作するクラス.

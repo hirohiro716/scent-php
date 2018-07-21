@@ -64,20 +64,18 @@ abstract class AbstractBindTableRow extends AbstractBindTable
     }
     
     /**
-     * WhereSetに従って取得して行情報を連想配列として取得して内部にセットして排他処理する.
-     * 
-     * @return array 編集した行情報
-     */
-    protected abstract function fetchEditRowAndHold(): void;
-    
-    /**
      * 行情報を取得して編集を開始する.
      * 
      * @throws DataNotFoundException
      */
     public function edit(): void
     {
-        $this->fetchEditRowAndHold();
+        $sql = new StringObject("SELECT * FROM ");
+        $sql->append($this->getTableName());
+        $sql->append(" WHERE ");
+        $sql->append($this->getWhereSet()->buildParameterClause());
+        $sql->append(";");
+        $this->setRow(new Hash($this->getDatabase()->fetchRow($sql, $this->getWhereSet()->buildParameters())));
         if ($this->isDeleted() == true) {
             throw new DataNotFoundException();
         }
