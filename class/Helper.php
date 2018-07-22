@@ -19,9 +19,26 @@ class Helper
     {
         return is_null($value);
     }
-    
+
     /**
-     * オブジェクトまたはスカラが指定した名前と等しいか判定する.<br>
+     * オブジェクトまたはスカラの名前を取得する.
+     *
+     * @param mixed $scalarObject
+     * @return string クラス名 または boolean | integer | double | string | array | NULL
+     */
+    public static function findInstanceName($scalarObject): StringObject
+    {
+        $typeName = new StringObject(gettype($scalarObject));
+        switch (true) {
+            case $typeName->equals("object"):
+                return new StringObject(get_class($scalarObject));
+            default:
+                return $typeName;
+        }
+    }
+
+    /**
+     * オブジェクトまたはスカラが指定した名前と等しいか判定する. クラス名の比較はnamespaceを含めることが可能.
      *
      * @param mixed $scalarObject
      *            スカラまたはインスタンス
@@ -31,25 +48,24 @@ class Helper
      */
     public static function instanceIsThisName($scalarObject, string $name): bool
     {
-        $typeName = gettype($scalarObject);
+        $instanceName = self::findInstanceName($scalarObject);
         $subName = "";
-        switch ($typeName) {
-            case "object":
-                return get_class($scalarObject) == $name;
-            case "boolean":
+        switch (true) {
+            case $instanceName->equals("boolean"):
                 $subName = "bool";
                 break;
-            case "integer":
+            case $instanceName->equals("integer"):
                 $subName = "int";
                 break;
-            case "double":
+            case $instanceName->equals("double"):
                 $subName = "float";
                 break;
-            case "NULL":
+            case $instanceName->equals("NULL"):
                 $subName = "null";
                 break;
         }
         $nameObject = new StringObject($name);
-        return $nameObject->equals($typeName) || $nameObject->equals($subName);
+        return $instanceName->length() - $instanceName->lastIndexOf($name) == $nameObject->length() || $nameObject->equals($subName);
     }
+
 }

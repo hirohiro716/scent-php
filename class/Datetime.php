@@ -30,11 +30,12 @@ class Datetime
      */
     public function __construct($datetime = null)
     {
-        switch (gettype($datetime)) {
-            case 'string':
+        $type = Helper::findInstanceName($datetime);
+        switch (true) {
+            case $type->equals("string"):
                 $this->setDatetimeString($datetime);
                 break;
-            case 'integer':
+            case $type->equals("integer"):
                 $this->setTimestamp($datetime);
                 break;
             default:

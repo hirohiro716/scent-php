@@ -353,7 +353,7 @@ class StringObject
      */
     public function equals(string $compare): bool
     {
-        return strcmp($this->value, $compare);
+        return strcmp($this->value, $compare) == 0;
     }
     
     /**

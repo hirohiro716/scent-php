@@ -1,7 +1,6 @@
 <?php
 namespace hirohiro716\Scent;
 
-use ArrayHelper;
 use Iterator;
 
 /**

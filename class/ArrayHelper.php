@@ -1,4 +1,5 @@
 <?php
+namespace hirohiro716\Scent;
 
 /**
  * 配列に関する関数.

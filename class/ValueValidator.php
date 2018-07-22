@@ -14,34 +14,55 @@ class ValueValidator
     /*
      * 検証する方法の定数
      */
-    private const BLANK = "は必須です。";
+    private const BLANK = 1;
 
-    private const INTEGER = "に数字以外の文字列が含まれています。";
+    private const INTEGER = 2;
 
-    private const DECIMAL = "は整数または少数である必要があります。";
+    private const DECIMAL = 3;
 
-    private const LENGTH = "は" . self::ERROR_MESSAGE_ARGUMENT . "桁である必要があります。";
+    private const LENGTH = 4;
 
-    private const MAX_LENGTH = "の文字数がオーバーしています。" . self::ERROR_MESSAGE_ARGUMENT . "文字まで入力できます。";
+    private const MAX_LENGTH = 5;
 
-    private const MIN_LENGTH = "の文字数が足りません。" . self::ERROR_MESSAGE_ARGUMENT . "文字必要です。";
+    private const MIN_LENGTH = 6;
 
-    private const ZERO = "にゼロは入力できません。";
+    private const ZERO = 7;
 
-    private const MAX_VALUE = "は最大で「" . self::ERROR_MESSAGE_ARGUMENT . "」まで入力できます。";
+    private const MAX_VALUE = 8;
 
-    private const MIN_VALUE = "は「" . self::ERROR_MESSAGE_ARGUMENT . "」以上である必要があります。";
+    private const MIN_VALUE = 9;
 
-    private const MAIL_CHARS = "にメールアドレスで使用できない文字が含まれています。";
+    private const MAIL_CHARS = 10;
 
-    private const DATETIME = "は日付または時刻として有効ではありません。";
+    private const DATETIME = 11;
 
-    private const TELEPHONE = "は電話番号（ハイフン有り）として正しくありません。";
+    private const TELEPHONE = 12;
 
-    private const REGEX = "が正しくありません。";
+    private const REGEX = 13;
 
-    private const REGEX_REVERSE = "に許可されていない文字が含まれています。";
-
+    private const REGEX_REVERSE = 14;
+    
+    /**
+     * エラーメッセージの定義.
+     * @var array
+     */
+    private $messagesArray = array(
+        self::BLANK => "は必須です。",
+        self::INTEGER => "に数字以外の文字列が含まれています。",
+        self::DECIMAL => "は整数または少数である必要があります。",
+        self::LENGTH => "は" . self::ERROR_MESSAGE_ARGUMENT . "桁である必要があります。",
+        self::MAX_LENGTH => "の文字数がオーバーしています。" . self::ERROR_MESSAGE_ARGUMENT . "文字まで入力できます。",
+        self::MIN_LENGTH => "の文字数が足りません。" . self::ERROR_MESSAGE_ARGUMENT . "文字必要です。",
+        self::ZERO => "にゼロは入力できません。",
+        self::MAX_VALUE => "は最大で「" . self::ERROR_MESSAGE_ARGUMENT . "」まで入力できます。",
+        self::MIN_VALUE => "は「" . self::ERROR_MESSAGE_ARGUMENT . "」以上である必要があります。",
+        self::MAIL_CHARS => "にメールアドレスで使用できない文字が含まれています。",
+        self::DATETIME => "は日付または時刻として有効ではありません。",
+        self::TELEPHONE => "は電話番号（ハイフン有り）として正しくありません。",
+        self::REGEX => "が正しくありません。",
+        self::REGEX_REVERSE => "に許可されていない文字が含まれています。"
+    );
+    
     /*
      * 予約済みの検証方法配列
      */
@@ -217,14 +238,14 @@ class ValueValidator
      *
      * @param string $const
      *            チェック方法
-     * @return string
+     * @return int 定数
      */
-    private function buildErrorMessage(string $const): string
+    private function buildErrorMessage(int $const): string
     {
         if ($this->parameters->isExistKey($const)) {
-            $constObject = new StringObject($const);
+            $message = new StringObject($this->messagesArray[$const]);
             $parameter = new StringObject($this->parameters->get($const));
-            return $this->targetName . $constObject->replace(self::ERROR_MESSAGE_ARGUMENT, $parameter);
+            return $this->targetName . $message->replace(self::ERROR_MESSAGE_ARGUMENT, $parameter);
         }
         return "";
     }

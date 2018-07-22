@@ -1,8 +1,8 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
+use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
-use hirohiro716\Scent\Helper;
 use hirohiro716\Scent\StringObject;
 
 /**
@@ -240,7 +240,7 @@ class Where
         $comparisonObject = new StringObject($comparison);
         $this->comparison = $comparisonObject->toUpper()->trim()->get();
         if ($values !== null) {
-            if (Helper::isArray($values)) {
+            if (ArrayHelper::isArray($values)) {
                 $this->values = $values;
             } else {
                 $this->values = array($values);
@@ -339,12 +339,13 @@ class Where
         }
         $where->append($this->column);
         $where->append(" ");
-        switch ($this->comparison) {
-            case "BETWEEN":
+        $comparisonObject = new StringObject($this->comparison);
+        switch (true) {
+            case $comparisonObject->equals("BETWEEN"):
                 $where->append($this->comparison);
                 $where->append(" ? AND ?");
                 break;
-            case "IN":
+            case $comparisonObject->equals("IN"):
                 $where->append($this->comparison);
                 $where->append(" (");
                 $valuesHash = new Hash($this->values);
@@ -356,7 +357,7 @@ class Where
                 }
                 $where->append(")");
                 break;
-            case "IS NULL":
+            case $comparisonObject->equals("IS NULL"):
                 $where->append($this->comparison);
                 break;
             default:
