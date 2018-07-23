@@ -30,7 +30,7 @@ class Session
             }
             $_SESSION[self::KEY_AGENT] = $_SERVER['HTTP_USER_AGENT'];
             // 有効期限を過ぎているならID変更
-            if ($_SESSION[self::KEY_SID_LIMIT] < Datetime::now()) {
+            if ($_SESSION[self::KEY_SID_LIMIT] < Datetime::currentTime()) {
                 $datetime = new Datetime();
                 $datetime->addSecond(5);
                 $_SESSION[self::KEY_SID_LIMIT] = $datetime->toTimestamp();

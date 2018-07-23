@@ -428,7 +428,7 @@ class Datetime
      * 
      * @return int
      */
-    public static function now(): int
+    public static function currentTime(): int
     {
         return time();
     }
@@ -438,7 +438,7 @@ class Datetime
      * 
      * @return int
      */
-    public static function today(): int
+    public static function currentDate(): int
     {
         $instance = new self();
         $instance->modifyTime(0, 0, 0);
