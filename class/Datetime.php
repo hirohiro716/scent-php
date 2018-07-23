@@ -425,11 +425,24 @@ class Datetime
     
     /**
      * 現時刻のタイムスタンプを取得する.
+     * 
      * @return int
      */
     public static function now(): int
     {
         return time();
+    }
+    
+    /**
+     * 本日00:00:00のタイムスタンプを取得する.
+     * 
+     * @return int
+     */
+    public static function today(): int
+    {
+        $instance = new self();
+        $instance->modifyTime(0, 0, 0);
+        return $instance->toTimestamp();
     }
     
     /**
