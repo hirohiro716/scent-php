@@ -52,6 +52,17 @@ abstract class AbstractEnum
         return $this->name;
     }
     
+    /**
+     * 定数の値と引数が同じか判定する.
+     * 
+     * @param mixed $value
+     * @return bool
+     */
+    public function equals($value): bool
+    {
+        return $this->value === $value;
+    }
+    
     private static $instances = null;
     
     /**
@@ -72,9 +83,9 @@ abstract class AbstractEnum
      * 一意の定数オブジェクトを取得する.
      *
      * @param mixed $constantValue
-     * @return AbstractEnum|null 定数オブジェクト
+     * @return self|null 定数オブジェクト
      */
-    public static function get($constantValue): AbstractEnum
+    public static function get($constantValue): self
     {
         self::createAllObject();
         if (self::$instances->isExistKey($constantValue) == false) {
