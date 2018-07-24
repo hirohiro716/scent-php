@@ -113,6 +113,20 @@ abstract class AbstractEnum
     }
     
     /**
+     * 定数が定義されているか判定する.
+     * 
+     * @param mixed $constantValue
+     * @return bool
+     */
+    public static function isExistConstant($constantValue): bool
+    {
+        if (static::get($constantValue) === self::$NULL) {
+            return false;
+        }
+        return true;
+    }
+    
+    /**
      * すべての定数を取得する.
      *
      * @return array
@@ -134,4 +148,10 @@ abstract class AbstractEnum
  * @author hiro
  */
 class NullEnum extends AbstractEnum {
+    
+    public function __toString(): string
+    {
+        return "";
+    }
+    
 }
