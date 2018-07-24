@@ -63,6 +63,13 @@ abstract class AbstractEnum
         return $this->value === $value;
     }
     
+    /**
+     * 定義されていない値を示す定数を取得する.
+     * 
+     * @var AbstractEnum
+     */
+    public static $NULL = null;
+    
     private static $instancesArray = null;
     
     /**
@@ -70,6 +77,9 @@ abstract class AbstractEnum
      */
     private static function createAllObject(): void
     {
+        if (self::$NULL === null) {
+            self::$NULL = new NullEnum("NULL", null);
+        }
         if (self::$instancesArray === null) {
             self::$instancesArray = new Hash();
         }
@@ -88,7 +98,7 @@ abstract class AbstractEnum
      * 一意の定数オブジェクトを取得する.
      *
      * @param mixed $constantValue
-     * @return self|null 定数オブジェクト
+     * @return self 定数オブジェクト
      */
     public static function get($constantValue): self
     {
@@ -97,7 +107,7 @@ abstract class AbstractEnum
         $className = $class->getName();
         $instances = self::$instancesArray->get($className);
         if ($instances->isExistKey($constantValue) == false) {
-            return null;
+            return self::$NULL;
         }
         return $instances->get($constantValue);
     }
@@ -116,4 +126,12 @@ abstract class AbstractEnum
         return $instances->getValues();
     }
     
+}
+
+/**
+ * 未定義の値を示す定数クラス.
+ * 
+ * @author hiro
+ */
+class NullEnum extends AbstractEnum {
 }
