@@ -21,8 +21,6 @@ class Datetime
 
     private $second = 0;
 
-    private $pattern = 'Y-m-d H:i:s';
-
     /**
      * コンストラクタ.
      *
@@ -330,16 +328,6 @@ class Datetime
     }
 
     /**
-     * 日付出力型式をセットする.
-     *
-     * @param string $pattern
-     */
-    public function setPattern(string $pattern): void
-    {
-        $this->pattern = $pattern;
-    }
-
-    /**
      * タイムスタンプを取得する.
      *
      * @return int
@@ -350,14 +338,15 @@ class Datetime
     }
 
     /**
-     * 日付文字列を取得する.
+     * 日時の文字列を取得する.
      *
+     * @param string $pattern
      * @return string
      */
-    public function toDatetimeString(): string
+    public function toDatetimeString(string $pattern = "Y-m-d H:i:s"): string
     {
         $datetime = mktime($this->hour, $this->minute, $this->second, $this->month, $this->day, $this->year);
-        return date($this->pattern, $datetime);
+        return date($pattern, $datetime);
     }
 
     /**
