@@ -12,6 +12,11 @@ use hirohiro716\Scent\StringObject;
 abstract class AbstractColumn extends AbstractEnum
 {
     
+    public function __toString(): string
+    {
+        return $this->getPhysicalName();
+    }
+    
     /**
      * テーブル名を取得する.
      * 
