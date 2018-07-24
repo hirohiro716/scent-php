@@ -63,19 +63,24 @@ abstract class AbstractEnum
         return $this->value === $value;
     }
     
-    private static $instances = null;
+    private static $instancesArray = null;
     
     /**
      * すべての定数名の配列を作成する.
      */
     private static function createAllObject(): void
     {
-        if (self::$instances === null) {
-            self::$instances = new Hash();
-            $class = new ReflectionClass(static::class);
+        if (self::$instancesArray === null) {
+            self::$instancesArray = new Hash();
+        }
+        $class = new ReflectionClass(static::class);
+        $className = $class->getName();
+        if (self::$instancesArray->isExistKey($className) == false) {
+            $instances = new Hash();
             foreach ($class->getConstants() as $name => $value) {
-                self::$instances->put($value, new static($name, $value));
+                $instances->put($value, new static($name, $value));
             }
+            self::$instancesArray->put($className, $instances);
         }
     }
     
@@ -88,10 +93,13 @@ abstract class AbstractEnum
     public static function get($constantValue): self
     {
         self::createAllObject();
-        if (self::$instances->isExistKey($constantValue) == false) {
+        $class = new ReflectionClass(static::class);
+        $className = $class->getName();
+        $instances = self::$instancesArray->get($className);
+        if ($instances->isExistKey($constantValue) == false) {
             return null;
         }
-        return self::$instances->get($constantValue);
+        return $instances->get($constantValue);
     }
     
     /**
@@ -102,7 +110,10 @@ abstract class AbstractEnum
     public static function values(): array
     {
         self::createAllObject();
-        return self::$instances->getValues();
+        $class = new ReflectionClass(static::class);
+        $className = $class->getName();
+        $instances = self::$instancesArray->get($className);
+        return $instances->getValues();
     }
     
 }
