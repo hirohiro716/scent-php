@@ -1,8 +1,6 @@
 <?php
 namespace hirohiro716\Scent;
 
-use Exception;
-
 /**
  * 値の検証を行うクラス.
  *
@@ -448,11 +446,3 @@ class ValueValidator
 
 }
 
-/**
- * 値の検証に失敗した場合の例外クラス.
- *
- * @author hiro
- */
-class ValidationException extends Exception
-{
-}

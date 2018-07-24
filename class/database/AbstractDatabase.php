@@ -2,7 +2,6 @@
 namespace hirohiro716\Scent\Database;
 
 use PDO;
-use PDOException;
 
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
@@ -251,21 +250,3 @@ abstract class AbstractDatabase
     }
 }
 
-/**
- * データが存在しない場合の例外クラス.
- *
- * @author hiro
- */
-class DataNotFoundException extends PDOException
-{
-    public function __construct($message = null, $code = null, $previous = null)
-    {
-        $newMessage = $message;
-        if ($newMessage === null) {
-            $newMessage = "Row is not exist.";
-        }
-        parent::__construct($newMessage, $code, $previous);
-    }
-
-    
-}
