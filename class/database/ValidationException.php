@@ -3,6 +3,7 @@ namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent;
 use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\NullEnum;
 
 /**
  * テーブルの行情報の検証に失敗した場合の例外クラス.
