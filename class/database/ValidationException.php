@@ -3,7 +3,6 @@ namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent;
 use hirohiro716\Scent\Hash;
-use hirohiro716\Scent\NullEnum;
 
 /**
  * テーブルの行情報の検証に失敗した場合の例外クラス.
@@ -64,23 +63,6 @@ class ValidationException extends Scent\ValidationException
             $hash->put($causeColumn->getColumn()->getPhysicalName(), $causeColumn->getMessage());
         }
         return $hash;
-    }
-    
-    /**
-     * 既存のインスタンスがなければ作成して例外の原因となったカラムを追加する.
-     * 
-     * @param AbstractColumn $causeColumn
-     * @param ValidationException $existInstance
-     * @return ValidationException
-     */
-    public static function createInstanceAndAddCauseColumn(AbstractColumn $causeColumn, $existInstance = null): self
-    {
-        $instance = $existInstance;
-        if ($instance === null) {
-            $instance = new self();
-        }
-        $instance->addCauseColumn($causeColumn);
-        return $instance;
     }
     
 }
