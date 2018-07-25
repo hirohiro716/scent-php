@@ -34,11 +34,13 @@ class ValidationException extends Scent\ValidationException
     /**
      * 例外の原因となったカラムを追加する.
      * 
-     * @param AbstractColumn $causeColumn
+     * @param ValidationExceptionCauseColumn ...$causeColumns
      */
-    public function addCauseColumn(ValidationExceptionCauseColumn $causeColumn): void
+    public function addCauseColumns(ValidationExceptionCauseColumn... $causeColumns): void
     {
-        $this->causeColumns->add($causeColumn);
+        foreach ($causeColumns as $causeColumn) {
+            $this->causeColumns->add($causeColumn);
+        }
     }
     
     /**
