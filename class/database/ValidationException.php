@@ -26,9 +26,10 @@ class ValidationException extends Scent\ValidationException
             $newMessage = "Validation failed of row information.";
         }
         parent::__construct($newMessage, $code, $previous);
+        $this->causeColumns = new Hash();
     }
     
-    private $causeColumns = array();
+    private $causeColumns;
     
     /**
      * 例外の原因となったカラムを追加する.
@@ -37,15 +38,15 @@ class ValidationException extends Scent\ValidationException
      */
     public function addCauseColumn(ValidationExceptionCauseColumn $causeColumn): void
     {
-        $this->causeColumns[] = $causeColumn;
+        $this->causeColumns->add($causeColumn);
     }
     
     /**
-     * 例外の原因となったカラムを取得する.
+     * 例外の原因となったすべてのカラムを取得する.
      * 
-     * @return array ValidationExceptionCauseColumnのオブジェクト配列
+     * @return Hash ValidationExceptionCauseColumnの連想配列
      */
-    public function getCauseColumns(): array
+    public function getCauseColumns(): Hash
     {
         return $this->causeColumns;
     }
