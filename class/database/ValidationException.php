@@ -34,13 +34,11 @@ class ValidationException extends BaseValidationException
     /**
      * 例外の原因となったカラムを追加する.
      * 
-     * @param ValidationExceptionCauseColumn ...$causeColumns
+     * @param ValidationExceptionCauseColumn $causeColumn
      */
-    public function addCauseColumns(ValidationExceptionCauseColumn... $causeColumns): void
+    public function addCauseColumn(ValidationExceptionCauseColumn $causeColumn): void
     {
-        foreach ($causeColumns as $causeColumn) {
-            $this->causeColumns->add($causeColumn);
-        }
+        $this->causeColumns->add($causeColumn);
     }
     
     /**
