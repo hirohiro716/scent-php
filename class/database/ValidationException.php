@@ -1,15 +1,15 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
-use hirohiro716\Scent;
 use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\ValidationException as BaseValidationException;
 
 /**
  * テーブルの行情報の検証に失敗した場合の例外クラス.
  * 
  * @author hiro
  */
-class ValidationException extends Scent\ValidationException
+class ValidationException extends BaseValidationException
 {
     
     /**
@@ -70,7 +70,7 @@ class ValidationException extends Scent\ValidationException
 }
 
 /**
- * テーブルの行情報の検証に失敗した原因となった列を表すクラス.
+ * テーブルの行情報の検証に失敗した原因となったカラムを表すクラス.
  * 
  * @author hiro
  */
