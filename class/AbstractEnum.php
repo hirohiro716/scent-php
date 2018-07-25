@@ -100,7 +100,7 @@ abstract class AbstractEnum
      * @param mixed $constantValue
      * @return self 定数オブジェクト
      */
-    public static function get($constantValue): self
+    public static function const($constantValue): self
     {
         self::createAllObject();
         $class = new ReflectionClass(static::class);
@@ -120,7 +120,7 @@ abstract class AbstractEnum
      */
     public static function isExistConstant($constantValue): bool
     {
-        if (static::get($constantValue) === self::$NULL) {
+        if (static::const($constantValue) === self::$NULL) {
             return false;
         }
         return true;
