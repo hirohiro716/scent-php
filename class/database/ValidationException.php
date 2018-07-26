@@ -3,13 +3,14 @@ namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\ValidationException as BaseValidationException;
+use Iterator;
 
 /**
  * テーブルの行情報の検証に失敗した場合の例外クラス.
  * 
  * @author hiro
  */
-class ValidationException extends BaseValidationException
+class ValidationException extends BaseValidationException implements Iterator
 {
     
     /**
@@ -65,5 +66,57 @@ class ValidationException extends BaseValidationException
         return $hash;
     }
     
+    /*
+     * ***********************************
+     * ここからIteratorインターフェースの実装.
+     * ************************************
+     */
+    private $position = 0;
+    
+    /**
+     * 現在の要素を返す.
+     */
+    public function current(): ValidationExceptionCauseColumn
+    {
+        $key = $this->causeColumns->getKeys()[$this->position];
+        return $this->causeColumns->get($key);
+    }
+    
+    /**
+     * 現在の要素のキーを返す.
+     *
+     * @return string
+     */
+    public function key()
+    {
+        return $this->causeColumns->getKeys()[$this->position];
+    }
+    
+    /**
+     * 次の要素に進む.
+     */
+    public function next()
+    {
+        $this->position ++;
+    }
+    
+    /**
+     * イテレータの最初の要素に巻き戻す.
+     */
+    public function rewind()
+    {
+        $this->position = 0;
+    }
+    
+    /**
+     * 現在位置が有効かどうかを調べる.
+     *
+     * @return boolean
+     */
+    public function valid()
+    {
+        $key = $this->causeColumns->getKeys()[$this->position];
+        return $this->causeColumns->isExistKey($key);
+    }
 }
 
