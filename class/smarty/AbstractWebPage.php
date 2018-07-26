@@ -54,6 +54,14 @@ abstract class AbstractWebPage
     public abstract function getTemplateFileLocation(): string;
     
     /**
+     * テンプレートファイルを表示する.
+     */
+    public function display(): void
+    {
+        $this->smarty->display($this->getTemplateFileLocation());
+    }
+    
+    /**
      * テンプレートファイルに値を割り当てる.
      * 
      * @param mixed $key キー
