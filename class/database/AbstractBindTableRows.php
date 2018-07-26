@@ -20,7 +20,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
      *
      * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス.
      */
-    public function __construct(AbstractDatabase $database)
+    public function __construct($database)
     {
         parent::__construct($database);
         $this->rows = new Hash();

@@ -17,7 +17,7 @@ abstract class AbstractBindTable
      * 
      * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス.
      */
-    public function __construct(AbstractDatabase $database)
+    public function __construct($database)
     {
         $this->database = $database;
     }
@@ -140,7 +140,7 @@ abstract class AbstractBindTable
             $sql->append(" ");
             $sql->append($afterWherePart);
         }
-        return $this->database->fetchRows($sql, $wheresParameters->getValues());
+        return $this->getDatabase()->fetchRows($sql, $wheresParameters->getValues());
     }
     
 }
