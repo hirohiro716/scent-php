@@ -58,7 +58,7 @@ abstract class AbstractWebPage
      */
     public function display(): void
     {
-        $this->smarty->display($this->getTemplateFileLocation());
+        $this->smarty->display(static::getTemplateFileLocation());
     }
     
     /**
