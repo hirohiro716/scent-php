@@ -141,7 +141,7 @@ abstract class AbstractWebPage
      *
      * @return Hash
      */
-    public function getPostValues(): Hash
+    public function getGetValues(): Hash
     {
         $hash = new Hash();
         foreach ($_GET as $key => $value) {
