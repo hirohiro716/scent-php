@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  *
  * @author hiro
  */
-class Session
+class Session extends AbstractObject
 {
 
     private const KEY_AGENT = 'session_key_agent';

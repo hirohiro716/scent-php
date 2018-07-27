@@ -3,13 +3,14 @@ namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
+use hirohiro716\Scent\AbstractObject;
 
 /**
  * テーブルとオブジェクトをマッピングする抽象クラス.
  * 
  * @author hiro
  */
-abstract class AbstractBindTable
+abstract class AbstractBindTable extends AbstractObject
 {
     
     /**

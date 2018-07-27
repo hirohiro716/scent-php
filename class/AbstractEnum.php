@@ -8,7 +8,7 @@ use ReflectionClass;
  * 
  * @author hiro
  */
-abstract class AbstractEnum
+abstract class AbstractEnum extends AbstractObject
 {
     
     private $name;

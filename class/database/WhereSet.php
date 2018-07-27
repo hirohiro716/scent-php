@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
+use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
@@ -10,7 +11,7 @@ use hirohiro716\Scent\StringObject;
  * 
  * @author hiro
  */
-class WhereSet
+class WhereSet extends AbstractObject
 {
     
     private $wheres = array();

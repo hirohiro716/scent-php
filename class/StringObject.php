@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  *
  * @author hiro
  */
-class StringObject
+class StringObject extends AbstractObject
 {
 
     private $value;

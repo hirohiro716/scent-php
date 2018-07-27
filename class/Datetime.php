@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  *
  * @author hiro
  */
-class Datetime
+class Datetime extends AbstractObject
 {
 
     private $year = 0;

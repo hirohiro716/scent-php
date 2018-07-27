@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  * 
  * @author hiro
  */
-class FloatObject
+class FloatObject extends AbstractObject
 {
     
     private $value = 0;

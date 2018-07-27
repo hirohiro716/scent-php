@@ -3,6 +3,7 @@ namespace hirohiro716\Scent\Database;
 
 use PDO;
 
+use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
@@ -11,7 +12,7 @@ use hirohiro716\Scent\StringObject;
  *
  * @author hiro
  */
-abstract class AbstractDatabase
+abstract class AbstractDatabase extends AbstractObject
 {
 
     private $pdo;

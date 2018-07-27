@@ -8,7 +8,7 @@ use Iterator;
  *
  * @author hiro
  */
-class Hash implements Iterator
+class Hash extends AbstractObject implements Iterator
 {
     
     private $array;

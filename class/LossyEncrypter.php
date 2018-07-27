@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  * 
  * @author hiro
  */
-class LossyEncrypter
+class LossyEncrypter extends AbstractObject
 {
     
     private $value;

@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  * 
  * @author hiro
  */
-class ReversibleEncrypter
+class ReversibleEncrypter extends AbstractObject
 {
     
     private $method = "AES-256-CBC";

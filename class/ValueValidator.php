@@ -6,7 +6,7 @@ namespace hirohiro716\Scent;
  *
  * @author hiro
  */
-class ValueValidator
+class ValueValidator extends AbstractObject
 {
 
     /*

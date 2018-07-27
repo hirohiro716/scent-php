@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent\Mail;
 
+use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
@@ -9,7 +10,7 @@ use hirohiro716\Scent\StringObject;
  *
  * @author hiro
  */
-class MailTransmitter
+class MailTransmitter extends AbstractObject
 {
 
     /**

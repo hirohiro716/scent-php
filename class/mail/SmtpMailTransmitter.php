@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent\Mail;
 
+use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
@@ -12,7 +13,7 @@ use PHPMailer\PHPMailer\Exception;
  *
  * @author hiro
  */
-class SmtpMailTransmitter
+class SmtpMailTransmitter extends AbstractObject
 {
 
     /**
