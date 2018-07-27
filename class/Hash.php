@@ -20,6 +20,7 @@ class Hash extends AbstractObject implements Iterator
      */
     public function __construct(array $array = array())
     {
+        parent::__construct();
         $this->array = $array;
     }
     

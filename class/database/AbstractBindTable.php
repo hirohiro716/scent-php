@@ -20,6 +20,7 @@ abstract class AbstractBindTable extends AbstractObject
      */
     public function __construct($database)
     {
+        parent::__construct();
         $this->database = $database;
     }
     

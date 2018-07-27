@@ -73,6 +73,7 @@ class ValueValidator extends AbstractObject
      */
     public function __construct(string $targetName = "")
     {
+        parent::__construct();
         $this->parameters = new Hash();
         $this->targetName = $targetName;
     }

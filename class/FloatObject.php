@@ -18,6 +18,7 @@ class FloatObject extends AbstractObject
      */
     public function __construct($value = 0)
     {
+        parent::__construct();
         $this->value = (float) $value;
     }
     

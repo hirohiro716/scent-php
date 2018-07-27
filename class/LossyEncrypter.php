@@ -20,6 +20,7 @@ class LossyEncrypter extends AbstractObject
      */
     public function __construct(string $value)
     {
+        parent::__construct();
         $this->value = $value;
         $this->hash = password_hash($value, PASSWORD_DEFAULT);
     }

@@ -21,6 +21,7 @@ class File extends AbstractObject
      */
     public function __construct(string $fileLocation)
     {
+        parent::__construct();
         $this->location = $fileLocation;
     }
     
@@ -154,7 +155,9 @@ class File extends AbstractObject
      */
     public function writeAll(string $contents): int
     {
-        
+        $result = file_put_contents($this->location, $contents);
+        // TODO
+        return $result;
     }
     
     

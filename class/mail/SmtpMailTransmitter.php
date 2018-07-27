@@ -21,6 +21,7 @@ class SmtpMailTransmitter extends AbstractObject
      */
     public function __construct()
     {
+        parent::__construct();
         // 接続情報
         $this->server = new StringObject();
         $this->user = new StringObject();

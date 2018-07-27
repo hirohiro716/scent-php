@@ -225,7 +225,7 @@ class WhereSet extends AbstractObject
  * 
  * @author hiro
  */
-class Where
+class Where extends AbstractObject
 {
     
     /**
@@ -237,6 +237,7 @@ class Where
      */
     public function __construct(string $column, string $comparison, $values = null)
     {
+        parent::__construct();
         $this->column = $column;
         $comparisonObject = new StringObject($comparison);
         $this->comparison = $comparisonObject->toUpper()->trim()->get();

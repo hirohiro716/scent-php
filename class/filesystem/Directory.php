@@ -20,6 +20,7 @@ class Directory extends AbstractObject
      */
     public function __construct(string $directoryLocation)
     {
+        parent::__construct();
         $this->location = $directoryLocation;
     }
     

@@ -18,6 +18,7 @@ class StringObject extends AbstractObject
      */
     public function __construct($value = "")
     {
+        parent::__construct();
         if ($value === null) {
             $value = "";
         }

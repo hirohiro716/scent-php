@@ -28,6 +28,7 @@ class Datetime extends AbstractObject
      */
     public function __construct($datetime = null)
     {
+        parent::__construct();
         $type = Helper::findInstanceName($datetime);
         switch (true) {
             case $type->equals("string"):

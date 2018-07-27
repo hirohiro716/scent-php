@@ -18,6 +18,7 @@ class MailTransmitter extends AbstractObject
      */
     public function __construct()
     {
+        parent::__construct();
         mb_language("Japanese");
         mb_internal_encoding("UTF-8");
         $this->arrayTO = new Hash();

@@ -23,6 +23,7 @@ class ReversibleEncrypter extends AbstractObject
      */
     public function __construct(string $key, string $iv = "")
     {
+        parent::__construct();
         $this->key = $key;
         $this->iv = $iv;
     }

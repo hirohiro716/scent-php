@@ -23,6 +23,7 @@ abstract class AbstractEnum extends AbstractObject
      */
     private function __construct(string $name, $value)
     {
+        parent::__construct();
         $this->name = new StringObject($name);
         $this->value = $value;
     }

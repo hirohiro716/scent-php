@@ -5,13 +5,14 @@ use Smarty;
 use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\AbstractObject;
 
 /**
  * Webページの抽象クラス.
  * 
  * @author hiro
  */
-abstract class AbstractWebPage
+abstract class AbstractWebPage extends AbstractObject
 {
     
     /**
@@ -19,6 +20,7 @@ abstract class AbstractWebPage
      */
     public function __construct()
     {
+        parent::__construct();
         $this->smarty = new Smarty();
         if (self::$templateDirectory !== null) {
             $this->smarty->setTemplateDir(self::$templateDirectory);
