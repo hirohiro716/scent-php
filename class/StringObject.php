@@ -32,7 +32,7 @@ class StringObject extends AbstractObject
      */
     public function __toString(): string
     {
-        return $this->value;
+        return $this->get();
     }
 
     /**
@@ -40,9 +40,15 @@ class StringObject extends AbstractObject
      *
      * @return string
      */
-    public function get(): string
+    public function get(string $fromEncoding = null, string $toEncoding = null): string
     {
-        return $this->value;
+        if ($toEncoding === null) {
+            $toEncoding = mb_internal_encoding();
+        }
+        if ($fromEncoding !== null) {
+            return mb_convert_encoding($this->value, $toEncoding, $fromEncoding);
+        }
+        return mb_convert_encoding($this->value, $toEncoding);
     }
 
     /**
