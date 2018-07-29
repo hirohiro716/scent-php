@@ -32,7 +32,7 @@ class IOException extends Exception
      * 
      * @return string
      */
-    public function getLocation(): string
+    public function getFilesystemLocation(): string
     {
         return $this->location;
     }

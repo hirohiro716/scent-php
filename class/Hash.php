@@ -201,6 +201,8 @@ class Hash extends AbstractObject implements Iterator
 
     /**
      * 現在の要素を返す.
+     * 
+     * @return mixed
      */
     public function current()
     {
@@ -213,7 +215,7 @@ class Hash extends AbstractObject implements Iterator
      *
      * @return string
      */
-    public function key()
+    public function key(): string
     {
         return $this->getKeys()[$this->position];
     }
@@ -221,7 +223,7 @@ class Hash extends AbstractObject implements Iterator
     /**
      * 次の要素に進む.
      */
-    public function next()
+    public function next(): void
     {
         $this->position ++;
     }
@@ -229,7 +231,7 @@ class Hash extends AbstractObject implements Iterator
     /**
      * イテレータの最初の要素に巻き戻す.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
@@ -237,9 +239,9 @@ class Hash extends AbstractObject implements Iterator
     /**
      * 現在位置が有効かどうかを調べる.
      *
-     * @return boolean
+     * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         $key = $this->getKeys()[$this->position];
         return $this->isExistKey($key);
