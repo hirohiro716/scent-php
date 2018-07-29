@@ -22,18 +22,10 @@ abstract class AbstractWebPage extends AbstractObject
     {
         parent::__construct();
         $this->smarty = new Smarty();
-        if (self::$templateDirectory !== null) {
-            $this->smarty->setTemplateDir(self::$templateDirectory);
-        }
-        if (self::$compileDirectory !== null) {
-            $this->smarty->setCompileDir(self::$compileDirectory);
-        }
-        if (self::$leftDelimiter !== null) {
-            $this->smarty->setLeftDelimiter(self::$leftDelimiter);
-        }
-        if (self::$rightDelimiter !== null) {
-            $this->smarty->setRightDelimiter(self::$rightDelimiter);
-        }
+        $this->smarty->setTemplateDir($this->getTemplateDirectory());
+        $this->smarty->setCompileDir($this->getCompileDirectory());
+        $this->smarty->setLeftDelimiter($this->getLeftDelimiter());
+        $this->smarty->setRightDelimiter($this->getRightDelimiter());
     }
     
     private $smarty;
@@ -49,7 +41,35 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * テンプレートファイルの場所を取得する.
+     * Smartyのテンプレートディレクトリを取得する.
+     *
+     * @return string
+     */
+    public abstract function getTemplateDirectory(): string;
+    
+    /**
+     * Smartyのキャッシュディレクトリを取得する.
+     *
+     * @return string
+     */
+    public abstract function getCompileDirectory(): string;
+    
+    /**
+     * Smartyの左デリミタを取得する.
+     *
+     * @return string
+     */
+    public abstract function getLeftDelimiter(): string;
+    
+    /**
+     * Smartyの右デリミタを取得する.
+     *
+     * @return string
+     */
+    public abstract function getRightDelimiter(): string;
+    
+    /**
+     * Smartyのテンプレートファイルの場所をテンプレートディレクトリからの相対パスで取得する.
      * 
      * @return string
      */
@@ -178,54 +198,6 @@ abstract class AbstractWebPage extends AbstractObject
             $hash->put($key, $valueObject->sanitize()->get());
         }
         return $hash;
-    }
-    
-    private static $templateDirectory = null;
-    
-    /**
-     * Smartyで使用するテンプレートディレクトリをセットする.
-     * 
-     * @param string $directory
-     */
-    public static function setTempleteDirectory(string $directory): void
-    {
-        self::$templateDirectory = $directory;
-    }
-    
-    private static $compileDirectory = null;
-    
-    /**
-     * Smartyで使用するコンパイルディレクトリをセットする.
-     *
-     * @param string $directory
-     */
-    public static function setCompileDirectory(string $directory): void
-    {
-        self::$compileDirectory = $directory;
-    }
-    
-    private static $leftDelimiter = null;
-    
-    /**
-     * Smartyで使用するデリミタをセットする.
-     *
-     * @param string $delimiter
-     */
-    public static function setLeftDelimiter(string $delimiter): void
-    {
-        self::$leftDelimiter = $delimiter;
-    }
-    
-    private static $rightDelimiter = null;
-    
-    /**
-     * Smartyで使用するデリミタをセットする.
-     *
-     * @param string $delimiter
-     */
-    public static function setRightDelimiter(string $delimiter): void
-    {
-        self::$rightDelimiter = $delimiter;
     }
     
 }
