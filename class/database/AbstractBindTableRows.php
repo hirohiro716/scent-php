@@ -87,14 +87,18 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             $sql->append(" WHERE ");
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
-            $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
+            $rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
         } else {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records edit is not permited.");
             }
             $sql->append($afterWherePart);
-            $this->rows = $this->getDatabase()->fetchRows($sql);
+            $rows = $this->getDatabase()->fetchRows($sql);
+        }
+        $this->rows->clear();
+        foreach ($rows as $row) {
+            $this->rows->add($row);
         }
     }
     
