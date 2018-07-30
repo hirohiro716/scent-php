@@ -75,4 +75,15 @@ class ArrayHelper
         }
     }
     
+    /**
+     * 配列の要素数を数える.
+     * 
+     * @param array $array
+     * @return int
+     */
+    public static function count(array &$array): int
+    {
+        return array_count_values($array);
+    }
+    
 }
