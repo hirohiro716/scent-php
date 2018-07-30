@@ -1,21 +1,16 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
-use hirohiro716\Scent\AbstractEnum;
 use hirohiro716\Scent\StringObject;
+use hirohiro716\Scent\AbstractProperty;
 
 /**
  * カラムの抽象クラス.
  * 
  * @author hiro
  */
-abstract class AbstractColumn extends AbstractEnum
+abstract class AbstractColumn extends AbstractProperty
 {
-    
-    public function __toString(): string
-    {
-        return $this->getPhysicalName();
-    }
     
     /**
      * テーブル名を取得する.
@@ -23,16 +18,6 @@ abstract class AbstractColumn extends AbstractEnum
      * @return string
      */
     public abstract function getTableName(): string;
-    
-    /**
-     * 定数名を小文字にしたカラムの物理名を取得する.
-     * 
-     * @return StringObject カラム名
-     */
-    public function getPhysicalName(): StringObject
-    {
-        return parent::getName()->toLower();
-    }
     
     /**
      * テーブル名を含むカラムの物理名を取得する.
@@ -46,12 +31,5 @@ abstract class AbstractColumn extends AbstractEnum
         $name->append($this->getPhysicalName());
         return $name;
     }
-    
-    /**
-     * カラムの論理名を取得する.
-     * 
-     * @return string
-     */
-    public abstract function getLogicalName(): string;
     
 }
