@@ -84,13 +84,13 @@ abstract class AbstractBindTableRows extends AbstractBindTable
         $sql->append($this->getTableName());
         try {
             // 検索条件ありの複数レコード編集
+    echo "a";
             $whereSet = $this->getWhereSet();
+    echo "b";
             $sql->append(" WHERE ");
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
             $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
-        } catch (PDOException $exception) {
-            throw $exception;
         } catch (Exception $exception) {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
@@ -98,6 +98,8 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             }
             $sql->append($afterWherePart);
             $this->rows = $this->getDatabase()->fetchRows($sql);
+        } catch (PDOException $exception) {
+            throw $exception;
         }
     }
     
