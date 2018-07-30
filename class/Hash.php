@@ -243,6 +243,9 @@ class Hash extends AbstractObject implements Iterator
      */
     public function valid(): bool
     {
+        if ($this->size() <= $this->position) {
+            return false;
+        }
         $key = $this->getKeys()[$this->position];
         return $this->isExistKey($key);
     }
