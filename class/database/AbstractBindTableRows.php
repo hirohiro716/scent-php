@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
+use ErrorException;
 use Exception;
 use PDOException;
 
@@ -91,7 +92,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
             $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
-        } catch (Exception $exception) {
+        } catch (ErrorException $exception) {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records edit is not permited.");
