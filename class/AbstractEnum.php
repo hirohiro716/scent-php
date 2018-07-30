@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent;
 
+use Iterator;
 use ReflectionClass;
 
 /**
@@ -8,7 +9,7 @@ use ReflectionClass;
  * 
  * @author hiro
  */
-abstract class AbstractEnum extends AbstractObject
+abstract class AbstractEnum extends AbstractObject implements Iterator
 {
     
     private $name;
@@ -141,6 +142,56 @@ abstract class AbstractEnum extends AbstractObject
         return $instances->getValues();
     }
     
+    /*
+     * ***********************************
+     * ここからIteratorインターフェースの実装.
+     * ************************************
+     */
+    private $position = 0;
+    
+    /**
+     * 現在の要素を返す.
+     */
+    public function current(): self
+    {
+        return $this->values()[$this->position];
+    }
+    
+    /**
+     * 現在の要素のキーを返す.
+     *
+     * @return string
+     */
+    public function key(): int
+    {
+        return $this->position;
+    }
+    
+    /**
+     * 次の要素に進む.
+     */
+    public function next(): void
+    {
+        $this->position++;
+    }
+    
+    /**
+     * イテレータの最初の要素に巻き戻す.
+     */
+    public function rewind(): void
+    {
+        $this->position = 0;
+    }
+    
+    /**
+     * 現在位置が有効かどうかを調べる.
+     *
+     * @return boolean
+     */
+    public function valid(): bool
+    {
+        return ArrayHelper::isExistKey($this->values(), $this->position);
+    }
 }
 
 /**
