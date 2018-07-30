@@ -9,7 +9,7 @@ use ReflectionClass;
  * 
  * @author hiro
  */
-abstract class AbstractEnum extends AbstractObject implements Iterator
+abstract class AbstractEnum extends AbstractObject
 {
     
     private $name;
@@ -65,12 +65,17 @@ abstract class AbstractEnum extends AbstractObject implements Iterator
         return $this->value === $value;
     }
     
+    private static $nullValue = null;
+    
     /**
      * 定義されていない値を示す定数を取得する.
      * 
-     * @var AbstractEnum
+     * @return NullEnum
      */
-    public static $NULL = null;
+    public static function NULL(): NullEnum
+    {
+        return self::$nullValue;
+    }
     
     private static $instancesArray = null;
     
@@ -79,8 +84,8 @@ abstract class AbstractEnum extends AbstractObject implements Iterator
      */
     private static function createAllObject(): void
     {
-        if (self::$NULL === null) {
-            self::$NULL = new NullEnum("NULL", null);
+        if (self::$nullValue === null) {
+            self::$nullValue = new NullEnum("NULL", null);
         }
         if (self::$instancesArray === null) {
             self::$instancesArray = new Hash();
@@ -109,7 +114,7 @@ abstract class AbstractEnum extends AbstractObject implements Iterator
         $className = $class->getName();
         $instances = self::$instancesArray->get($className);
         if ($instances->isExistKey($constantValue) == false) {
-            return self::$NULL;
+            return self::$nullValue;
         }
         return $instances->get($constantValue);
     }
@@ -122,7 +127,7 @@ abstract class AbstractEnum extends AbstractObject implements Iterator
      */
     public static function isExistConstant($constantValue): bool
     {
-        if (static::const($constantValue) === self::$NULL) {
+        if (static::const($constantValue) === self::$nullValue) {
             return false;
         }
         return true;
@@ -131,36 +136,79 @@ abstract class AbstractEnum extends AbstractObject implements Iterator
     /**
      * すべての定数を取得する.
      *
-     * @return array
+     * @return EnumValues
      */
-    public static function values(): array
+    public static function values(): EnumValues
     {
         self::createAllObject();
         $class = new ReflectionClass(static::class);
         $className = $class->getName();
         $instances = self::$instancesArray->get($className);
-        return $instances->getValues();
+        return new EnumValues($instances->getValues());
     }
     
-    /*
-     * ***********************************
-     * ここからIteratorインターフェースの実装.
-     * ************************************
+}
+
+/**
+ * 未定義の値を示す定数クラス.
+ *
+ * @author hiro
+ */
+class NullEnum extends AbstractEnum {
+    
+    public function __toString(): string
+    {
+        return "";
+    }
+    
+}
+
+/**
+ * EnumのIterator実装クラス.
+ * 
+ * @author hiro
+ */
+class EnumValues implements Iterator
+{
+    
+    /**
+     * コンストラクタ.
+     * 
+     * @param array $values
      */
+    public function __construct(array $values)
+    {
+        $this->values = $values;
+    }
+    
+    private $values = array();
+    
+    /**
+     * すべての定数を配列で取得する.
+     * 
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return $this->values;
+    }
+    
     private $position = 0;
     
     /**
      * 現在の要素を返す.
+     * 
+     * @return AbstractEnum
      */
-    public function current(): self
+    public function current(): AbstractEnum
     {
-        return $this->values()[$this->position];
+        return $this->values[$this->position];
     }
     
     /**
      * 現在の要素のキーを返す.
      *
-     * @return string
+     * @return int
      */
     public function key(): int
     {
@@ -186,24 +234,11 @@ abstract class AbstractEnum extends AbstractObject implements Iterator
     /**
      * 現在位置が有効かどうかを調べる.
      *
-     * @return boolean
+     * @return bool
      */
     public function valid(): bool
     {
-        return ArrayHelper::isExistKey($this->values(), $this->position);
-    }
-}
-
-/**
- * 未定義の値を示す定数クラス.
- * 
- * @author hiro
- */
-class NullEnum extends AbstractEnum {
-    
-    public function __toString(): string
-    {
-        return "";
+        return ArrayHelper::isExistKey($this->values, $this->position);
     }
     
 }

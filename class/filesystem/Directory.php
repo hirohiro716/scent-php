@@ -195,6 +195,8 @@ class Directory extends AbstractFilesystemItem implements Iterator
     
     /**
      * 現在の要素を返す.
+     * 
+     * @return AbstractFilesystemItem
      */
     public function current(): AbstractFilesystemItem
     {
@@ -205,7 +207,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     /**
      * 現在の要素のキーを返す.
      *
-     * @return string
+     * @return int
      */
     public function key(): int
     {
@@ -234,7 +236,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     /**
      * 現在位置が有効かどうかを調べる.
      *
-     * @return boolean
+     * @return bool
      */
     public function valid(): bool
     {
