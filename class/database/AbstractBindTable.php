@@ -4,6 +4,7 @@ namespace hirohiro716\Scent\Database;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\AbstractObject;
+use hirohiro716\Scent\Helper;
 
 /**
  * テーブルとオブジェクトをマッピングする抽象クラス.
@@ -89,6 +90,16 @@ abstract class AbstractBindTable extends AbstractObject
     public function setWhereSet(WhereSet $whereSet): void
     {
         $this->whereSet = $whereSet;
+    }
+    
+    /**
+     * レコード特定用のWhereSetがセットされているか確認する.
+     * 
+     * @return bool
+     */
+    public function whereSetIsNull(): bool
+    {
+        return Helper::isNull($this->whereSet);
     }
     
     /**

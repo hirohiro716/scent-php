@@ -1,9 +1,7 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
-use ErrorException;
 use Exception;
-use PDOException;
 
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
@@ -83,24 +81,20 @@ abstract class AbstractBindTableRows extends AbstractBindTable
         $this->clearRows();
         $sql = new StringObject("SELECT * FROM ");
         $sql->append($this->getTableName());
-        try {
+        if ($this->whereSetIsNull() == false) {
             // 検索条件ありの複数レコード編集
-    echo "a";
             $whereSet = $this->getWhereSet();
-    echo "b";
             $sql->append(" WHERE ");
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
             $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
-        } catch (ErrorException $exception) {
+        } else {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records edit is not permited.");
             }
             $sql->append($afterWherePart);
             $this->rows = $this->getDatabase()->fetchRows($sql);
-        } catch (PDOException $exception) {
-            throw $exception;
         }
     }
     
@@ -117,12 +111,12 @@ abstract class AbstractBindTableRows extends AbstractBindTable
     {
         $sql = new StringObject("DELETE FROM ");
         $sql->append($this->getTableName());
-        try {
+        if ($this->whereSetIsNull() == false) {
             $sql->append(" WHERE ");
             $sql->append($this->getWhereSet()->buildParameterClause());
             $sql->append(";");
             $this->getDatabase()->execute($sql, $this->getWhereSet()->buildParameters());
-        } catch (Exception $exception) {
+        } else {
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records update is not permited.");
             }
@@ -139,13 +133,10 @@ abstract class AbstractBindTableRows extends AbstractBindTable
      * @return bool 存在するかどうか
      */
     public function isExist(): bool {
-        try {
-            $whereSet = $this->getWhereSet();
-        } catch (Exception $exception) {
-            if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
-                throw new Exception("Search condition is not specified.");
-            }
+        if ($this->whereSetIsNull() && $this->isPermittedSearchConditioEmptyUpdate() == false) {
+            throw new Exception("Search condition is not specified.");
         }
+        $whereSet = $this->getWhereSet();
         $sql = new StringObject("SELECT COUNT(");
         $sql->append($whereSet->getWheres()[0]->getColumn());
         $sql->append(") FROM ");

@@ -17,7 +17,6 @@ abstract class AbstractObject
     public function __construct()
     {
         set_error_handler("self::errorHandler");
-        echo "abcd";
     }
     
     /**

@@ -70,6 +70,9 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     public function edit(): void
     {
+        if ($this->whereSetIsNull()) {
+            throw new Exception("Search condition is not specified.");
+        }
         $sql = new StringObject("SELECT * FROM ");
         $sql->append($this->getTableName());
         $sql->append(" WHERE ");
@@ -93,6 +96,9 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     public function update(): void
     {
+        if ($this->whereSetIsNull()) {
+            throw new Exception("Search condition is not specified.");
+        }
         $this->getDatabase()->update($this->row, $this->getTableName(), $this->getWhereSet());
     }
     
@@ -101,11 +107,10 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     protected function physicalDelete(): void
     {
-        try {
-            $whereSet = $this->getWhereSet();
-        } catch (Exception $exception) {
+        if ($this->whereSetIsNull()) {
             throw new Exception("Search condition is not specified.");
         }
+        $whereSet = $this->getWhereSet();
         $sql = new StringObject("DELETE FROM ");
         $sql->append($this->getTableName());
         $sql->append(" WHERE ");
@@ -126,11 +131,10 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     public function isExist(): bool
     {
-        try {
-            $whereSet = $this->getWhereSet();
-        } catch (Exception $exception) {
+        if ($this->whereSetIsNull()) {
             throw new Exception("Search condition is not specified.");
         }
+        $whereSet = $this->getWhereSet();
         $sql = new StringObject("SELECT * FROM ");
         $sql->append($this->getTableName());
         $sql->append(" WHERE ");
