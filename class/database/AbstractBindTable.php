@@ -55,11 +55,11 @@ abstract class AbstractBindTable extends AbstractObject
     }
     
     /**
-     * カラム定数を取得する.
+     * すべてのカラム定数を取得する.
      * 
-     * @return AbstractColumn
+     * @return Columns
      */
-    public abstract function getColumn(): AbstractColumn;
+    public abstract function getColumns(): Columns;
     
     /**
      * カラムの物理名をキー・各カラムの初期値を値とする配列を取得する.
