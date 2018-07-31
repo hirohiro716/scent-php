@@ -98,7 +98,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
         }
         $this->rows->clear();
         foreach ($rows as $row) {
-            $this->rows->add($row);
+            $this->rows->add(new Hash($row));
         }
     }
     
