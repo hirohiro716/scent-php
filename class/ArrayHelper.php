@@ -83,7 +83,7 @@ class ArrayHelper
      */
     public static function count(array &$array): int
     {
-        return array_count_values($array);
+        return count($array);
     }
     
 }
