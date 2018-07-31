@@ -104,7 +104,7 @@ class Hashes implements Iterator
      *
      * @return mixed
      */
-    public function current()
+    public function current(): Hash
     {
         $key = $this->hashes->getKeys()[$this->position];
         return $this->hashes->get($key);
