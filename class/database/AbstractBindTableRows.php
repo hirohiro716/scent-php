@@ -5,6 +5,7 @@ use Exception;
 
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
+use hirohiro716\Scent\Hashes;
 
 /**
  * 複数のテーブル行をオブジェクト配列にマッピングする抽象クラス.
@@ -22,7 +23,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
     public function __construct($database)
     {
         parent::__construct($database);
-        $this->rows = new Hash();
+        $this->rows = new Hashes();
     }
     
     private $rows;
@@ -32,9 +33,9 @@ abstract class AbstractBindTableRows extends AbstractBindTable
      * 
      * @return array
      */
-    public function getRows(): array
+    public function getRows(): Hashes
     {
-        return $this->rows->getValues();
+        return $this->rows;
     }
     
     /**
@@ -54,7 +55,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
      */
     public function removeRow(Hash $row): void
     {
-        $this->rows->removeValue($row);
+        $this->rows->remove($row);
     }
     
     /**
@@ -87,18 +88,14 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             $sql->append(" WHERE ");
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
-            $rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
+            $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
         } else {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records edit is not permited.");
             }
             $sql->append($afterWherePart);
-            $rows = $this->getDatabase()->fetchRows($sql);
-        }
-        $this->rows->clear();
-        foreach ($rows as $row) {
-            $this->rows->add(new Hash($row));
+            $this->rows = $this->getDatabase()->fetchRows($sql);
         }
     }
     

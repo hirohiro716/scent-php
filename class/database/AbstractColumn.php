@@ -26,7 +26,7 @@ abstract class AbstractColumn extends AbstractProperty
      * 
      * @return StringObject テーブル名を含むカラム名
      */
-    public function getFullPhysicalName(): StringObject
+    public function getFullPhysicalName(): string
     {
         $name = new StringObject($this->getTableName());
         $name->append(".");

@@ -21,7 +21,7 @@ abstract class AbstractProperty extends AbstractEnum
      *
      * @return StringObject 物理名
      */
-    public function getPhysicalName(): StringObject
+    public function getPhysicalName(): string
     {
         return parent::getName()->toLower();
     }

@@ -2,6 +2,7 @@
 namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\Hashes;
 use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
@@ -118,9 +119,9 @@ abstract class AbstractBindTable extends AbstractObject
      * @param array $whereSetArray WhereSetオブジェクトの配列
      * @param string $select WHERE句より前のSELECT文
      * @param string $afterWherePart WHERE句より後のSQL
-     * @return array 検索結果の２次元連想配列
+     * @return Hashes 検索結果の２次元連想配列
      */
-    public function search(array $whereSetArray, string $select = "", string $afterWherePart = ""): array
+    public function search(array $whereSetArray, string $select = "", string $afterWherePart = ""): Hashes
     {
         // SELECT句の作成
         $selectStringObject = new StringObject($select);
@@ -153,7 +154,10 @@ abstract class AbstractBindTable extends AbstractObject
             $sql->append(" ");
             $sql->append($afterWherePart);
         }
-        return $this->getDatabase()->fetchRows($sql, $wheresParameters->getValues());
+        $rows = $this->getDatabase()->fetchRows($sql, $wheresParameters->getValues());
+        $hashes = new Hashes();
+        $hashes->addArray(...$rows);
+        return $hashes;
     }
     
 }

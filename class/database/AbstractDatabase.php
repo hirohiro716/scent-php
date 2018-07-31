@@ -6,6 +6,7 @@ use PDO;
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
+use hirohiro716\Scent\Hashes;
 
 /**
  * データベースをPDOで操作する抽象クラス.
@@ -91,9 +92,9 @@ abstract class AbstractDatabase extends AbstractObject
      *
      * @param string $sql
      * @param array $parameters
-     * @return array
+     * @return Hash
      */
-    public function fetchRow(string $sql, array $parameters = array()): array
+    public function fetchRow(string $sql, array $parameters = array()): Hash
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($parameters);
@@ -101,7 +102,7 @@ abstract class AbstractDatabase extends AbstractObject
         if ($row === false) {
             throw new DataNotFoundException();
         }
-        return $row;
+        return new Hash($row);
     }
 
     /**
@@ -109,13 +110,15 @@ abstract class AbstractDatabase extends AbstractObject
      *
      * @param string $sql
      * @param array $parameters
-     * @return array
+     * @return Hashes
      */
-    public function fetchRows(string $sql, array $parameters = array()): array
+    public function fetchRows(string $sql, array $parameters = array()): Hashes
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($parameters);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $hashes = new Hashes();
+        $hashes->addArray(...$rows);
     }
 
     /**
@@ -212,9 +215,9 @@ abstract class AbstractDatabase extends AbstractObject
      * テーブルが存在するか確認する.
      *
      * @param string $tableName
-     * @return array
+     * @return bool
      */
-    public abstract function isExistTable(string $tableName): array;
+    public abstract function isExistTable(string $tableName): bool;
 
     /**
      * テーブルのカラムをすべて取得する.
