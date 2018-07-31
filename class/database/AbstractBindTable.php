@@ -154,12 +154,7 @@ abstract class AbstractBindTable extends AbstractObject
             $sql->append(" ");
             $sql->append($afterWherePart);
         }
-        $rows = $this->getDatabase()->fetchRows($sql, $wheresParameters->getValues());
-        $hashes = new Hashes();
-        foreach ($rows as $row) {
-            $hashes->addArray($row);
-        }
-        return $hashes;
+        return $this->getDatabase()->fetchRows($sql, $wheresParameters->getValues());
     }
     
 }
