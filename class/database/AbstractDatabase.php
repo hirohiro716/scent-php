@@ -119,6 +119,7 @@ abstract class AbstractDatabase extends AbstractObject
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
         $hashes = new Hashes();
         $hashes->addArray(...$rows);
+        return $hashes;
     }
 
     /**
