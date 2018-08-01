@@ -67,9 +67,11 @@ class Hashes implements Iterator
      * 
      * @param array $array
      */
-    public function addArray(array $array): void
+    public function addArray(array ...$arrays): void
     {
-        $this->hashes->add(new Hash($array));
+        foreach ($arrays as $array) {
+            $this->hashes->add(new Hash($array));
+        }
     }
     
     /**
