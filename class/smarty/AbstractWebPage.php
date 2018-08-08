@@ -127,7 +127,11 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function getPostValue(string $name): string
     {
-        $value = new StringObject($_POST[$name]);
+        $post = new Hash($_POST);
+        if ($post->isExistKey($name) == false) {
+            return "";
+        }
+        $value = new StringObject($post->get($name));
         return $value->sanitize();
     }
     
@@ -154,7 +158,11 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function getGetValue(string $name): string
     {
-        $value = new StringObject($_GET[$name]);
+        $get = new Hash($_GET);
+        if ($get->isExistKey($name) == false) {
+            return "";
+        }
+        $value = new StringObject($get->get($name));
         return $value->sanitize();
     }
     
@@ -181,7 +189,11 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function getRequestValue(string $name): string
     {
-        $value = new StringObject($_REQUEST[$name]);
+        $request = new Hash($_REQUEST);
+        if ($request->isExistKey($name) == false) {
+            return "";
+        }
+        $value = new StringObject($request->get($name));
         return $value->sanitize();
     }
     
