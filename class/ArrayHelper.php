@@ -86,4 +86,16 @@ class ArrayHelper
         return count($array);
     }
     
+    /**
+     * 配列を結合して新しい配列を生成する.
+     * 
+     * @param array $array1
+     * @param array $array2
+     * @return array
+     */
+    public static function merge(array $array1, array $array2): array
+    {
+        return array_merge($array1, $array2);
+    }
+    
 }
