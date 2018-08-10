@@ -274,7 +274,7 @@ class Where extends AbstractObject
         return $this->comparison;
     }
     
-    private $values;
+    private $values = array();
     
     /**
      * 比較値を取得する.
