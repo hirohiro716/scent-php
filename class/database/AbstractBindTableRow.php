@@ -78,7 +78,7 @@ abstract class AbstractBindTableRow extends AbstractBindTable
         $sql->append(" WHERE ");
         $sql->append($this->getWhereSet()->buildParameterClause());
         $sql->append(";");
-        $this->setRow(new Hash($this->getDatabase()->fetchRow($sql, $this->getWhereSet()->buildParameters())));
+        $this->setRow($this->getDatabase()->fetchRow($sql, $this->getWhereSet()->buildParameters()));
         if ($this->isDeleted() == true) {
             throw new DataNotFoundException();
         }
