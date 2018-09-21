@@ -8,7 +8,7 @@ namespace hirohiro716\Scent;
  */
 class Datetime extends AbstractObject
 {
-
+    
     private $year = 0;
 
     private $month = 0;
