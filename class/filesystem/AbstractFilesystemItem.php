@@ -132,7 +132,7 @@ abstract class AbstractFilesystemItem extends AbstractObject
     /**
      * モードを変更する.
      *
-     * @param string $mode
+     * @param string $mode "0777"などの文字列または8進数の数値
      * @throws IOException
      */
     public function changeMode($mode): void
