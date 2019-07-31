@@ -318,7 +318,7 @@ class StringObject extends AbstractObject
      *
      * @param string $needle
      * @param string $encoding
-     * @return int
+     * @return int 見つからなかった場合は-1
      */
     public function indexOf(string $search, string $encoding = null): int
     {
@@ -337,7 +337,7 @@ class StringObject extends AbstractObject
      *
      * @param string $needle
      * @param string $encoding
-     * @return int
+     * @return int 見つからなかった場合は-1
      */
     public function lastIndexOf(string $search, string $encoding = null): int
     {
