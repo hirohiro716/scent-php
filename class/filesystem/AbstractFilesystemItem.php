@@ -48,6 +48,9 @@ abstract class AbstractFilesystemItem extends AbstractObject
      */
     public function getAbsoluteLocation(): string
     {
+        if ($this->isExist() == false) {
+            throw new IOException($this->getLocation(), "Filesystem location is not found.");
+        }
         return realpath($this->location);
     }
     

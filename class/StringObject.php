@@ -252,6 +252,16 @@ class StringObject extends AbstractObject
     }
     
     /**
+     * 文字列をURLエンコードした結果を取得する.
+     * 
+     * @return StringObject
+     */
+    public function urlencode(): StringObject
+    {
+        return new StringObject(urlencode($this->value));
+    }
+    
+    /**
      * 内部の値を整数に変換する. 変換できなかった場合はnullを返す.
      * 
      * @return int|null
