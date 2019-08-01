@@ -4,11 +4,19 @@
     
     "type": "library",
     
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/PHPGangsta/GoogleAuthenticator/"
+
+        }
+    ],
+    
     "require": {
     	"php": ">=7.2",
         "phpmailer/phpmailer": "^6.0",
         "smarty/smarty": "^3.1",
-        "phpgangsta/googleauthenticator": "dev-master#505c2af"
+        "phpgangsta/googleauthenticator": "dev-master"
     },
     
     "autoload": {
