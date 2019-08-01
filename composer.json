@@ -7,7 +7,7 @@
     "require": {
         "phpmailer/phpmailer": "^6.0",
         "smarty/smarty": "^3.1",
-        "phpgangsta/googleauthenticator": "dev-master#3baa997f399d4afd5d6a81d42244ec9cc3eeb080"
+        "phpgangsta/googleauthenticator": "*"
     },
     
     "autoload": {
