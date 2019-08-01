@@ -8,7 +8,7 @@
     	"php": ">=7.2",
         "phpmailer/phpmailer": "^6.0",
         "smarty/smarty": "^3.1",
-        "phpgangsta/googleauthenticator": "*@dev"
+        "phpgangsta/googleauthenticator": "dev-master"
     },
     
     "autoload": {
