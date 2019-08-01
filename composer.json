@@ -5,10 +5,7 @@
     "type": "library",
     
     "require": {
-    	"php": ">=7.2",
-        "phpmailer/phpmailer": "^6.0",
-        "smarty/smarty": "^3.1",
-        "phpgangsta/googleauthenticator": "^1.0.0"
+        "phpgangsta/googleauthenticator": "*"
     },
     
     "autoload": {
