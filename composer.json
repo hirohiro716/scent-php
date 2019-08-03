@@ -4,15 +4,11 @@
     
     "type": "library",
     
-    "stability-flags": {
-        "phpgangsta/googleauthenticator": 20
-    },
-    
     "require": {
     	"php": ">=7.2",
         "phpmailer/phpmailer": "^6.0",
         "smarty/smarty": "^3.1",
-        "phpgangsta/googleauthenticator": "@RC",
+        "phpgangsta/googleauthenticator": "@dev",
         "chillerlan/php-qrcode": "^3.1.0"
     },
     
