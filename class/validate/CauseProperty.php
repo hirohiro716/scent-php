@@ -1,5 +1,5 @@
 <?php
-namespace hirohiro716\Scent\Database;
+namespace hirohiro716\Scent\Validate;
 
 use hirohiro716\Scent\AbstractProperty;
 

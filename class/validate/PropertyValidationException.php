@@ -1,9 +1,8 @@
 <?php
-namespace hirohiro716\Scent\Database;
+namespace hirohiro716\Scent\Validate;
 
 use hirohiro716\Scent\Hash;
 use Iterator;
-use hirohiro716\Scent\Validate\ValidationException;
 
 /**
  * プロパティの検証に失敗した場合の例外クラス.
