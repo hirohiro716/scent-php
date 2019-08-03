@@ -2,7 +2,9 @@
 namespace hirohiro716\Scent\Validate;
 
 use hirohiro716\Scent\Hash;
+use Exception;
 use Iterator;
+use hirohiro716\Scent\StringObject;
 
 /**
  * プロパティの検証に失敗した場合の例外クラス.
@@ -63,6 +65,20 @@ class PropertyValidationException extends ValidationException implements Iterato
             $hash->put($causeProperty->getProperty()->getPhysicalName(), $causeProperty->getMessage());
         }
         return $hash;
+    }
+    
+    /**
+     * {@inheritDoc}
+     * @see Exception::getMessage()
+     */
+    public function getMessage(): string
+    {
+        $message = new StringObject(parent::getMessage());
+        foreach ($this->causeProperties as $causeProperty) {
+            $message->append("\r\n");
+            $message->append($causeProperty->getMessage());
+        }
+        return $message;
     }
     
     /*
