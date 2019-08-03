@@ -9,9 +9,9 @@ namespace hirohiro716\Scent;
 class Session extends AbstractObject
 {
 
-    private const KEY_AGENT = 'session_key_agent';
+    private const KEY_AGENT = "session_key_agent";
 
-    private const KEY_SID_LIMIT = 'session_key_sid_limit';
+    private const KEY_SID_LIMIT = "session_key_sid_limit";
 
     /**
      * コンストラクタ.
@@ -20,16 +20,19 @@ class Session extends AbstractObject
     {
         parent::__construct();
         if (session_status() === PHP_SESSION_NONE) {
-            ini_set('session.use_strict_mode', 1);
+            // サーバーで生成していないセッションIDは受け付けない
+            ini_set("session.use_strict_mode", true);
+            // javascriptからcookieのセッションIDにアクセスさせない
+            ini_set("session.cookie_httponly", true);
             session_start();
             // 別のブラウザからのアクセスなら初期化
-            if ($_SESSION[self::KEY_AGENT] != $_SERVER['HTTP_USER_AGENT']) {
+            if ($_SESSION[self::KEY_AGENT] != $_SERVER["HTTP_USER_AGENT"]) {
                 $hash = new Hash($_SESSION);
                 foreach ($hash->getKeys() as $key) {
                     unset($_SESSION[$key]);
                 }
             }
-            $_SESSION[self::KEY_AGENT] = $_SERVER['HTTP_USER_AGENT'];
+            $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
             // 有効期限を過ぎているならID変更
             if ($_SESSION[self::KEY_SID_LIMIT] < Datetime::currentTime()) {
                 $datetime = new Datetime();
@@ -88,7 +91,7 @@ class Session extends AbstractObject
         }
     }
 
-    private const KEY_TOKEN = 'session_key_token';
+    private const KEY_TOKEN = "session_key_token";
 
     /**
      * クロスサイトリクエストフォージェリ(CSRF)対策のTokenを生成する.
@@ -97,7 +100,7 @@ class Session extends AbstractObject
      */
     public function createToken(): string
     {
-        $token = ""; // TODO ランダムに文字列を生成する
+        $token = StringObject::createRandomString(32);
         $this->put(self::KEY_TOKEN, $token);
         return $token;
     }

@@ -4,6 +4,7 @@ namespace hirohiro716\Scent\Image;
 use hirohiro716\Scent\Filesystem\File;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
+use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\FloatObject;
 
 /**
@@ -11,7 +12,7 @@ use hirohiro716\Scent\FloatObject;
  *
  * @author hiro
  */
-class QRCodeCreator
+class QRCodeCreator extends AbstractObject
 {
 
     private $scale = 1;

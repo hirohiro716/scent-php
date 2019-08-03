@@ -1,6 +1,8 @@
 <?php
 namespace hirohiro716\Scent\Database;
 
+use hirohiro716\Scent\AbstractProperty;
+
 /**
  * テーブルの行情報の検証に失敗した原因となったカラムを表すクラス.
  * 
@@ -12,10 +14,10 @@ class ValidationExceptionCauseColumn
     /**
      * テーブルの行情報の検証例外の原因となったカラムを作成する。
      * 
-     * @param AbstractColumn $column 検証失敗の原因となったカラム
+     * @param AbstractColumn $column 検証失敗の原因となったカラムやプロパティ
      * @param string $message 例外メッセージ
      */
-    public function __construct(AbstractColumn $column, string $message)
+    public function __construct(AbstractProperty $column, string $message)
     {
         $this->column = $column;
         $this->message = $message;

@@ -5,13 +5,14 @@ use hirohiro716\Scent\Filesystem\File;
 use hirohiro716\Scent\Image\QRCodeCreator;
 use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\Helper;
+use hirohiro716\Scent\AbstractObject;
 
 /**
  * Google2段階認証を処理するクラス.
  *
  * @author hiro
  */
-class Google2stepVerificator
+class Google2stepVerificator extends AbstractObject
 {
     
     /**
@@ -86,6 +87,6 @@ class Google2stepVerificator
         $url->append($this->secretKey);
         $creator = new QRCodeCreator();
         $creator->setScale($scale);
-        return $creator->create($url, $file);
+        $creator->create($url, $file);
     }
 }
