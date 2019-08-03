@@ -4,35 +4,35 @@ namespace hirohiro716\Scent\Database;
 use hirohiro716\Scent\AbstractProperty;
 
 /**
- * テーブルの行情報の検証に失敗した原因となったカラムを表すクラス.
+ * プロパティの検証に失敗した原因となったカラムを表すクラス.
  * 
  * @author hiro
  */
-class ValidationExceptionCauseColumn
+class CauseProperty
 {
     
     /**
      * テーブルの行情報の検証例外の原因となったカラムを作成する。
      * 
-     * @param AbstractColumn $column 検証失敗の原因となったカラムやプロパティ
+     * @param AbstractProperty $property 検証失敗の原因となったカラムやプロパティ
      * @param string $message 例外メッセージ
      */
-    public function __construct(AbstractProperty $column, string $message)
+    public function __construct(AbstractProperty $property, string $message)
     {
-        $this->column = $column;
+        $this->property = $property;
         $this->message = $message;
     }
     
-    private $column;
+    private $property;
     
     /**
      * 例外の原因となったカラムを取得する.
      * 
-     * @return AbstractColumn
+     * @return AbstractProperty
      */
-    public function getColumn(): AbstractColumn
+    public function getProperty(): AbstractProperty
     {
-        return $this->column;
+        return $this->property;
     }
     
     private $message;

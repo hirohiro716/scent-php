@@ -1,5 +1,5 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Validate;
 
 use Exception;
 

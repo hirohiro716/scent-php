@@ -1,5 +1,9 @@
 <?php
-namespace hirohiro716\Scent;
+namespace hirohiro716\Scent\Validate;
+
+use hirohiro716\Scent\AbstractObject;
+use hirohiro716\Scent\Hash;
+use hirohiro716\Scent\StringObject;
 
 /**
  * 値の検証を行うクラス.

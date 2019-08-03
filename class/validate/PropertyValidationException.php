@@ -2,19 +2,19 @@
 namespace hirohiro716\Scent\Database;
 
 use hirohiro716\Scent\Hash;
-use hirohiro716\Scent\ValidationException as BaseValidationException;
 use Iterator;
+use hirohiro716\Scent\Validate\ValidationException;
 
 /**
- * テーブルの行情報の検証に失敗した場合の例外クラス.
+ * プロパティの検証に失敗した場合の例外クラス.
  * 
  * @author hiro
  */
-class ValidationException extends BaseValidationException implements Iterator
+class PropertyValidationException extends ValidationException implements Iterator
 {
     
     /**
-     * テーブルの行情報の検証例外を作成する。
+     * プロパティの検証例外を作成する。
      * 
      * @param string $message スローする例外メッセージ
      * @param int $code 例外コード
@@ -27,41 +27,41 @@ class ValidationException extends BaseValidationException implements Iterator
             $newMessage = "Validation failed of row information.";
         }
         parent::__construct($newMessage, $code, $previous);
-        $this->causeColumns = new Hash();
+        $this->causeProperties = new Hash();
     }
     
-    private $causeColumns;
+    private $causeProperties;
     
     /**
-     * 例外の原因となったカラムを追加する.
+     * 例外の原因となったプロパティを追加する.
      * 
-     * @param ValidationExceptionCauseColumn $causeColumn
+     * @param CauseProperty $causeProperty
      */
-    public function addCauseColumn(ValidationExceptionCauseColumn $causeColumn): void
+    public function addCauseProperty(CauseProperty $causeProperty): void
     {
-        $this->causeColumns->add($causeColumn);
+        $this->causeProperties->add($causeProperty);
     }
     
     /**
-     * 例外の原因となったすべてのカラムを取得する.
+     * 例外の原因となったすべてのプロパティを取得する.
      * 
-     * @return Hash ValidationExceptionCauseColumnの連想配列
+     * @return Hash CausePropertyの連想配列
      */
-    public function getCauseColumns(): Hash
+    public function getCauseProperties(): Hash
     {
-        return $this->causeColumns;
+        return $this->causeProperties;
     }
     
     /**
-     * 例外の原因となったカラムとメッセージの連想配列を取得する.
+     * 例外の原因となったプロパティとメッセージの連想配列を取得する.
      * 
      * @return Hash
      */
     public function toArrayOfCauseMessages(): Hash
     {
         $hash = new Hash();
-        foreach ($this->causeColumns as $causeColumn) {
-            $hash->put($causeColumn->getColumn()->getPhysicalName(), $causeColumn->getMessage());
+        foreach ($this->causeProperties as $causeProperty) {
+            $hash->put($causeProperty->getProperty()->getPhysicalName(), $causeProperty->getMessage());
         }
         return $hash;
     }
@@ -76,10 +76,10 @@ class ValidationException extends BaseValidationException implements Iterator
     /**
      * 現在の要素を返す.
      */
-    public function current(): ValidationExceptionCauseColumn
+    public function current(): CauseProperty
     {
-        $key = $this->causeColumns->getKeys()[$this->position];
-        return $this->causeColumns->get($key);
+        $key = $this->causeProperties->getKeys()[$this->position];
+        return $this->causeProperties->get($key);
     }
     
     /**
@@ -89,7 +89,7 @@ class ValidationException extends BaseValidationException implements Iterator
      */
     public function key()
     {
-        return $this->causeColumns->getKeys()[$this->position];
+        return $this->causeProperties->getKeys()[$this->position];
     }
     
     /**
@@ -115,8 +115,8 @@ class ValidationException extends BaseValidationException implements Iterator
      */
     public function valid()
     {
-        $key = $this->causeColumns->getKeys()[$this->position];
-        return $this->causeColumns->isExistKey($key);
+        $key = $this->causeProperties->getKeys()[$this->position];
+        return $this->causeProperties->isExistKey($key);
     }
 }
 
