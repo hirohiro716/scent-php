@@ -5,6 +5,7 @@
     "type": "library",
     
     "stability-flags": {
+        "hirohiro716/scent-php": 20,
         "phpgangsta/googleauthenticator": 20
     },
     
