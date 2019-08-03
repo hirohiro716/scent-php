@@ -19,13 +19,13 @@
     "autoload": {
         "psr-4": {
             "hirohiro716\\Scent\\": "class/",
-            "hirohiro716\\Scent\\Validate\\": "class/validate/",
-            "hirohiro716\\Scent\\Filesystem\\": "class/filesystem/",
-            "hirohiro716\\Scent\\Mail\\": "class/mail/",
-            "hirohiro716\\Scent\\Database\\": "class/database/",
             "hirohiro716\\Scent\\Auth\\": "class/auth/",
+            "hirohiro716\\Scent\\Database\\": "class/database/",
+            "hirohiro716\\Scent\\Filesystem\\": "class/filesystem/",
             "hirohiro716\\Scent\\Image\\": "class/image/",
-            "hirohiro716\\Scent\\Smarty\\": "class/smarty/"
+            "hirohiro716\\Scent\\Mail\\": "class/mail/",
+            "hirohiro716\\Scent\\Smarty\\": "class/smarty/",
+            "hirohiro716\\Scent\\Validate\\": "class/validate/"
         }
     }
     
