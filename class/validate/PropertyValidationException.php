@@ -2,7 +2,6 @@
 namespace hirohiro716\Scent\Validate;
 
 use hirohiro716\Scent\Hash;
-use Exception;
 use Iterator;
 use hirohiro716\Scent\StringObject;
 
@@ -68,10 +67,11 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * {@inheritDoc}
-     * @see Exception::getMessage()
+     * 例外の詳細メッセージを取得する.
+     * 
+     * @return string メッセージ
      */
-    public function getMessage(): string
+    public function getDetailMessage(): string
     {
         $message = new StringObject(parent::getMessage());
         foreach ($this->causeProperties as $causeProperty) {
