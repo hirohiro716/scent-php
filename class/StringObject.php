@@ -1,6 +1,8 @@
 <?php
 namespace hirohiro716\Scent;
 
+use hirohiro716\Scent\Validate\ValueValidator;
+
 /**
  * 文字列のクラス.
  *
