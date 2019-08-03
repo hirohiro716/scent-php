@@ -5,7 +5,6 @@
     "type": "library",
     
     "stability-flags": {
-        "hirohiro716/scent-php": 20,
         "phpgangsta/googleauthenticator": 20
     },
     
@@ -13,7 +12,7 @@
     	"php": ">=7.2",
         "phpmailer/phpmailer": "^6.0",
         "smarty/smarty": "^3.1",
-        "phpgangsta/googleauthenticator": "dev-master",
+        "phpgangsta/googleauthenticator": "@dev",
         "chillerlan/php-qrcode": "^3.1.0"
     },
     
