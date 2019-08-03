@@ -6,6 +6,7 @@ use hirohiro716\Scent\Image\QRCodeCreator;
 use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\Helper;
 use hirohiro716\Scent\AbstractObject;
+use RobThree\Auth\TwoFactorAuth;
 
 /**
  * Google2段階認証を処理するクラス.
@@ -44,7 +45,7 @@ class Google2stepVerificator extends AbstractObject
      */
     public function createNewSecretKey(): string
     {
-        $authenticator = new \PHPGangsta_GoogleAuthenticator();
+        $authenticator = new TwoFactorAuth();
         $this->secretKey = $authenticator->createSecret();
         return $this->secretKey;
     }
@@ -61,7 +62,7 @@ class Google2stepVerificator extends AbstractObject
         if (Helper::isNull($this->secretKey)) {
             throw new \LogicException("Secret key is empty.");
         }
-        $authenticator = new \PHPGangsta_GoogleAuthenticator();
+        $authenticator = new TwoFactorAuth();
         return $authenticator->verifyCode($this->secretKey, $onetimeCode, 1);
     }
 
