@@ -74,6 +74,9 @@ class PropertyValidationException extends ValidationException implements Iterato
     public function getDetailMessage(): string
     {
         $message = new StringObject(parent::getMessage());
+        if ($this->causeProperties->size() > 0) {
+            $message->append("\r\n");
+        }
         foreach ($this->causeProperties as $causeProperty) {
             $message->append("\r\n");
             $message->append($causeProperty->getMessage());
