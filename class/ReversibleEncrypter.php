@@ -29,21 +29,17 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 初期化ベクトルを新規生成する.
-     */
-    public function createIV(): void
-    {
-        $length = openssl_cipher_iv_length($this->method);
-        $this->iv = openssl_random_pseudo_bytes($length);
-    }
-    
-    /**
-     * 内部で生成したIVを取得する.
+     * 初期化ベクトルを取得する.
      * 
      * @return string
      */
     public function getIV(): string
     {
+        $ivObject = new StringObject($this->iv);
+        if ($ivObject->length() == 0) {
+            $length = openssl_cipher_iv_length($this->method);
+            $this->iv = openssl_random_pseudo_bytes($length);
+        }
         return $this->iv;
     }
     
@@ -67,6 +63,17 @@ class ReversibleEncrypter extends AbstractObject
     public function decrypt(string $encrypted): string
     {
         return openssl_decrypt($encrypted, $this->method, $this->key, 0, $this->iv);
+    }
+    
+    /**
+     * 初期化ベクトルを新規生成する.
+     * 
+     * @return string 生成したIV
+     */
+    public static function createIV(): string
+    {
+        $instance = new self("");
+        return $instance->getIV();
     }
     
 }
