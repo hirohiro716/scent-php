@@ -26,7 +26,7 @@ class Session extends AbstractObject
             ini_set("session.cookie_httponly", true);
             session_start();
             // 別のブラウザからのアクセスなら初期化
-            if ($_SESSION[self::KEY_AGENT]) {
+            if ($_SESSION) {
                 $agent = new StringObject($_SESSION[self::KEY_AGENT]);
                 if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
                     $hash = new Hash($_SESSION);
