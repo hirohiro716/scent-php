@@ -26,16 +26,24 @@ class Session extends AbstractObject
             ini_set("session.cookie_httponly", true);
             session_start();
             // 別のブラウザからのアクセスなら初期化
-            $agent = new StringObject($_SESSION[self::KEY_AGENT]);
-            if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-                $hash = new Hash($_SESSION);
-                foreach ($hash->getKeys() as $key) {
-                    unset($_SESSION[$key]);
+            if ($_SESSION[self::KEY_AGENT]) {
+                $agent = new StringObject($_SESSION[self::KEY_AGENT]);
+                if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
+                    $hash = new Hash($_SESSION);
+                    foreach ($hash->getKeys() as $key) {
+                        unset($_SESSION[$key]);
+                    }
                 }
             }
             $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
             // 有効期限を過ぎているならID変更
-            if ($_SESSION[self::KEY_SID_LIMIT] < Datetime::currentTime()) {
+            $isRegenerate = true;
+            if ($_SESSION[self::KEY_SID_LIMIT]) {
+                if ($_SESSION[self::KEY_SID_LIMIT] > Datetime::currentTime()) {
+                    $isRegenerate = false;
+                }
+            }
+            if ($isRegenerate) {
                 $datetime = new Datetime();
                 $datetime->addSecond(5);
                 $_SESSION[self::KEY_SID_LIMIT] = $datetime->toTimestamp();
