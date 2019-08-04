@@ -120,6 +120,26 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
+     * 一意の定数オブジェクトを検索する.
+     * 
+     * @param string $name 大文字小文字を区別しないconstの定義名
+     * @return self 定数オブジェクト
+     */
+    public static function find(string $constName): self
+    {
+        self::createAllObject();
+        $class = new ReflectionClass(static::class);
+        $className = $class->getName();
+        $instances = self::$instancesArray->get($className);
+        foreach ($instances as $instance) {
+            if ($instance->getName()->equals($constName) || $instance->getName()->toLower()->equals($constName)) {
+                return $instance;
+            }
+        }
+        return self::$nullValue;
+    }
+    
+    /**
      * 定数が定義されているか判定する.
      * 
      * @param mixed $constantValue
