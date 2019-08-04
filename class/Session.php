@@ -1,6 +1,8 @@
 <?php
 namespace hirohiro716\Scent;
 
+use Exception;
+
 /**
  * セッションクラス.
  *
@@ -24,20 +26,27 @@ class Session extends AbstractObject
             ini_set("session.use_strict_mode", true);
             // javascriptからcookieのセッションIDにアクセスさせない
             ini_set("session.cookie_httponly", true);
+            // セッション開始
             session_start();
             // 別のブラウザからのアクセスなら初期化
-            $agent = new StringObject($_SESSION[self::KEY_AGENT]);
-            if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-                $hash = new Hash($_SESSION);
-                foreach ($hash->getKeys() as $key) {
-                    unset($_SESSION[$key]);
+            try {
+                $agent = new StringObject($_SESSION[self::KEY_AGENT]);
+                if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
+                    $hash = new Hash($_SESSION);
+                    foreach ($hash->getKeys() as $key) {
+                        unset($_SESSION[$key]);
+                    }
                 }
+            } catch (Exception $exception) {
             }
             $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
             // 有効期限を過ぎているならID変更
             $isRegenerate = true;
-            if ($_SESSION[self::KEY_SID_LIMIT] > Datetime::currentTime()) {
-                $isRegenerate = false;
+            try {
+                if ($_SESSION[self::KEY_SID_LIMIT] > Datetime::currentTime()) {
+                    $isRegenerate = false;
+                }
+            } catch (Exception $exception) {
             }
             if ($isRegenerate) {
                 $datetime = new Datetime();
