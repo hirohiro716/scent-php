@@ -144,7 +144,9 @@ abstract class AbstractBindTable extends AbstractObject
                     $wheresStringObject->append(" OR ");
                 }
                 $wheresStringObject->append($whereSet->buildParameterClause());
-                $wheresParameters->addArray($whereSet->buildParameters());
+                foreach ($whereSet->buildParameters() as $parameter) {
+                    $wheresParameters->add($parameter);
+                }
             }
             $sql->append($wheresStringObject);
         }
