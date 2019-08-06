@@ -350,9 +350,9 @@ class ValueValidator extends AbstractObject
             $validator = new self();
             $validator->addBlankCheck();
             $validator->execute($value);
-            return true;
-        } catch (ValidationException $exception) {
             return false;
+        } catch (ValidationException $exception) {
+            return true;
         }
     }
 
