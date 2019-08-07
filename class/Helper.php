@@ -67,5 +67,16 @@ class Helper
         $nameObject = new StringObject($name);
         return $instanceName->length() - $instanceName->lastIndexOf($name) == $nameObject->length() || $nameObject->equals($subName);
     }
+    
+    /**
+     * オブジェクトのIDを取得する.
+     * 
+     * @param mixed $object
+     * @return string
+     */
+    public static function getInstanceId($object): string
+    {
+        return spl_object_hash($object);
+    }
 
 }

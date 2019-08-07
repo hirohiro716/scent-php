@@ -23,7 +23,17 @@ class SQLite extends AbstractDatabase
      * トランザクション開始時にEXCLUSIVEロックを取得する.
      */
     public const EXCLUSIVE = "EXCLUSIVE";
-
+    
+    /**
+     * SQLiteにはBoolean型が無いのでINTEGERで代用する際の有効を表す数値.
+     */
+    public const BOOLEAN_VALUE_ENABLED = 1;
+    
+    /**
+     * SQLiteにはBoolean型が無いのでINTEGERで代用する際の無効を表す数値.
+     */
+    public const BOOLEAN_VALUE_DISABLED = 0;
+    
     /**
      * コンストラクタ.
      *

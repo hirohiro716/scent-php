@@ -1,6 +1,7 @@
 <?php
 namespace hirohiro716\Scent;
 
+use Exception;
 use hirohiro716\Scent\Validate\ValueValidator;
 
 /**
@@ -24,7 +25,17 @@ class StringObject extends AbstractObject
         if ($value === null) {
             $value = "";
         }
-        $this->value = $value;
+        if ($value === true) {
+            $this->value = "true";
+        } else if ($value === false) {
+            $this->value = "false";
+        } else {
+            try {
+                $this->value = (string) $value;
+            } catch (Exception $exception) {
+                $this->value = Helper::getInstanceId($value);
+            }
+        }
     }
 
     /**
