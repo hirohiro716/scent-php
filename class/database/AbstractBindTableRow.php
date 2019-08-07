@@ -99,7 +99,13 @@ abstract class AbstractBindTableRow extends AbstractBindTable
         if ($this->whereSetIsNull()) {
             throw new Exception("Search condition is not specified.");
         }
-        $this->getDatabase()->update($this->row, $this->getTableName(), $this->getWhereSet());
+        $hash = new Hash();
+        foreach ($this->getColumns() as $column) {
+            if ($this->row->isExistKey($column)) {
+                $hash->put($column, $this->row->get($column));
+            }
+        }
+        $this->getDatabase()->update($hash, $this->getTableName(), $this->getWhereSet());
     }
     
     /**
