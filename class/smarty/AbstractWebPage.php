@@ -7,6 +7,7 @@ use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
+use hirohiro716\Scent\Hashes;
 
 /**
  * Webページの抽象クラス.
@@ -92,7 +93,39 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function assign($key, $value): void
     {
-        $this->smarty->assign($key, $value);
+        $this->smarty->assign($key, self::sanitize($value));
+    }
+    
+    /**
+     * 値をサニタイジングする.
+     * @param mixed $value 対象の値
+     * @return mixed サニタイズ後の値
+     */
+    private function sanitize($value)
+    {
+        switch (Helper::findInstanceName($value)) {
+            case "array":
+                $array = array();
+                foreach ($value as $key => $innerValue) {
+                    $array[$key] = self::sanitize($innerValue);
+                }
+                return $array;
+            case "Hash":
+                $newHash = new Hash();
+                foreach ($value as $key => $innerValue) {
+                    $newHash->put($key, self::sanitize($innerValue));
+                }
+                return $newHash;
+            case "Hashes":
+                $newHashes = new Hashes();
+                foreach ($value as $innerValue) {
+                    $newHashes->add(self::sanitize($innerValue));
+                }
+                return $newHashes;
+            default:
+                $valueObject = new StringObject($value);
+                return $valueObject->sanitize()->get();
+        }
     }
     
     /**
@@ -132,14 +165,7 @@ abstract class AbstractWebPage extends AbstractObject
         if ($hash->isExistKey($name) == false) {
             return "";
         }
-        $value = $hash->get($name);
-        switch (Helper::findInstanceName($value)) {
-            case "array":
-                return self::sanitizeArray($value);
-            default:
-                $valueObject = new StringObject($hash->get($name));
-                return $valueObject->sanitize();
-        }
+        return $hash->get($name);
     }
     
     /**
@@ -168,14 +194,7 @@ abstract class AbstractWebPage extends AbstractObject
         if ($hash->isExistKey($name) == false) {
             return "";
         }
-        $value = $hash->get($name);
-        switch (Helper::findInstanceName($value)) {
-            case "array":
-                return self::sanitizeArray($value);
-            default:
-                $valueObject = new StringObject($hash->get($name));
-                return $valueObject->sanitize();
-        }
+        return $hash->get($name);
     }
     
     /**
@@ -204,14 +223,7 @@ abstract class AbstractWebPage extends AbstractObject
         if ($hash->isExistKey($name) == false) {
             return "";
         }
-        $value = $hash->get($name);
-        switch (Helper::findInstanceName($value)) {
-            case "array":
-                return self::sanitizeArray($value);
-            default:
-                $valueObject = new StringObject($hash->get($name));
-                return $valueObject->sanitize();
-        }
+        return $hash->get($name);
     }
     
     /**
@@ -226,28 +238,6 @@ abstract class AbstractWebPage extends AbstractObject
             $hash->put($key, self::getPostValue($key));
         }
         return $hash;
-    }
-    
-    /**
-     * 配列の中身をすべてサニタイジングする.
-     * @param array $array 対象の配列
-     * @return array サニタイズ後の配列
-     */
-    private function sanitizeArray(array $array): array
-    {
-        $newArray = array();
-        foreach ($array as $key => $value) {
-            switch (Helper::findInstanceName($value)) {
-                case "array":
-                    $newArray[$key] = self::sanitizeArray($value);
-                    break;
-                default:
-                    $valueObject = new StringObject($value);
-                    $newArray[$key] = $valueObject->sanitize()->get();
-                    break;
-            }
-        }
-        return $newArray;
     }
     
 }
