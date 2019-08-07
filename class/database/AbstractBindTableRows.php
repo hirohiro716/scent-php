@@ -127,7 +127,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
         foreach ($this->getRows() as $row) {
             $hash = new Hash();
             foreach ($this->getColumns() as $column) {
-                if ($row->isExistKey($column)) {
+                if ($row->isExistKey($column->getPhysicalName())) {
                     $hash->put($column, $row->get($column));
                 }
             }

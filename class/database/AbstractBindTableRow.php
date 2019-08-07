@@ -60,7 +60,13 @@ abstract class AbstractBindTableRow extends AbstractBindTable
      */
     public function insert(): void
     {
-        $this->getDatabase()->insert($this->row, $this->getTableName());
+        $hash = new Hash();
+        foreach ($this->getColumns() as $column) {
+            if ($this->row->isExistKey($column->getPhysicalName())) {
+                $hash->put($column, $this->row->get($column));
+            }
+        }
+        $this->getDatabase()->insert($hash, $this->getTableName());
     }
     
     /**
@@ -101,7 +107,7 @@ abstract class AbstractBindTableRow extends AbstractBindTable
         }
         $hash = new Hash();
         foreach ($this->getColumns() as $column) {
-            if ($this->row->isExistKey($column)) {
+            if ($this->row->isExistKey($column->getPhysicalName())) {
                 $hash->put($column, $this->row->get($column));
             }
         }
