@@ -32,7 +32,10 @@ class JSON extends AbstractObject {
      */
     public function toArray(): array
     {
-        return $this->array;
+        if (ArrayHelper::isArray($this->array)) {
+            return $this->array;
+        }
+        return array();
     }
     
     /**
