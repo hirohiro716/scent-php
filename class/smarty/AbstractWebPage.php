@@ -6,6 +6,7 @@ use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\AbstractObject;
+use hirohiro716\Scent\Helper;
 
 /**
  * Webページの抽象クラス.
@@ -123,16 +124,22 @@ abstract class AbstractWebPage extends AbstractObject
      * $_POSTの指定値を取得する.
      * 
      * @param string $name
-     * @return string
+     * @return mixed
      */
-    public function getPostValue(string $name): string
+    public function getPostValue(string $name)
     {
-        $post = new Hash($_POST);
-        if ($post->isExistKey($name) == false) {
+        $hash = new Hash($_POST);
+        if ($hash->isExistKey($name) == false) {
             return "";
         }
-        $value = new StringObject($post->get($name));
-        return $value->sanitize();
+        $value = $hash->get($name);
+        switch (Helper::findInstanceName($value)) {
+            case "array":
+                return self::sanitizeArray($value);
+            default:
+                $valueObject = new StringObject($hash->get($name));
+                return $valueObject->sanitize();
+        }
     }
     
     /**
@@ -143,9 +150,8 @@ abstract class AbstractWebPage extends AbstractObject
     public function getPostValues(): Hash
     {
         $hash = new Hash();
-        foreach ($_POST as $key => $value) {
-            $valueObject = new StringObject($value);
-            $hash->put($key, $valueObject->sanitize()->get());
+        foreach (ArrayHelper::extractKeys($_POST) as $key) {
+            $hash->put($key, self::getPostValue($key));
         }
         return $hash;
     }
@@ -154,16 +160,22 @@ abstract class AbstractWebPage extends AbstractObject
      * $_GETの指定値を取得する.
      *
      * @param string $name
-     * @return string
+     * @return mixed
      */
-    public function getGetValue(string $name): string
+    public function getGetValue(string $name)
     {
-        $get = new Hash($_GET);
-        if ($get->isExistKey($name) == false) {
+        $hash = new Hash($_GET);
+        if ($hash->isExistKey($name) == false) {
             return "";
         }
-        $value = new StringObject($get->get($name));
-        return $value->sanitize();
+        $value = $hash->get($name);
+        switch (Helper::findInstanceName($value)) {
+            case "array":
+                return self::sanitizeArray($value);
+            default:
+                $valueObject = new StringObject($hash->get($name));
+                return $valueObject->sanitize();
+        }
     }
     
     /**
@@ -174,9 +186,8 @@ abstract class AbstractWebPage extends AbstractObject
     public function getGetValues(): Hash
     {
         $hash = new Hash();
-        foreach ($_GET as $key => $value) {
-            $valueObject = new StringObject($value);
-            $hash->put($key, $valueObject->sanitize()->get());
+        foreach (ArrayHelper::extractKeys($_GET) as $key) {
+            $hash->put($key, self::getPostValue($key));
         }
         return $hash;
     }
@@ -185,16 +196,22 @@ abstract class AbstractWebPage extends AbstractObject
      * $_REQUESTの指定値を取得する.
      *
      * @param string $name
-     * @return string
+     * @return mixed
      */
-    public function getRequestValue(string $name): string
+    public function getRequestValue(string $name)
     {
-        $request = new Hash($_REQUEST);
-        if ($request->isExistKey($name) == false) {
+        $hash = new Hash($_REQUEST);
+        if ($hash->isExistKey($name) == false) {
             return "";
         }
-        $value = new StringObject($request->get($name));
-        return $value->sanitize();
+        $value = $hash->get($name);
+        switch (Helper::findInstanceName($value)) {
+            case "array":
+                return self::sanitizeArray($value);
+            default:
+                $valueObject = new StringObject($hash->get($name));
+                return $valueObject->sanitize();
+        }
     }
     
     /**
@@ -205,11 +222,32 @@ abstract class AbstractWebPage extends AbstractObject
     public function getRequestValues(): Hash
     {
         $hash = new Hash();
-        foreach ($_REQUEST as $key => $value) {
-            $valueObject = new StringObject($value);
-            $hash->put($key, $valueObject->sanitize()->get());
+        foreach (ArrayHelper::extractKeys($_REQUEST) as $key) {
+            $hash->put($key, self::getPostValue($key));
         }
         return $hash;
+    }
+    
+    /**
+     * 配列の中身をすべてサニタイジングする.
+     * @param array $array 対象の配列
+     * @return array サニタイズ後の配列
+     */
+    private function sanitizeArray(array $array): array
+    {
+        $newArray = array();
+        foreach ($array as $key => $value) {
+            switch (Helper::findInstanceName($value)) {
+                case "array":
+                    $newArray[$key] = self::sanitizeArray($value);
+                    break;
+                default:
+                    $valueObject = new StringObject($value);
+                    $newArray[$key] = $valueObject->sanitize()->get();
+                    break;
+            }
+        }
+        return $newArray;
     }
     
 }
