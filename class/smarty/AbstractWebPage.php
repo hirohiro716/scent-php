@@ -7,7 +7,6 @@ use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
-use hirohiro716\Scent\Hashes;
 
 /**
  * Webページの抽象クラス.
@@ -89,9 +88,9 @@ abstract class AbstractWebPage extends AbstractObject
      * テンプレートファイルに値を割り当てる.
      * 
      * @param mixed $key キー
-     * @param mixed $value 値
+     * @param mixed $value 値(stringとarrayは自動sanitizeする)
      */
-    public function assign($key, $value): void
+    public function assignString($key, $value): void
     {
         $this->smarty->assign($key, self::sanitize($value));
     }
@@ -110,21 +109,11 @@ abstract class AbstractWebPage extends AbstractObject
                     $array[$key] = self::sanitize($innerValue);
                 }
                 return $array;
-            case "Hash":
-                $newHash = new Hash();
-                foreach ($value as $key => $innerValue) {
-                    $newHash->put($key, self::sanitize($innerValue));
-                }
-                return $newHash;
-            case "Hashes":
-                $newHashes = new Hashes();
-                foreach ($value as $innerValue) {
-                    $newHashes->add(self::sanitize($innerValue));
-                }
-                return $newHashes;
-            default:
+            case "string":
                 $valueObject = new StringObject($value);
                 return $valueObject->sanitize()->get();
+            default:
+                return $value;
         }
     }
     
