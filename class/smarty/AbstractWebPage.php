@@ -90,7 +90,7 @@ abstract class AbstractWebPage extends AbstractObject
      * @param mixed $key キー
      * @param mixed $value 値(stringとarrayは自動sanitizeする)
      */
-    public function assignString($key, $value): void
+    public function assign($key, $value): void
     {
         $this->smarty->assign($key, self::sanitize($value));
     }
