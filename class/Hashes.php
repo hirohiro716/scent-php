@@ -28,7 +28,11 @@ class Hashes implements Iterator
      */
     public function toArray(): array
     {
-        return $this->hashes->getValues();
+        $array = array();
+        foreach ($this->hashes as $hash) {
+            $array[] = $hash->getArray();
+        }
+        return $array;
     }
     
     /**
