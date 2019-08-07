@@ -98,4 +98,15 @@ class ArrayHelper
         return array_merge($array1, $array2);
     }
     
+    /**
+     * 配列のキーをすべて取り出して配列で取得する.
+     * 
+     * @param array $array
+     * @return array
+     */
+    public static function extractKeys(array $array): array
+    {
+        return array_keys($array);
+    }
+    
 }
