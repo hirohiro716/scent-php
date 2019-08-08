@@ -209,7 +209,7 @@ class StringObject extends AbstractObject
         if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
-        return new StringObject(mb_convert_kana($this->value, "ask", $encoding));
+        return new StringObject(mb_convert_kana($this->value, "as", $encoding));
     }
 
     /**
