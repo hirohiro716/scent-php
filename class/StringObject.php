@@ -397,17 +397,18 @@ class StringObject extends AbstractObject
         return mb_ereg_match($regexPattern, $this->value);
     }
     
-    private static $randomBase = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789";
+    public const RANDOM_STRING_BASE = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789";
     
     /**
      * ランダムな英数字で構成された文字列を作成する.
      * 
-     * @param int $length
+     * @param int $length 文字数
+     * @param string $baseString 使用する文字列
      * @return StringObject
      */
-    public static function createRandomString(int $length): StringObject
+    public static function createRandomString(int $length, string $baseString = self::RANDOM_STRING_BASE): StringObject
     {
-        $base = new StringObject(self::$randomBase);
+        $base = new StringObject($baseString);
         $value = new StringObject();
         for ($i = 0; $i < $length; $i++) {
             $value->append($base->subString(mt_rand(0, 61), 1));
