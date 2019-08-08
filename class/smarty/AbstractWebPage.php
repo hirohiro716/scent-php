@@ -135,11 +135,7 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function isHTTPS(): bool
     {
-        if (ArrayHelper::isExistKey($_SERVER, "HTTPS")) {
-            $https = new StringObject($_SERVER["HTTPS"]);
-            return $https->equals("off") == false;
-        }
-        return false;
+        return Helper::isHTTPS();
     }
     
     /**

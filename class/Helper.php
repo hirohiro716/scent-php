@@ -78,5 +78,19 @@ class Helper
     {
         return spl_object_hash($object);
     }
-
+    
+    /**
+     * 通信が暗号化されているか判定する.
+     *
+     * @return bool
+     */
+    public static function isHTTPS(): bool
+    {
+        if (ArrayHelper::isExistKey($_SERVER, "HTTPS")) {
+            $https = new StringObject($_SERVER["HTTPS"]);
+            return $https->equals("off") == false;
+        }
+        return false;
+    }
+    
 }
