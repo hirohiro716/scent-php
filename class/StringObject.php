@@ -412,7 +412,7 @@ class StringObject extends AbstractObject
         $baseLength = $base->length();
         $value = new StringObject();
         for ($i = 0; $i < $length; $i++) {
-            $value->append($base->subString(mt_rand(0, $baseLength), 1));
+            $value->append($base->subString(mt_rand(0, $baseLength - 1), 1));
         }
         return $value;
     }
