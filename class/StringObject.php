@@ -409,9 +409,10 @@ class StringObject extends AbstractObject
     public static function createRandomString(int $length, string $baseString = self::RANDOM_STRING_BASE): StringObject
     {
         $base = new StringObject($baseString);
+        $baseLength = $base->length();
         $value = new StringObject();
         for ($i = 0; $i < $length; $i++) {
-            $value->append($base->subString(mt_rand(0, 61), 1));
+            $value->append($base->subString(mt_rand(0, $baseLength), 1));
         }
         return $value;
     }
