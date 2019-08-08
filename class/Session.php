@@ -17,8 +17,11 @@ class Session extends AbstractObject
 
     /**
      * コンストラクタ.
+     * 
+     * @param mixed $lifetime セッションクッキーの有効期限(秒数)
+     * @param bool $isSecure HTTPSのみ許可するかどうか
      */
-    public function __construct()
+    public function __construct($lifetime = null, bool $isSecure = false)
     {
         parent::__construct();
         if (session_status() === PHP_SESSION_NONE) {
@@ -26,6 +29,15 @@ class Session extends AbstractObject
             ini_set("session.use_strict_mode", true);
             // javascriptからcookieのセッションIDにアクセスさせない
             ini_set("session.cookie_httponly", true);
+            // 有効期限をセット
+            $lifetimeObject = new StringObject($lifetime);
+            if (Helper::isNull($lifetimeObject->toInteger()) == false) {
+                ini_set("session.cookie_lifetime", $lifetimeObject->toInteger());
+            }
+            // HTTPSのみ許可するかどうか
+            if ($isSecure) {
+                ini_set("session.cookie_secure", true);
+            }
             // セッション開始
             session_start();
             // 別のブラウザからのアクセスなら初期化
@@ -104,6 +116,8 @@ class Session extends AbstractObject
             unset($_SESSION[$key]);
         }
     }
+    
+    
 
     private const KEY_TOKEN = "session_key_token";
 
