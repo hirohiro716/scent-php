@@ -34,7 +34,7 @@ class ValueValidator extends AbstractObject
 
     private const MIN_VALUE = 9;
 
-    private const MAIL_CHARS = 10;
+    private const EMAIL_CHARS = 10;
 
     private const DATETIME = 11;
 
@@ -58,7 +58,7 @@ class ValueValidator extends AbstractObject
         self::ZERO => "にゼロは入力できません。",
         self::MAX_VALUE => "は最大で「" . self::ERROR_MESSAGE_ARGUMENT . "」まで入力できます。",
         self::MIN_VALUE => "は「" . self::ERROR_MESSAGE_ARGUMENT . "」以上である必要があります。",
-        self::MAIL_CHARS => "にメールアドレスで使用できない文字が含まれています。",
+        self::EMAIL_CHARS => "にメールアドレスで使用できない文字が含まれています。",
         self::DATETIME => "は日付または時刻として有効ではありません。",
         self::TELEPHONE => "は電話番号（ハイフン有り）として正しくありません。",
         self::REGEX => "が正しくありません。",
@@ -180,11 +180,11 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * メールアドレスに使用できる文字だけで構成されているかのチェックを予約する.
+     * Eメールアドレスに使用できる文字だけで構成されているかのチェックを予約する.
      */
-    public function addMailCharsCheck(): void
+    public function addEmailCharsCheck(): void
     {
-        $this->parameters->put(self::MAIL_CHARS, null);
+        $this->parameters->put(self::EMAIL_CHARS, null);
     }
 
     /**
@@ -309,7 +309,7 @@ class ValueValidator extends AbstractObject
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
-                case self::MAIL_CHARS:
+                case self::EMAIL_CHARS:
                     if ($val->isRegexMatch("^[a-zA-Z0-9\.@!#\$%&'\*\+=\?\^_`\{\|\}~-]{0,}$") == false || $val->length() > 0 && $val->lastIndexOf("@") == - 1) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
@@ -397,15 +397,15 @@ class ValueValidator extends AbstractObject
     /**
      * メールアドレスに使用できる文字だけで構成されているかをチェックする.
      *
-     * @param string $mailAddress
+     * @param string $emailAddress
      * @return bool
      */
-    public static function isMailChars(string $mailAddress): bool
+    public static function isEmailChars(string $emailAddress): bool
     {
         try {
             $validator = new self();
-            $validator->addMailCharsCheck();
-            $validator->execute($mailAddress);
+            $validator->addEmailCharsCheck();
+            $validator->execute($emailAddress);
             return true;
         } catch (ValidationException $exception) {
             return false;
