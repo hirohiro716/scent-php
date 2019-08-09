@@ -76,7 +76,7 @@ class Google2stepVerificator extends AbstractObject
      * @param float $scale
      *            QRコードの大きさのスケール(初期値は1)
      */
-    public function createQRCode(string $title, File $file, float $scale)
+    public function createQRCode(string $title, File $file, float $scale): void
     {
         if (Helper::isNull($this->secretKey)) {
             throw new \LogicException("Secret key is empty.");

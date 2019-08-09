@@ -28,7 +28,7 @@ abstract class AbstractObject
      * @param int $line
      * @throws ErrorException
      */
-    public static function errorHandler($severity, $message, $file, $line)
+    public static function errorHandler($severity, $message, $file, $line): void
     {
         throw new ErrorException($message, 0, $severity, $file, $line);
     }
