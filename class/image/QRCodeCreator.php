@@ -23,7 +23,7 @@ class QRCodeCreator extends AbstractObject
      * @param float $scale
      *            デフォルトは1
      */
-    public function setScale(float $scale): float
+    public function setScale(float $scale): void
     {
         $this->scale = $scale;
     }
