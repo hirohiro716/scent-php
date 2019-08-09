@@ -122,7 +122,7 @@ class File extends AbstractFilesystemItem
     public function writeAll(string $contents): int
     {
         try {
-            return file_put_contents($this->getLocation(), $contents);
+            return file_put_contents($this->getAbsoluteLocation(), $contents);
         } catch (ErrorException $exception) {
             throw new IOException($this->getAbsoluteLocation(), $exception->getMessage(), $exception->getCode());
         }
