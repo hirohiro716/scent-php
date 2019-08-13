@@ -13,7 +13,7 @@ use PHPMailer\PHPMailer\Exception;
  *
  * @author hiro
  */
-class SmtpMailTransmitter extends AbstractObject
+class SmtpEmailTransmitter extends AbstractObject
 {
 
     /**

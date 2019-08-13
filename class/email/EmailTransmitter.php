@@ -10,7 +10,7 @@ use hirohiro716\Scent\StringObject;
  *
  * @author hiro
  */
-class MailTransmitter extends AbstractObject
+class EmailTransmitter extends AbstractObject
 {
 
     /**
