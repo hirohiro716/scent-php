@@ -134,6 +134,24 @@ abstract class AbstractFilesystemItem extends AbstractObject
     }
     
     /**
+     * モードを取得する.
+     *
+     * @return string "0777"などの文字列または8進数の数値
+     * @throws IOException
+     */
+    public function getMode(): string
+    {
+        try {
+            $mode8 = fileperms($this->getAbsoluteLocation());
+            $mode = new StringObject(sprintf("%o", $mode8));
+            $mode = $mode->subString(-4);
+            return $mode;
+        } catch (ErrorException $exception) {
+            throw new IOException($this->getAbsoluteLocation(), $exception->getMessage(), $exception->getCode());
+        }
+    }
+    
+    /**
      * モードを変更する.
      *
      * @param string $mode "0777"などの文字列または8進数の数値
