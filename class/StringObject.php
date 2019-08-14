@@ -24,16 +24,17 @@ class StringObject extends AbstractObject
         parent::__construct();
         if ($value === null) {
             $value = "";
-        }
-        if ($value === true) {
-            $this->value = "true";
-        } else if ($value === false) {
-            $this->value = "false";
         } else {
-            try {
-                $this->value = (string) $value;
-            } catch (Exception $exception) {
-                $this->value = Helper::getInstanceId($value);
+            if ($value === true) {
+                $this->value = "true";
+            } else if ($value === false) {
+                $this->value = "false";
+            } else {
+                try {
+                    $this->value = (string) $value;
+                } catch (Exception $exception) {
+                    $this->value = Helper::getInstanceId($value);
+                }
             }
         }
     }
