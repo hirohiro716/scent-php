@@ -258,6 +258,25 @@ abstract class AbstractFilesystemItem extends AbstractObject
     }
     
     /**
+     * アイテムの場所からインスタンスを作成する.
+     * 
+     * @param string $location
+     * @return self|null
+     */
+    public static function createInstance(string $location)
+    {
+        $file = new File($location);
+        if ($file->isExist()) {
+            return $file;
+        }
+        $directory = new Directory($location);
+        if ($directory->isExist()) {
+            return $directory;
+        }
+        return null;
+    }
+    
+    /**
      * ファイルの内容を読み込む.
      * 
      * @param string $location
