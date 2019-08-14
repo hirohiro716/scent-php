@@ -18,7 +18,7 @@
             "hirohiro716\\Scent\\Database\\": "class/database/",
             "hirohiro716\\Scent\\Filesystem\\": "class/filesystem/",
             "hirohiro716\\Scent\\Image\\": "class/image/",
-            "hirohiro716\\Scent\\Mail\\": "class/mail/",
+            "hirohiro716\\Scent\\Email\\": "class/email/",
             "hirohiro716\\Scent\\Smarty\\": "class/smarty/",
             "hirohiro716\\Scent\\Validate\\": "class/validate/"
         }

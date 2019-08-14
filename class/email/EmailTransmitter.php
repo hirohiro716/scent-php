@@ -1,5 +1,5 @@
 <?php
-namespace hirohiro716\Scent\Mail;
+namespace hirohiro716\Scent\Email;
 
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Hash;
