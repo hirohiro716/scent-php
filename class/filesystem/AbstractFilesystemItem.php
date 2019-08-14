@@ -4,6 +4,7 @@ namespace hirohiro716\Scent\Filesystem;
 use ErrorException;
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
+use hirohiro716\Scent\StringObject;
 
 /**
  * Filesystemのアイテムを表す抽象クラス.
@@ -236,6 +237,25 @@ abstract class AbstractFilesystemItem extends AbstractObject
     public static function isExistItem(string $location): bool
     {
         return file_exists($location);
+    }
+    
+    /**
+     * ファイルの内容を読み込む.
+     * 
+     * @param string $location
+     * @param string $fromEncoding
+     * @param string $toEncoding
+     * @throws IOException
+     * @return string
+     */
+    public static function readAllContents(string $location, string $fromEncoding = null, string $toEncoding = null): string
+    {
+        try {
+            $stringObject = new StringObject(file_get_contents($location));
+            return $stringObject->get($fromEncoding, $toEncoding);
+        } catch (ErrorException $exception) {
+            throw new IOException($location, $exception->getMessage(), $exception->getCode());
+        }
     }
     
 }

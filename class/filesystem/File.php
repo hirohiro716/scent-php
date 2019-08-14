@@ -2,7 +2,6 @@
 namespace hirohiro716\Scent\Filesystem;
 
 use ErrorException;
-use hirohiro716\Scent\StringObject;
 
 /**
  * Fileのクラス.
@@ -99,17 +98,14 @@ class File extends AbstractFilesystemItem
     /**
      * ファイルの内容を読み込む.
      * 
+     * @param string $fromEncoding
+     * @param string $toEncoding
      * @return string
      * @throws IOException
      */
     public function readAll(string $fromEncoding = null, string $toEncoding = null): string
     {
-        try {
-            $stringObject = new StringObject(file_get_contents($this->getAbsoluteLocation()));
-            return $stringObject->get($fromEncoding, $toEncoding);
-        } catch (ErrorException $exception) {
-            throw new IOException($this->getAbsoluteLocation(), $exception->getMessage(), $exception->getCode());
-        }
+        return self::readAllContents($this->getAbsoluteLocation(), $fromEncoding, $toEncoding);
     }
     
     /**
