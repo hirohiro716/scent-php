@@ -38,7 +38,8 @@ class ReversibleEncrypter extends AbstractObject
         $ivObject = new StringObject($this->iv);
         if ($ivObject->length() == 0) {
             $length = openssl_cipher_iv_length($this->method);
-            $this->iv = openssl_random_pseudo_bytes($length);
+            $stringObject = new StringObject(base64_encode(openssl_random_pseudo_bytes($length)));
+            $this->iv = $stringObject->subString(0, $length);
         }
         return $this->iv;
     }
@@ -51,6 +52,7 @@ class ReversibleEncrypter extends AbstractObject
      */
     public function encrypt(string $target): string
     {
+        
         return openssl_encrypt($target, $this->method, $this->key, 0, $this->iv);
     }
     
