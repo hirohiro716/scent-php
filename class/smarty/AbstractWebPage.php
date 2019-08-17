@@ -124,6 +124,16 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function redirect(string $URL): void
     {
+        self::redirectStatic($URL);
+    }
+    
+    /**
+     * ほかのページにリダイレクトする.
+     *
+     * @param string $URL
+     */
+    public static function redirectStatic(string $URL): void
+    {
         header("location: " . $URL);
         exit();
     }
