@@ -107,7 +107,7 @@ class Session extends AbstractObject
     public function createToken(): string
     {
         $token = StringObject::createRandomString(32);
-        $this->put(self::KEY_TOKEN, $token);
+        $this->put(self::KEY_TOKEN, $token->get());
         return $token;
     }
 
