@@ -24,48 +24,49 @@ class Session extends AbstractObject
     public function __construct($lifetime = null, bool $isSecure = false)
     {
         parent::__construct();
-        if (session_status() === PHP_SESSION_NONE) {
-            // サーバーで生成していないセッションIDは受け付けない
-            ini_set("session.use_strict_mode", true);
-            // javascriptからcookieのセッションIDにアクセスさせない
-            ini_set("session.cookie_httponly", true);
-            // 有効期限をセット
-            $lifetimeObject = new StringObject($lifetime);
-            if (Helper::isNull($lifetimeObject->toInteger()) == false) {
-                ini_set("session.cookie_lifetime", $lifetimeObject->toInteger());
-            }
-            // HTTPSのみ許可するかどうか
-            if ($isSecure) {
-                ini_set("session.cookie_secure", true);
-            }
-            // セッション開始
-            session_start();
-            // 別のブラウザからのアクセスなら初期化
-            try {
-                $agent = new StringObject($_SESSION[self::KEY_AGENT]);
-                if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-                    $hash = new Hash($_SESSION);
-                    foreach ($hash->getKeys() as $key) {
-                        unset($_SESSION[$key]);
-                    }
+        if (session_status() === PHP_SESSION_DISABLED) {
+            return;
+        }
+        // サーバーで生成していないセッションIDは受け付けない
+        ini_set("session.use_strict_mode", true);
+        // javascriptからcookieのセッションIDにアクセスさせない
+        ini_set("session.cookie_httponly", true);
+        // 有効期限をセット
+        $lifetimeObject = new StringObject($lifetime);
+        if (Helper::isNull($lifetimeObject->toInteger()) == false) {
+            ini_set("session.cookie_lifetime", $lifetimeObject->toInteger());
+        }
+        // HTTPSのみ許可するかどうか
+        if ($isSecure) {
+            ini_set("session.cookie_secure", true);
+        }
+        // セッション開始
+        session_start();
+        // 別のブラウザからのアクセスなら初期化
+        try {
+            $agent = new StringObject($_SESSION[self::KEY_AGENT]);
+            if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
+                $hash = new Hash($_SESSION);
+                foreach ($hash->getKeys() as $key) {
+                    unset($_SESSION[$key]);
                 }
-            } catch (Exception $exception) {
             }
-            $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
-            // 有効期限を過ぎているならID変更
-            $isRegenerate = true;
-            try {
-                if ($_SESSION[self::KEY_SID_LIMIT] > Datetime::currentTime()) {
-                    $isRegenerate = false;
-                }
-            } catch (Exception $exception) {
+        } catch (Exception $exception) {
+        }
+        $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
+        // 有効期限を過ぎているならID変更
+        $isRegenerate = true;
+        try {
+            if ($_SESSION[self::KEY_SID_LIMIT] > Datetime::currentTime()) {
+                $isRegenerate = false;
             }
-            if ($isRegenerate) {
-                $datetime = new Datetime();
-                $datetime->addSecond(5);
-                $_SESSION[self::KEY_SID_LIMIT] = $datetime->toTimestamp();
-                session_regenerate_id(true);
-            }
+        } catch (Exception $exception) {
+        }
+        if ($isRegenerate) {
+            $datetime = new Datetime();
+            $datetime->addSecond(5);
+            $_SESSION[self::KEY_SID_LIMIT] = $datetime->toTimestamp();
+            session_regenerate_id(true);
         }
     }
 
