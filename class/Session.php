@@ -40,12 +40,10 @@ class Session extends AbstractObject
             session_start();
         }
         // 別のブラウザからのアクセスなら初期化
-        $agent = new StringObject($_SESSION[self::KEY_AGENT]);
-        if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-            try {
-//                 session_unset();
-            } catch (Exception $exception) {
-                
+        if ($_SESSION[self::KEY_AGENT]) {
+            $agent = new StringObject($_SESSION[self::KEY_AGENT]);
+            if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
+                session_unset();
             }
         }
         $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
