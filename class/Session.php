@@ -1,8 +1,6 @@
 <?php
 namespace hirohiro716\Scent;
 
-use Exception;
-
 /**
  * セッションクラス.
  *
@@ -40,7 +38,7 @@ class Session extends AbstractObject
             session_start();
         }
         // 別のブラウザからのアクセスなら初期化
-        if ($_SESSION[self::KEY_AGENT]) {
+        if (ArrayHelper::isExistKey($_SESSION, self::KEY_AGENT)) {
             $agent = new StringObject($_SESSION[self::KEY_AGENT]);
             if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
                 session_unset();
