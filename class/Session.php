@@ -42,7 +42,11 @@ class Session extends AbstractObject
         // 別のブラウザからのアクセスなら初期化
         $agent = new StringObject($_SESSION[self::KEY_AGENT]);
         if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-            session_unset();
+            try {
+                session_unset();
+            } catch (Exception $exception) {
+                
+            }
         }
         $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
         // セッションIDを変更
