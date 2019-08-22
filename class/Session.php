@@ -40,15 +40,9 @@ class Session extends AbstractObject
             session_start();
         }
         // 別のブラウザからのアクセスなら初期化
-        try {
-            $agent = new StringObject($_SESSION[self::KEY_AGENT]);
-            if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-                $hash = new Hash($_SESSION);
-                foreach ($hash->getKeys() as $key) {
-                    unset($_SESSION[$key]);
-                }
-            }
-        } catch (Exception $exception) {
+        $agent = new StringObject($_SESSION[self::KEY_AGENT]);
+        if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
+            session_unset();
         }
         $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
         // セッションIDを変更
