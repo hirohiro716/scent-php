@@ -43,7 +43,7 @@ class Session extends AbstractObject
         $agent = new StringObject($_SESSION[self::KEY_AGENT]);
         if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
             try {
-                session_unset();
+//                 session_unset();
             } catch (Exception $exception) {
                 
             }
