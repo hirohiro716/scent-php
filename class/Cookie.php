@@ -12,20 +12,20 @@ class Cookie extends AbstractObject
     /**
      * コンストラクタ.
      *
-     * @param mixed $lifetime セッションクッキーの有効期限(秒数)
+     * @param mixed $lifetimeSecond セッションクッキーの有効期限(秒数)
      * @param bool $isSecure HTTPSのみ許可するかどうか
      */
-    public function __construct($path = "/", $lifetime = null, bool $isSecure = false)
+    public function __construct($path = "/", $lifetimeSecond = null, bool $isSecure = false)
     {
         parent::__construct();
         $this->path = $path;
-        $this->lifetime = $lifetime;
+        $this->lifetimeSecond = $lifetimeSecond;
         $this->isSecure = $isSecure;
     }
     
     private $path;
     
-    private $lifetime;
+    private $lifetimeSecond;
     
     private $isSecure;
     
@@ -38,8 +38,8 @@ class Cookie extends AbstractObject
     public function put($key, $value): void
     {
         $datetime = new Datetime();
-        if (Helper::isNull($this->lifetime) == false) {
-            $datetime->addSecond($this->lifetime);
+        if (Helper::isNull($this->lifetimeSecond) == false) {
+            $datetime->addSecond($this->lifetimeSecond);
         }
         setcookie($key, $value, $datetime->toTimestamp(), $this->path, null, $this->isSecure, true);
     }
