@@ -2,11 +2,11 @@
 namespace hirohiro716\Scent;
 
 /**
- * 不可逆暗号化するクラス.
+ * ハッシュ化するクラス.
  * 
  * @author hiro
  */
-class LossyEncrypter extends AbstractObject
+class PasswordHasher extends AbstractObject
 {
     
     private $value;
@@ -26,7 +26,7 @@ class LossyEncrypter extends AbstractObject
     }
     
     /**
-     * 暗号化されたハッシュ値を取得する.
+     * ハッシュ値を取得する.
      * 
      * @return string
      */
