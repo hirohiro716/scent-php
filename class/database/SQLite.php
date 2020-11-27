@@ -88,6 +88,6 @@ class SQLite extends AbstractDatabase
     public function fetchColumns(string $tableName): array
     {
         $parameters = array($tableName);
-        return $this->fetchRow("PRAGMA table_info(?);", $parameters);
+        return $this->fetchRecord("PRAGMA table_info(?);", $parameters);
     }
 }

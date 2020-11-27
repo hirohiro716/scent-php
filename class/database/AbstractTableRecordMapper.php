@@ -84,7 +84,7 @@ abstract class AbstractTableRecordMapper extends AbstractTableMapper
         $sql->append(" WHERE ");
         $sql->append($this->getWhereSet()->buildParameterClause());
         $sql->append(";");
-        $this->setRecord($this->getDatabase()->fetchRow($sql, $this->getWhereSet()->buildParameters()));
+        $this->setRecord($this->getDatabase()->fetchRecord($sql, $this->getWhereSet()->buildParameters()));
         if ($this->isDeleted() == true) {
             throw new DataNotFoundException();
         }
@@ -153,14 +153,14 @@ abstract class AbstractTableRecordMapper extends AbstractTableMapper
         $sql->append(" WHERE ");
         $sql->append($whereSet->buildParameterClause());
         $sql->append(";");
-        $backupRow = $this->record;
+        $backupRecord = $this->record;
         try {
-            $this->setRecord($this->getDatabase()->fetchRow($sql, $whereSet->buildParameters()));
+            $this->setRecord($this->getDatabase()->fetchRecord($sql, $whereSet->buildParameters()));
             return true;
         } catch (Exception $exception) {
             return false;
         } finally {
-            $this->setRecord($backupRow);
+            $this->setRecord($backupRecord);
         }
     }
     

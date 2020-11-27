@@ -24,7 +24,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     {
         $newMessage = $message;
         if ($newMessage === null) {
-            $newMessage = "Validation failed of row information.";
+            $newMessage = "Validation failed of record information.";
         }
         parent::__construct($newMessage, $code, $previous);
         $this->causeProperties = new Hash();

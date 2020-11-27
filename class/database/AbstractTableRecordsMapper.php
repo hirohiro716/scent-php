@@ -88,14 +88,14 @@ abstract class AbstractTableRecordsMapper extends AbstractTableMapper
             $sql->append(" WHERE ");
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
-            $this->records = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
+            $this->records = $this->getDatabase()->fetchRecords($sql, $whereSet->buildParameters());
         } else {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records edit is not permited.");
             }
             $sql->append($afterWherePart);
-            $this->records = $this->getDatabase()->fetchRows($sql);
+            $this->records = $this->getDatabase()->fetchRecords($sql);
         }
     }
     
@@ -125,11 +125,11 @@ abstract class AbstractTableRecordsMapper extends AbstractTableMapper
             $sql->append(";");
             $this->getDatabase()->execute($sql);
         }
-        foreach ($this->getRecords() as $row) {
+        foreach ($this->getRecords() as $record) {
             $hash = new Hash();
             foreach ($this->getColumns() as $column) {
-                if ($row->isExistKey($column->getPhysicalName())) {
-                    $hash->put($column, $row->get($column));
+                if ($record->isExistKey($column->getPhysicalName())) {
+                    $hash->put($column, $record->get($column));
                 }
             }
             $this->getDatabase()->insert($hash, $this->getTableName());
