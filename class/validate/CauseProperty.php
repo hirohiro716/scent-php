@@ -4,7 +4,7 @@ namespace hirohiro716\Scent\Validate;
 use hirohiro716\Scent\AbstractProperty;
 
 /**
- * プロパティの検証に失敗した原因となったカラムを表すクラス.
+ * プロパティの検証に失敗した原因となったカラムを表すクラス。
  * 
  * @author hiro
  */
@@ -26,7 +26,7 @@ class CauseProperty
     private $property;
     
     /**
-     * 例外の原因となったカラムを取得する.
+     * 例外の原因となったカラムを取得する。
      * 
      * @return AbstractProperty
      */
@@ -38,7 +38,7 @@ class CauseProperty
     private $message;
     
     /**
-     * 検証失敗の詳細メッセージを取得する.
+     * 検証失敗の詳細メッセージを取得する。
      * 
      * @return string
      */

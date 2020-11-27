@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * ハッシュ化するクラス.
+ * ハッシュ化するクラス。
  * 
  * @author hiro
  */
@@ -14,7 +14,7 @@ class PasswordHasher extends AbstractObject
     private $hash;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param string $value
      */
@@ -26,7 +26,7 @@ class PasswordHasher extends AbstractObject
     }
     
     /**
-     * ハッシュ値を取得する.
+     * ハッシュ値を取得する。
      * 
      * @return string
      */
@@ -36,7 +36,7 @@ class PasswordHasher extends AbstractObject
     }
     
     /**
-     * 内部の値とハッシュ値が一致するか検証する.
+     * 内部の値とハッシュ値が一致するか検証する。
      * 
      * @param string $hash
      * @return bool

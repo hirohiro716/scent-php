@@ -6,7 +6,7 @@ use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
 /**
- * 値の検証を行うクラス.
+ * 値の検証を行うクラス。
  *
  * @author hiro
  */
@@ -45,7 +45,7 @@ class ValueValidator extends AbstractObject
     private const REGEX_REVERSE = 14;
     
     /**
-     * エラーメッセージの定義.
+     * エラーメッセージの定義。
      * @var array
      */
     private $messagesArray = array(
@@ -60,7 +60,7 @@ class ValueValidator extends AbstractObject
         self::MIN_VALUE => "は「" . self::ERROR_MESSAGE_ARGUMENT . "」以上である必要があります。",
         self::EMAIL_CHARS => "にメールアドレスで使用できない文字が含まれています。",
         self::DATETIME => "は日付または時刻として有効ではありません。",
-        self::TELEPHONE => "は電話番号（ハイフン有り）として正しくありません。",
+        self::TELEPHONE => "は電話番号(ハイフン有り)として正しくありません。",
         self::REGEX => "が正しくありません。",
         self::REGEX_REVERSE => "に許可されていない文字が含まれています。"
     );
@@ -71,7 +71,7 @@ class ValueValidator extends AbstractObject
     private $parameters;
 
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param string $targetName
      */
@@ -88,7 +88,7 @@ class ValueValidator extends AbstractObject
     private $targetName;
 
     /**
-     * 検証対象の名前をセットする.
+     * 検証対象の名前をセットする。
      *
      * @param string $name
      */
@@ -98,7 +98,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 空白チェックを予約する.
+     * 空白チェックを予約する。
      */
     public function addBlankCheck(): void
     {
@@ -106,7 +106,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 数値有効性チェックを予約する.
+     * 数値有効性チェックを予約する。
      */
     public function addIntegerCheck(): void
     {
@@ -114,7 +114,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 少数値有効性チェックを予約する.
+     * 少数値有効性チェックを予約する。
      */
     public function addDecimalCheck(): void
     {
@@ -122,7 +122,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 文字数チェックを予約する.
+     * 文字数チェックを予約する。
      *
      * @param int $length
      */
@@ -132,7 +132,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 最大文字数チェックを予約する.
+     * 最大文字数チェックを予約する。
      *
      * @param int $maxLength
      */
@@ -142,7 +142,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 最小文字数チェックを予約する.
+     * 最小文字数チェックを予約する。
      *
      * @param int $minLength
      */
@@ -152,7 +152,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * ゼロチェックを予約する.
+     * ゼロチェックを予約する。
      */
     public function addZeroCheck(): void
     {
@@ -160,7 +160,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 最大値チェックを予約する.
+     * 最大値チェックを予約する。
      *
      * @param int $maxValue
      */
@@ -170,7 +170,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 最小値チェックを予約する.
+     * 最小値チェックを予約する。
      *
      * @param int $minValue
      */
@@ -180,7 +180,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * Eメールアドレスに使用できる文字だけで構成されているかのチェックを予約する.
+     * Eメールアドレスに使用できる文字だけで構成されているかのチェックを予約する。
      */
     public function addEmailCharsCheck(): void
     {
@@ -188,7 +188,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 日付有効性チェックを予約する.
+     * 日付有効性チェックを予約する。
      */
     public function addDatetimeCheck(): void
     {
@@ -196,7 +196,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 数字とハイフン以外の文字が含まれていないかのチェックを予約する.
+     * 数字とハイフン以外の文字が含まれていないかのチェックを予約する。
      */
     public function addTelephoneNumberCheck(): void
     {
@@ -204,7 +204,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 正規表現の条件を満たしているかのチェックを予約する.
+     * 正規表現の条件を満たしているかのチェックを予約する。
      *
      * @param string $regexPattern
      */
@@ -214,7 +214,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 正規表現の条件を満たしている場合にValidationExceptionをスローするチェックを予約する.
+     * 正規表現の条件を満たしている場合にValidationExceptionをスローするチェックを予約する。
      *
      * @param string $regexPattern
      */
@@ -224,7 +224,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 予約済みのチェックをクリアする.
+     * 予約済みのチェックをクリアする。
      */
     public function clear(): void
     {
@@ -237,7 +237,7 @@ class ValueValidator extends AbstractObject
     private const ERROR_MESSAGE_ARGUMENT = "xrChpnw9u4";
 
     /**
-     * パラメーターを利用したエラーメッセージを取得する.
+     * パラメーターを利用したエラーメッセージを取得する。
      *
      * @param string $const
      *            チェック方法
@@ -254,7 +254,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 予約された値の検証を実行する.
+     * 予約された値の検証を実行する。
      * 
      * @param mixed $value
      * @throws ValidationException
@@ -339,7 +339,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * nullまたは空文字かどうかをチェックする.
+     * nullまたは空文字かどうかをチェックする。
      *
      * @param mixed $value
      * @return bool
@@ -357,7 +357,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 数値かどうかをチェックする.
+     * 数値かどうかをチェックする。
      *
      * @param mixed $value
      * @return bool
@@ -376,7 +376,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 数値または少数かどうかをチェックする.
+     * 数値または少数かどうかをチェックする。
      *
      * @param mixed $value
      * @return bool
@@ -395,7 +395,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * メールアドレスに使用できる文字だけで構成されているかをチェックする.
+     * メールアドレスに使用できる文字だけで構成されているかをチェックする。
      *
      * @param string $emailAddress
      * @return bool
@@ -413,7 +413,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 日付として有効かどうかチェックする.
+     * 日付として有効かどうかチェックする。
      *
      * @param mixed $value
      *            日時文字列またはUNIXタイムスタンプ
@@ -432,7 +432,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * ハイフン付き電話番号として有効かどうかチェックする.
+     * ハイフン付き電話番号として有効かどうかチェックする。
      *
      * @param string $value
      * @return bool

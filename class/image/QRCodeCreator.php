@@ -8,7 +8,7 @@ use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\FloatObject;
 
 /**
- * QRコードを作成するクラス.
+ * QRコードを作成するクラス。
  *
  * @author hiro
  */
@@ -18,7 +18,7 @@ class QRCodeCreator extends AbstractObject
     private $scale = 1;
 
     /**
-     * QRコードの大きさのスケールを指定する.
+     * QRコードの大きさのスケールを指定する。
      *
      * @param float $scale
      *            デフォルトは1
@@ -29,7 +29,7 @@ class QRCodeCreator extends AbstractObject
     }
 
     /**
-     * QRコードの画像を作成する.
+     * QRコードの画像を作成する。
      *
      * @param string $data
      *            内容

@@ -4,7 +4,7 @@ namespace hirohiro716\Scent;
 use Iterator;
 
 /**
- * Hashの集合体クラス.
+ * Hashの集合体クラス。
  *
  * @author hiro
  */
@@ -22,7 +22,7 @@ class Hashes implements Iterator
     private $hashes;
     
     /**
-     * すべてのHashを配列で取得する.
+     * すべてのHashを配列で取得する。
      *
      * @return array
      */
@@ -36,7 +36,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * 指定のHashが内部に存在するか確認する.
+     * 指定のHashが内部に存在するか確認する。
      *
      * @param Hash $hash
      * @return bool
@@ -47,7 +47,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * Hashの数を取得する.
+     * Hashの数を取得する。
      *
      * @return int
      */
@@ -57,7 +57,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * Hashを追加する.
+     * Hashを追加する。
      *
      * @param Hash $hash
      */
@@ -67,7 +67,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * 配列をHashとして追加する.
+     * 配列をHashとして追加する。
      * 
      * @param array $array
      */
@@ -79,7 +79,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * Hashを取り除く.
+     * Hashを取り除く。
      *
      * @param Hash $hash
      */
@@ -89,7 +89,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * すべてのHashをクリアする.
+     * すべてのHashをクリアする。
      */
     public function clear(): void
     {
@@ -98,13 +98,13 @@ class Hashes implements Iterator
     
     /*
      * ***********************************
-     * ここからIteratorインターフェースの実装.
+     * ここからIteratorインターフェースの実装。
      * ************************************
      */
     private $position = 0;
     
     /**
-     * 現在の要素を返す.
+     * 現在の要素を返す。
      *
      * @return mixed
      */
@@ -115,7 +115,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * 現在の要素のキーを返す.
+     * 現在の要素のキーを返す。
      *
      * @return string
      */
@@ -125,7 +125,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * 次の要素に進む.
+     * 次の要素に進む。
      */
     public function next(): void
     {
@@ -133,7 +133,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * イテレータの最初の要素に巻き戻す.
+     * イテレータの最初の要素に巻き戻す。
      */
     public function rewind(): void
     {
@@ -141,7 +141,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * 現在位置が有効かどうかを調べる.
+     * 現在位置が有効な場合はtrueを返す。
      *
      * @return bool
      */

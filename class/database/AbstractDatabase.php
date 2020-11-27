@@ -9,7 +9,7 @@ use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\Hashes;
 
 /**
- * データベースをPDOで操作する抽象クラス.
+ * データベースをPDOで操作する抽象クラス。
  *
  * @author hiro
  */
@@ -19,7 +19,7 @@ abstract class AbstractDatabase extends AbstractObject
     private $pdo;
 
     /**
-     * PDOインスタンスを取得する.
+     * PDOインスタンスを取得する。
      *
      * @return PDO
      */
@@ -29,7 +29,7 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * PDOインスタンスをセットする.
+     * PDOインスタンスをセットする。
      *
      * @param PDO $pdo
      */
@@ -39,14 +39,14 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * PDOでデータベースに接続するための接続文字列を取得する.
+     * PDOでデータベースに接続するための接続文字列を取得する。
      *
      * @return string 接続文字列
      */
     protected abstract function buildConnectionString(): string;
 
     /**
-     * データベースに接続する.
+     * データベースに接続する。
      */
     public function connect(): void
     {
@@ -56,7 +56,7 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * 更新系のSQLを実行して更新されたレコード数を取得する.
+     * 更新系のSQLを実行して更新されたレコード数を取得する。
      *
      * @param string $sql
      * @param array $parameters
@@ -70,7 +70,7 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * SELECT文が取得した最初のレコードの最初のカラムの値を取得する.
+     * SELECT文が取得した最初のレコードの最初のカラムの値を取得する。
      *
      * @param string $sql
      * @param array $parameters
@@ -88,13 +88,13 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * SELECT文が取得した最初のレコードの配列を取得する.
+     * SELECT文が取得した最初のレコードの配列を取得する。
      *
      * @param string $sql
      * @param array $parameters
      * @return Hash
      */
-    public function fetchRow(string $sql, array $parameters = array()): Hash
+    public function fetchRecord(string $sql, array $parameters = array()): Hash
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($parameters);
@@ -106,13 +106,13 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * SELECT文が取得したすべてのレコードの配列を取得する.
+     * SELECT文が取得したすべてのレコードの配列を取得する。
      *
      * @param string $sql
      * @param array $parameters
      * @return Hashes
      */
-    public function fetchRows(string $sql, array $parameters = array()): Hashes
+    public function fetchRecords(string $sql, array $parameters = array()): Hashes
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($parameters);
@@ -123,7 +123,7 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * テーブルのレコード数を取得する.
+     * テーブルのレコード数を取得する。
      *
      * @param string $tableName
      * @return int
@@ -134,12 +134,10 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * 連想配列の情報をテーブルに追加する.
+     * 連想配列の情報をテーブルに追加する。
      *
-     * @param Hash $values
-     *            INSERTする連想配列（カラム名=>値）
-     * @param string $tableName
-     *            テーブル名
+     * @param Hash $values INSERTする連想配列(カラム名=>値)
+     * @param string $tableName テーブル名
      */
     public function insert(Hash $values, string $tableName): void
     {
@@ -164,14 +162,11 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * 連想配列の情報でテーブルを更新する.
+     * 連想配列の情報でテーブルを更新する。
      *
-     * @param Hash $values
-     *            更新する情報の連想配列（カラム名=>値）
-     * @param string $tableName
-     *            テーブル名
-     * @param WhereSet $whereSet
-     *            更新対象レコードを特定する検索条件
+     * @param Hash $values 更新する情報の連想配列(カラム名=>値)
+     * @param string $tableName テーブル名
+     * @param WhereSet $whereSet 更新対象レコードを特定する検索条件
      */
     public function update(Hash $values, string $tableName, WhereSet $whereSet): void
     {
@@ -198,22 +193,22 @@ abstract class AbstractDatabase extends AbstractObject
     }
 
     /**
-     * トランザクションを開始する.
+     * トランザクションを開始する。
      */
     public abstract function beginTransaction(): void;
 
     /**
-     * トランザクションをコミットする.
+     * トランザクションをコミットする。
      */
     public abstract function commit(): void;
 
     /**
-     * トランザクションをロールバックする.
+     * トランザクションをロールバックする。
      */
     public abstract function rollback(): void;
 
     /**
-     * テーブルが存在するか確認する.
+     * テーブルが存在する場合はtrueを返す。
      *
      * @param string $tableName
      * @return bool
@@ -221,7 +216,7 @@ abstract class AbstractDatabase extends AbstractObject
     public abstract function isExistTable(string $tableName): bool;
 
     /**
-     * テーブルのカラムをすべて取得する.
+     * テーブルのカラムをすべて取得する。
      *
      * @param string $tableName
      * @return array
@@ -229,10 +224,9 @@ abstract class AbstractDatabase extends AbstractObject
     public abstract function fetchColumns(string $tableName): array;
 
     /**
-     * 連想配列を元にCASE文を作成する.
+     * 連想配列を元にCASE文を作成する。
      *
-     * @param Hash $hash
-     *            連想配列
+     * @param Hash $hash 連想配列
      * @return string
      */
     public static function makeCaseSqlFromHash(string $columnName, Hash $hash): string

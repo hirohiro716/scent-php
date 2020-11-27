@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * 正規表現に関する関数.
+ * 正規表現に関する関数。
  *
  * @author hiro
  */
@@ -103,7 +103,7 @@ class RegexHelper
     public const WIDE = "^[^\x01-\x7E]{0,}$";
     
     /**
-     * 正規表現によって全角半角大小英数/ひらがな/全角カタカナを区別しない比較用文字列に変換する.
+     * 正規表現によって全角半角大小英数/ひらがな/全角カタカナを区別しない比較用文字列に変換する。
      * 
      * @param string $value 変換対象
      * @return string 変換後の値

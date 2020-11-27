@@ -7,7 +7,7 @@ use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
 /**
- * Directoryのクラス.
+ * Directoryのクラス。
  *
  * @author hiro
  */
@@ -15,7 +15,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param string $directoryLocation
      */
@@ -118,9 +118,9 @@ class Directory extends AbstractFilesystemItem implements Iterator
     private $depthOfSubitemSearch = -1;
     
     /**
-     * ディレクトリ内のサブアイテムを取得する深度をセットする. 初期値は無制限.
+     * ディレクトリ内のサブアイテムを取得する深度をセットする. 初期値は無制限。
      * 
-     * @param int $depth 検索する深度（ゼロで直下のみ）
+     * @param int $depth 検索する深度(ゼロで直下のみ)
      */
     public function setDepthOfSubitemSearch(int $depth): void
     {
@@ -128,7 +128,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * ディレクトリ内のサブアイテムを取得する深度を無制限にする.
+     * ディレクトリ内のサブアイテムを取得する深度を無制限にする。
      */
     public function unlimitedDepthOfSubitemSearch(): void
     {
@@ -140,7 +140,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     private $loadedDepth = null;
     
     /**
-     * ディレクトリ内のサブアイテムをすべて取得する.
+     * ディレクトリ内のサブアイテムをすべて取得する。
      * 
      * @return array AbstractFilesystemItemの配列
      */
@@ -151,7 +151,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * ディレクトリ内のサブアイテムをすべてインスタンス内に保持する.
+     * ディレクトリ内のサブアイテムをすべてインスタンス内に保持する。
      */
     private function prepareSubItems(): void
     {
@@ -163,7 +163,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * ディレクトリ内のアイテムを再帰的に取得する.
+     * ディレクトリ内のアイテムを再帰的に取得する。
      * 
      * @param string $directoryLocation
      */
@@ -188,13 +188,13 @@ class Directory extends AbstractFilesystemItem implements Iterator
     
     /*
      * ***********************************
-     * ここからIteratorインターフェースの実装.
+     * ここからIteratorインターフェースの実装。
      * ************************************
      */
     private $position = 0;
     
     /**
-     * 現在の要素を返す.
+     * 現在の要素を返す。
      * 
      * @return AbstractFilesystemItem
      */
@@ -205,7 +205,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * 現在の要素のキーを返す.
+     * 現在の要素のキーを返す。
      *
      * @return int
      */
@@ -216,7 +216,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * 次の要素に進む.
+     * 次の要素に進む。
      */
     public function next(): void
     {
@@ -225,7 +225,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * イテレータの最初の要素に巻き戻す.
+     * イテレータの最初の要素に巻き戻す。
      */
     public function rewind(): void
     {
@@ -234,7 +234,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     }
     
     /**
-     * 現在位置が有効かどうかを調べる.
+     * 現在位置が有効な場合はtrueを返す。
      *
      * @return bool
      */

@@ -4,7 +4,7 @@ namespace hirohiro716\Scent\Filesystem;
 use Exception;
 
 /**
- * ファイルシステムの読み書きの例外クラス.
+ * ファイルシステムの読み書きの例外クラス。
  * 
  * @author hiro
  */
@@ -17,7 +17,7 @@ class IOException extends Exception
      * @param string $location 例外発生原因のファイルまたはディレクトリ
      * @param string $message スローする例外メッセージ
      * @param int $code 例外コード
-     * @param Throwable 以前に使われた例外（例外の連結に使用する）
+     * @param Throwable 以前に使われた例外(例外の連結に使用する)
      */
     public function __construct(string $location, $message = null, $code = null, $previous = null)
     {
@@ -28,7 +28,7 @@ class IOException extends Exception
     private $location;
     
     /**
-     * 例外発生原因のファイルまたはディレクトリを取得する.
+     * 例外発生原因のファイルまたはディレクトリを取得する。
      * 
      * @return string
      */

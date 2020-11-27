@@ -6,7 +6,7 @@ use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
 /**
- * mb_send_mailを利用したメール送信クラス.
+ * mb_send_mailを利用したメール送信クラス。
  *
  * @author hiro
  */
@@ -14,7 +14,7 @@ class EmailTransmitter extends AbstractObject
 {
 
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      */
     public function __construct()
     {
@@ -32,7 +32,7 @@ class EmailTransmitter extends AbstractObject
     private $arrayTO;
 
     /**
-     * TO（宛先）を追加する.
+     * TO(宛先)を追加する。
      *
      * @param string $addressTO
      */
@@ -44,7 +44,7 @@ class EmailTransmitter extends AbstractObject
     private $arrayCC;
 
     /**
-     * CCを追加する.
+     * CCを追加する。
      *
      * @param string $addressCC
      */
@@ -56,7 +56,7 @@ class EmailTransmitter extends AbstractObject
     private $arrayBCC;
 
     /**
-     * BCCを追加する.
+     * BCCを追加する。
      *
      * @param string $addressBCC
      */
@@ -68,7 +68,7 @@ class EmailTransmitter extends AbstractObject
     private $addressFROM;
 
     /**
-     * FROM（送信者）をセットする.
+     * FROM(送信者)をセットする。
      *
      * @param string $addressFROM
      */
@@ -80,7 +80,7 @@ class EmailTransmitter extends AbstractObject
     private $title;
 
     /**
-     * タイトル（表題）をセットする.
+     * タイトル(表題)をセットする。
      *
      * @param string $title
      */
@@ -92,7 +92,7 @@ class EmailTransmitter extends AbstractObject
     private $body;
 
     /**
-     * 本文をセットする.
+     * 本文をセットする。
      *
      * @param string $body
      */
@@ -102,7 +102,7 @@ class EmailTransmitter extends AbstractObject
     }
 
     /**
-     * メールを送信する.
+     * メールを送信する。
      *
      * @return bool
      */

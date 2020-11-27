@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * JSONを扱うクラス.
+ * JSONを扱うクラス。
  * 
  * @author hiro
  */
@@ -11,7 +11,7 @@ class JSON extends AbstractObject {
     private $array;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param string $json
      */
@@ -26,7 +26,7 @@ class JSON extends AbstractObject {
     }
     
     /**
-     * 配列に変換して取得する.
+     * 配列に変換して取得する。
      * 
      * @return array
      */
@@ -39,7 +39,7 @@ class JSON extends AbstractObject {
     }
     
     /**
-     * 配列からJSONを生成する.
+     * 配列からJSONを生成する。
      * 
      * @param array $array
      * @return JSON

@@ -7,7 +7,7 @@ use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\AbstractProperty;
 
 /**
- * カラムの抽象クラス.
+ * カラムの抽象クラス。
  * 
  * @author hiro
  */
@@ -15,14 +15,14 @@ abstract class AbstractColumn extends AbstractProperty
 {
     
     /**
-     * テーブル名を取得する.
+     * テーブル名を取得する。
      * 
      * @return string
      */
     public abstract function getTableName(): string;
     
     /**
-     * テーブル名を含むカラムの物理名を取得する.
+     * テーブル名を含むカラムの物理名を取得する。
      * 
      * @return StringObject テーブル名を含むカラム名
      */
@@ -35,7 +35,7 @@ abstract class AbstractColumn extends AbstractProperty
     }
     
     /**
-     * すべての定数を取得する.
+     * すべての定数を取得する。
      *
      * @return Columns
      */
@@ -47,7 +47,7 @@ abstract class AbstractColumn extends AbstractProperty
 }
 
 /**
- * ColumnのIterator実装クラス.
+ * ColumnのIterator実装クラス。
  *
  * @author hiro
  */
@@ -55,7 +55,7 @@ class Columns implements Iterator
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param array $values
      */
@@ -67,7 +67,7 @@ class Columns implements Iterator
     private $values = array();
     
     /**
-     * すべての定数を配列で取得する.
+     * すべての定数を配列で取得する。
      *
      * @return array
      */
@@ -79,7 +79,7 @@ class Columns implements Iterator
     private $position = 0;
     
     /**
-     * 現在の要素を返す.
+     * 現在の要素を返す。
      * 
      * @return AbstractColumn
      */
@@ -89,7 +89,7 @@ class Columns implements Iterator
     }
     
     /**
-     * 現在の要素のキーを返す.
+     * 現在の要素のキーを返す。
      *
      * @return int
      */
@@ -99,7 +99,7 @@ class Columns implements Iterator
     }
     
     /**
-     * 次の要素に進む.
+     * 次の要素に進む。
      */
     public function next(): void
     {
@@ -107,7 +107,7 @@ class Columns implements Iterator
     }
     
     /**
-     * イテレータの最初の要素に巻き戻す.
+     * イテレータの最初の要素に巻き戻す。
      */
     public function rewind(): void
     {
@@ -115,7 +115,7 @@ class Columns implements Iterator
     }
     
     /**
-     * 現在位置が有効かどうかを調べる.
+     * 現在位置が有効な場合はtrueを返す。
      *
      * @return bool
      */

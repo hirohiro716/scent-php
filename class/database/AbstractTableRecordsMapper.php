@@ -8,68 +8,68 @@ use hirohiro716\Scent\StringObject;
 use hirohiro716\Scent\Hashes;
 
 /**
- * 複数のテーブル行をオブジェクト配列にマッピングする抽象クラス.
+ * 複数のテーブルレコードをオブジェクト配列にマッピングする抽象クラス。
  * 
  * @author hiro
  */
-abstract class AbstractBindTableRows extends AbstractBindTable
+abstract class AbstractTableRecordsMapper extends AbstractTableMapper
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
-     * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス.
+     * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス。
      */
     public function __construct($database)
     {
         parent::__construct($database);
-        $this->rows = new Hashes();
+        $this->records = new Hashes();
     }
     
-    private $rows;
+    private $records;
     
     /**
-     * すべての行情報を取得する.
+     * すべてのレコード情報を取得する。
      * 
      * @return array
      */
-    public function getRows(): Hashes
+    public function getRecords(): Hashes
     {
-        return $this->rows;
+        return $this->records;
     }
     
     /**
-     * 行情報を追加する.
+     * レコード情報を追加する。
      * 
-     * @param Hash $row
+     * @param Hash $record
      */
-    public function addRow(Hash $row): void
+    public function addRecord(Hash $record): void
     {
-        $this->rows->add($row);
+        $this->records->add($record);
     }
     
     /**
-     * 行情報を削除する.
+     * レコード情報を削除する。
      * 
-     * @param Hash $row
+     * @param Hash $record
      */
-    public function removeRow(Hash $row): void
+    public function removeRecord(Hash $record): void
     {
-        $this->rows->remove($row);
+        $this->records->remove($record);
     }
     
     /**
-     * すべての行情報をクリアする.
+     * すべてのレコード情報をクリアする。
      */
-    public function clearRows(): void
+    public function clearRecords(): void
     {
-        $this->rows->clear();
+        $this->records->clear();
     }
     
     /**
-     * WhereSetに従って取得したすべての行情報を取得して編集を開始する.
+     * WhereSetに従って取得したすべてのレコード情報を取得して編集を開始する。
      * 
-     * @param string ...$orderByColumns 並び替えを指定（ASC・DESCを含むカラム名）
+     * @param string ...$orderByColumns 並び替えを指定(ASC・DESCを含むカラム名)
      */
     public function edit(string ...$orderByColumns): void
     {
@@ -79,7 +79,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             $afterWherePart->append(" ORDER BY ");
             $afterWherePart->append($columns->join(", "));
         }
-        $this->clearRows();
+        $this->clearRecords();
         $sql = new StringObject("SELECT * FROM ");
         $sql->append($this->getTableName());
         if ($this->whereSetIsNull() == false) {
@@ -88,25 +88,26 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             $sql->append(" WHERE ");
             $sql->append($whereSet->buildParameterClause());
             $sql->append($afterWherePart);
-            $this->rows = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
+            $this->records = $this->getDatabase()->fetchRows($sql, $whereSet->buildParameters());
         } else {
             // 検索条件なしの全レコード編集
             if ($this->isPermittedSearchConditioEmptyUpdate() == false) {
                 throw new Exception("All records edit is not permited.");
             }
             $sql->append($afterWherePart);
-            $this->rows = $this->getDatabase()->fetchRows($sql);
+            $this->records = $this->getDatabase()->fetchRows($sql);
         }
     }
     
     /**
-     * 検索条件が空の状態の上書き（全レコード置き換え）を許可するかどうか.
-     * @return bool 許可する場合はtrue
+     * 検索条件が空の状態の上書き(全レコード置き換え)を許可する場合はtrueを返す。
+     * 
+     * @return bool
      */
     public abstract function isPermittedSearchConditioEmptyUpdate(): bool;
     
     /**
-     * 編集している複数のレコードを保持している連想配列に置き換える.
+     * 編集している複数のレコードを保持している連想配列に置き換える。
      */
     public function update(): void
     {
@@ -124,7 +125,7 @@ abstract class AbstractBindTableRows extends AbstractBindTable
             $sql->append(";");
             $this->getDatabase()->execute($sql);
         }
-        foreach ($this->getRows() as $row) {
+        foreach ($this->getRecords() as $row) {
             $hash = new Hash();
             foreach ($this->getColumns() as $column) {
                 if ($row->isExistKey($column->getPhysicalName())) {
@@ -136,8 +137,9 @@ abstract class AbstractBindTableRows extends AbstractBindTable
     }
     
     /**
-     * レコードが存在するか確認する.
-     * @return bool 存在するかどうか
+     * レコードが存在する場合はtrueを返す。
+     * 
+     * @return bool
      */
     public function isExist(): bool {
         if ($this->whereSetIsNull() && $this->isPermittedSearchConditioEmptyUpdate() == false) {

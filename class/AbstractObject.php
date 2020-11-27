@@ -4,7 +4,7 @@ namespace hirohiro716\Scent;
 use ErrorException;
 
 /**
- * 本パッケージ内クラスの元となるクラス.
+ * 本パッケージ内クラスの元となるクラス。
  * 
  * @author hiro
  */
@@ -12,7 +12,7 @@ abstract class AbstractObject
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      */
     public function __construct()
     {
@@ -20,7 +20,7 @@ abstract class AbstractObject
     }
     
     /**
-     * エラーをExceptionに変換するハンドラー.
+     * エラーをExceptionに変換するハンドラー。
      * 
      * @param int $severity
      * @param string $message

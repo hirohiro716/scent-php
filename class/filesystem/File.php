@@ -4,7 +4,7 @@ namespace hirohiro716\Scent\Filesystem;
 use ErrorException;
 
 /**
- * Fileのクラス.
+ * Fileのクラス。
  * 
  * @author hiro
  */
@@ -12,7 +12,7 @@ class File extends AbstractFilesystemItem
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param string $fileLocation
      */
@@ -86,7 +86,7 @@ class File extends AbstractFilesystemItem
     }
     
     /**
-     * POSTでアップロードされたファイルか判定する.
+     * POSTでアップロードされたファイルか判定する。
      *
      * @return bool
      */
@@ -96,7 +96,7 @@ class File extends AbstractFilesystemItem
     }
     
     /**
-     * ファイルの内容を読み込む.
+     * ファイルの内容を読み込む。
      * 
      * @param string $fromEncoding
      * @param string $toEncoding
@@ -109,7 +109,7 @@ class File extends AbstractFilesystemItem
     }
     
     /**
-     * ファイルに文字列を書き込む.
+     * ファイルに文字列を書き込む。
      * 
      * @param string $contents 書き込む内容
      * @return int 書き込まれたバイト数

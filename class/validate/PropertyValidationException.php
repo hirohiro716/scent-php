@@ -6,7 +6,7 @@ use Iterator;
 use hirohiro716\Scent\StringObject;
 
 /**
- * プロパティの検証に失敗した場合の例外クラス.
+ * プロパティの検証に失敗した場合の例外クラス。
  * 
  * @author hiro
  */
@@ -18,7 +18,7 @@ class PropertyValidationException extends ValidationException implements Iterato
      * 
      * @param string $message スローする例外メッセージ
      * @param int $code 例外コード
-     * @param Throwable 以前に使われた例外（例外の連結に使用する）
+     * @param Throwable 以前に使われた例外(例外の連結に使用する)
      */
     public function __construct($message = null, $code = null, $previous = null)
     {
@@ -33,7 +33,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     private $causeProperties;
     
     /**
-     * 例外の原因となったプロパティを追加する.
+     * 例外の原因となったプロパティを追加する。
      * 
      * @param CauseProperty $causeProperty
      */
@@ -43,7 +43,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * 例外の原因となったすべてのプロパティを取得する.
+     * 例外の原因となったすべてのプロパティを取得する。
      * 
      * @return Hash CausePropertyの連想配列
      */
@@ -53,7 +53,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * 例外の原因となったプロパティとメッセージの連想配列を取得する.
+     * 例外の原因となったプロパティとメッセージの連想配列を取得する。
      * 
      * @return Hash
      */
@@ -67,7 +67,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * 例外の詳細メッセージを取得する.
+     * 例外の詳細メッセージを取得する。
      * 
      * @return string メッセージ
      */
@@ -86,13 +86,13 @@ class PropertyValidationException extends ValidationException implements Iterato
     
     /*
      * ***********************************
-     * ここからIteratorインターフェースの実装.
+     * ここからIteratorインターフェースの実装。
      * ************************************
      */
     private $position = 0;
     
     /**
-     * 現在の要素を返す.
+     * 現在の要素を返す。
      */
     public function current(): CauseProperty
     {
@@ -101,7 +101,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * 現在の要素のキーを返す.
+     * 現在の要素のキーを返す。
      *
      * @return string
      */
@@ -111,7 +111,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * 次の要素に進む.
+     * 次の要素に進む。
      */
     public function next()
     {
@@ -119,7 +119,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * イテレータの最初の要素に巻き戻す.
+     * イテレータの最初の要素に巻き戻す。
      */
     public function rewind()
     {
@@ -127,7 +127,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     }
     
     /**
-     * 現在位置が有効かどうかを調べる.
+     * 現在位置が有効な場合はtrueを返す。
      *
      * @return boolean
      */

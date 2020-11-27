@@ -4,7 +4,7 @@ namespace hirohiro716\Scent;
 use Iterator;
 
 /**
- * 連想配列オブジェクトクラス.
+ * 連想配列オブジェクトクラス。
  *
  * @author hiro
  */
@@ -14,7 +14,7 @@ class Hash extends AbstractObject implements Iterator
     private $array;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param array $array
      */
@@ -25,7 +25,7 @@ class Hash extends AbstractObject implements Iterator
     }
     
     /**
-     * 内部に配列をセットする.
+     * 内部に配列をセットする。
      *
      * @param array $array
      */
@@ -35,8 +35,8 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 内部の配列に対して引数の配列の内容を追加する.
-     * キーが重複する場合は上書きされる.
+     * 内部の配列に対して引数の配列の内容を追加する。
+     * キーが重複する場合は上書きされる。
      *
      * @param array $array
      */
@@ -48,7 +48,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 内部の配列を取得する.
+     * 内部の配列を取得する。
      *
      * @return array
      */
@@ -58,7 +58,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * キーと対する値をセットする.
+     * キーと対する値をセットする。
      *
      * @param string $key
      * @param mixed $value
@@ -69,7 +69,7 @@ class Hash extends AbstractObject implements Iterator
     }
     
     /**
-     * キーを指定せずに値をセットする.
+     * キーを指定せずに値をセットする。
      * 
      * @param mixed $value
      */
@@ -79,7 +79,7 @@ class Hash extends AbstractObject implements Iterator
     }
     
     /**
-     * キーに対する値を取得する.
+     * キーに対する値を取得する。
      *
      * @param string $key
      * @return mixed
@@ -93,7 +93,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 保持している値をすべて配列で取得する.
+     * 保持している値をすべて配列で取得する。
      *
      * @return array
      */
@@ -103,7 +103,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 保持しているキーをすべて配列で取得する.
+     * 保持しているキーをすべて配列で取得する。
      *
      * @return array
      */
@@ -113,7 +113,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * キーが存在するか確認する.
+     * キーが存在するか確認する。
      *
      * @param string $key
      * @return bool
@@ -124,7 +124,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 値が存在するかを厳密な型比較を用いて確認する.
+     * 値が存在するかを厳密な型比較を用いて確認する。
      *
      * @param mixed $value
      * @return bool
@@ -135,7 +135,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 指定されたキーに対する値を削除する.
+     * 指定されたキーに対する値を削除する。
      *
      * @param string $key
      */
@@ -147,7 +147,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 指定された値をすべて削除する.
+     * 指定された値をすべて削除する。
      *
      * @param mixed $value
      */
@@ -157,7 +157,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 値をすべて削除する.
+     * 値をすべて削除する。
      */
     public function clear(): void
     {
@@ -165,7 +165,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 保持している値の数を取得する.
+     * 保持している値の数を取得する。
      *
      * @return int
      */
@@ -175,7 +175,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 保持している値をすべて連結した文字列を取得する.
+     * 保持している値をすべて連結した文字列を取得する。
      *
      * @param string $delimiter
      * @return string
@@ -194,13 +194,13 @@ class Hash extends AbstractObject implements Iterator
 
     /*
      * ***********************************
-     * ここからIteratorインターフェースの実装.
+     * ここからIteratorインターフェースの実装。
      * ************************************
      */
     private $position = 0;
 
     /**
-     * 現在の要素を返す.
+     * 現在の要素を返す。
      * 
      * @return mixed
      */
@@ -211,7 +211,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 現在の要素のキーを返す.
+     * 現在の要素のキーを返す。
      *
      * @return string
      */
@@ -221,7 +221,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 次の要素に進む.
+     * 次の要素に進む。
      */
     public function next(): void
     {
@@ -229,7 +229,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * イテレータの最初の要素に巻き戻す.
+     * イテレータの最初の要素に巻き戻す。
      */
     public function rewind(): void
     {
@@ -237,7 +237,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 現在位置が有効かどうかを調べる.
+     * 現在位置が有効な場合はtrueを返す。
      *
      * @return bool
      */

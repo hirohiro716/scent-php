@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * セッションクラス.
+ * セッションクラス。
  *
  * @author hiro
  */
@@ -12,7 +12,7 @@ class Session extends AbstractObject
     private const KEY_AGENT = "session_key_agent";
 
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param mixed $lifetime セッションクッキーの有効期限(秒数)
      * @param bool $isSecure HTTPSのみ許可するかどうか
@@ -50,7 +50,7 @@ class Session extends AbstractObject
     }
 
     /**
-     * セッションに値をセットする.
+     * セッションに値をセットする。
      *
      * @param mixed $key
      * @param mixed $value
@@ -61,7 +61,7 @@ class Session extends AbstractObject
     }
 
     /**
-     * セッションの値を取得する.
+     * セッションの値を取得する。
      *
      * @param mixed $key
      * @return mixed
@@ -75,7 +75,7 @@ class Session extends AbstractObject
     }
 
     /**
-     * セッションの値が存在するか確認する.
+     * セッションの値が存在するか確認する。
      *
      * @param mixed $key
      * @return bool
@@ -86,7 +86,7 @@ class Session extends AbstractObject
     }
 
     /**
-     * セッションの値を破棄する.
+     * セッションの値を破棄する。
      *
      * @param mixed $key
      */
@@ -100,7 +100,7 @@ class Session extends AbstractObject
     private const KEY_TOKEN = "session_key_token";
 
     /**
-     * クロスサイトリクエストフォージェリ(CSRF)対策のTokenを生成する.
+     * クロスサイトリクエストフォージェリ(CSRF)対策のTokenを生成する。
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class Session extends AbstractObject
     }
 
     /**
-     * ユーザーから送信されたTokenと発行したTokenと一致するか判定する.
+     * ユーザーから送信されたTokenと発行したTokenと一致するか判定する。
      *
      * @param string $token
      *            ユーザーが送信してきたtoken

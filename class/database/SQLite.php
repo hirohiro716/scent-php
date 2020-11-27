@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent\Database;
 
 /**
- * SQLiteをPDOで操作するクラス.
+ * SQLiteをPDOで操作するクラス。
  *
  * @author hiro
  */
@@ -10,35 +10,34 @@ class SQLite extends AbstractDatabase
 {
 
     /**
-     * トランザクション開始時にはロックを取得せずデータの読み込み/書き込みをする時点までロック取得を延期する
+     * トランザクション開始時にはロックを取得せずデータの読み込み/書き込みをする時点までロック取得を延期する。
      */
     public const DEFERRED = "DEFERRED";
 
     /**
-     * トランザクション開始時にRESERVEDロックを取得する
+     * トランザクション開始時にRESERVEDロックを取得する。
      */
     public const IMMEDIATE = "IMMEDIATE";
 
     /**
-     * トランザクション開始時にEXCLUSIVEロックを取得する.
+     * トランザクション開始時にEXCLUSIVEロックを取得する。
      */
     public const EXCLUSIVE = "EXCLUSIVE";
     
     /**
-     * SQLiteにはBoolean型が無いのでINTEGERで代用する際の有効を表す数値.
+     * SQLiteにはBoolean型が無いのでINTEGERで代用する際の有効を表す数値。
      */
     public const BOOLEAN_VALUE_ENABLED = 1;
     
     /**
-     * SQLiteにはBoolean型が無いのでINTEGERで代用する際の無効を表す数値.
+     * SQLiteにはBoolean型が無いのでINTEGERで代用する際の無効を表す数値。
      */
     public const BOOLEAN_VALUE_DISABLED = 0;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
-     * @param string $databaseLocation
-     *            SQLiteデータベースのファイルパス
+     * @param string $databaseLocation SQLiteデータベースのファイルパス
      */
     public function __construct(string $databaseLocation)
     {
@@ -55,10 +54,9 @@ class SQLite extends AbstractDatabase
     private $isolationLabel = self::IMMEDIATE;
 
     /**
-     * トランザクションの分離レベルを設定する.
+     * トランザクションの分離レベルを設定する。
      *
-     * @param string $isolationLevel
-     *            SQLite::DEFERRED/SQLite::IMMEDIATE/SQLite::EXCLUSIVE
+     * @param string $isolationLevel SQLite::DEFERRED/SQLite::IMMEDIATE/SQLite::EXCLUSIVE
      */
     public function setIsolationLabel(string $isolationLevel): void
     {

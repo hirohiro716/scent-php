@@ -9,15 +9,15 @@ use hirohiro716\Scent\AbstractObject;
 use RobThree\Auth\TwoFactorAuth;
 
 /**
- * Google2段階認証を処理するクラス.
+ * Google2段階認証を処理するクラス。
  *
  * @author hiro
  */
 class Google2stepVerificator extends AbstractObject
 {
-    
+
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param string $secretKey
      */
@@ -27,19 +27,19 @@ class Google2stepVerificator extends AbstractObject
     }
 
     private $secretKey;
-    
+
     /**
-     * 内部のシークレットキーを取得する.
-     * 
+     * 内部のシークレットキーを取得する。
+     *
      * @return string
      */
     public function getSecretKey(): string
     {
         return $this->secretKey;
     }
-    
+
     /**
-     * シークレットキーを作成する.
+     * シークレットキーを作成する。
      *
      * @return string
      */
@@ -51,10 +51,9 @@ class Google2stepVerificator extends AbstractObject
     }
 
     /**
-     * 認証を行う.
+     * 認証を行う。
      *
-     * @param string $onetimeCode
-     *            ワンタイムコード
+     * @param string $onetimeCode ワンタイムコード
      * @return bool
      */
     public function verify(string $onetimeCode): bool
@@ -67,14 +66,11 @@ class Google2stepVerificator extends AbstractObject
     }
 
     /**
-     * Google認証アプリ用のQRコードを作成する.
+     * Google認証アプリ用のQRコードを作成する。
      *
-     * @param string $title
-     *            タイトル
-     * @param File $file
-     *            保存場所
-     * @param float $scale
-     *            QRコードの大きさのスケール(初期値は1)
+     * @param string $title タイトル
+     * @param File $file 保存場所
+     * @param float $scale QRコードの大きさのスケール(初期値は1)
      */
     public function createQRCode(string $title, File $file, float $scale): void
     {

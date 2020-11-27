@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * Cookieのクラス.
+ * Cookieのクラス。
  *
  * @author hiro
  */
@@ -10,7 +10,7 @@ class Cookie extends AbstractObject
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param mixed $lifetimeSecond セッションクッキーの有効期限(秒数)
      * @param bool $isSecure HTTPSのみ許可するかどうか
@@ -30,7 +30,7 @@ class Cookie extends AbstractObject
     private $isSecure;
     
     /**
-     * Cookieに値をセットする.
+     * Cookieに値をセットする。
      *
      * @param mixed $key
      * @param mixed $value
@@ -45,7 +45,7 @@ class Cookie extends AbstractObject
     }
     
     /**
-     * Cookieの値を取得する.
+     * Cookieの値を取得する。
      *
      * @param mixed $key
      * @return mixed
@@ -59,7 +59,7 @@ class Cookie extends AbstractObject
     }
     
     /**
-     * Cookieの値が存在するか確認する.
+     * Cookieの値が存在するか確認する。
      *
      * @param mixed $key
      * @return bool
@@ -70,7 +70,7 @@ class Cookie extends AbstractObject
     }
     
     /**
-     * Cookieの値を破棄する.
+     * Cookieの値を破棄する。
      *
      * @param mixed $key
      */

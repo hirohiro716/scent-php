@@ -8,17 +8,17 @@ use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
 
 /**
- * テーブルとオブジェクトをマッピングする抽象クラス.
+ * テーブルとオブジェクトをマッピングする抽象クラス。
  * 
  * @author hiro
  */
-abstract class AbstractBindTable extends AbstractObject
+abstract class AbstractTableMapper extends AbstractObject
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
-     * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス.
+     * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス
      */
     public function __construct($database)
     {
@@ -29,7 +29,7 @@ abstract class AbstractBindTable extends AbstractObject
     private $database;
     
     /**
-     * コンストラクタで指定したAbstractDatabaseインスタンスを取得する.
+     * コンストラクタで指定したAbstractDatabaseインスタンスを取得する。
      * 
      * @return AbstractDatabase
      */
@@ -39,14 +39,14 @@ abstract class AbstractBindTable extends AbstractObject
     }
     
     /**
-     * テーブル名を取得する.
+     * テーブル名を取得する。
      * 
      * @return string
      */
     public abstract function getTableName(): string;
     
     /**
-     * テーブル名を取得する.
+     * テーブル名を取得する。
      * 
      * @return string
      */
@@ -57,23 +57,23 @@ abstract class AbstractBindTable extends AbstractObject
     }
     
     /**
-     * すべてのカラム定数を取得する.
+     * すべてのカラム定数を取得する。
      * 
      * @return Columns
      */
     public abstract function getColumns(): Columns;
     
     /**
-     * カラムの物理名をキー・各カラムの初期値を値とする配列を取得する.
+     * カラムの物理名をキー・各カラムの初期値を値とする配列を取得する。
      * 
      * @return Hash
      */
-    public abstract function createDefaultRow(): Hash;
+    public abstract function createDefaultRecord(): Hash;
     
     private $whereSet = null;
     
     /**
-     * 編集・更新・削除に使用するレコード特定用のWhereSetを取得する.
+     * 編集・更新・削除に使用するレコード特定用のWhereSetを取得する。
      * 
      * @return whereSet
      */
@@ -83,8 +83,8 @@ abstract class AbstractBindTable extends AbstractObject
     }
     
     /**
-     * 編集・更新・削除に使用するレコード特定用のWhereSetを指定する.<br>
-     * 編集する前は必ずこのメソッドを使用して抽出条件を指定する.
+     * 編集・更新・削除に使用するレコード特定用のWhereSetを指定する。<br>
+     * 編集する前は必ずこのメソッドを使用して抽出条件を指定する。
      * 
      * @param whereSet
      */
@@ -94,7 +94,7 @@ abstract class AbstractBindTable extends AbstractObject
     }
     
     /**
-     * レコード特定用のWhereSetがセットされているか確認する.
+     * レコード特定用のWhereSetがセットされていない場合はtrueを返す。
      * 
      * @return bool
      */
@@ -104,22 +104,22 @@ abstract class AbstractBindTable extends AbstractObject
     }
     
     /**
-     * 保持している連想配列がレコードとして有効か検証する.
+     * 保持している連想配列がレコードとして有効か検証する。
      */
     public abstract function validate(): void;
     
     /**
-     * 保持している連想配列を標準化（全角を半角に変換したり）する.
+     * 保持している連想配列を標準化(全角を半角に変換したり)する。
      */
     public abstract function normalize(): void;
     
     /**
-     * レコードを検索して結果を２次元連想配列で取得する.
+     * レコードを検索して結果を2次元連想配列で取得する。
      * 
      * @param array $whereSetArray WhereSetオブジェクトの配列
      * @param string $select WHERE句より前のSELECT文
      * @param string $afterWherePart WHERE句より後のSQL
-     * @return Hashes 検索結果の２次元連想配列
+     * @return Hashes 検索結果の2次元連想配列
      */
     public function search(array $whereSetArray, string $select = "", string $afterWherePart = ""): Hashes
     {

@@ -7,70 +7,70 @@ use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
 /**
- * テーブル行をオブジェクトにマッピングする抽象クラス.
+ * テーブルレコードをオブジェクトにマッピングする抽象クラス。
  * 
  * @author hiro
  */
-abstract class AbstractBindTableRow extends AbstractBindTable
+abstract class AbstractTableRecordMapper extends AbstractTableMapper
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
-     * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス.
+     * @param AbstractDatabase $database 接続済みAbstractDatabaseインスタンス
      */
     public function __construct($database)
     {
         parent::__construct($database);
-        $this->setDefaultRow();
+        $this->setDefaultRecord();
     }
     
-    private $row;
+    private $record;
     
     /**
-     * 行情報を取得する.
+     * レコード情報を取得する。
      * 
      * @return Hash
      */
-    public function getRow(): Hash
+    public function getRecord(): Hash
     {
-        return $this->row;
+        return $this->record;
     }
     
     /**
-     * 行情報をセットする.
+     * レコード情報をセットする。
      * 
-     * @param Hash $row
+     * @param Hash $record
      */
-    public function setRow(Hash $row): void
+    public function setRecord(Hash $record): void
     {
-        $this->row = $row;
+        $this->record = $record;
     }
     
     /**
-     * 初期値をセットする.
+     * 初期レコード情報をセットする。
      */
-    public function setDefaultRow(): void
+    public function setDefaultRecord(): void
     {
-        $this->row = $this->createDefaultRow();
+        $this->record = $this->createDefaultRecord();
     }
     
     /**
-     * 新しく行情報をデータベースに追加する.
+     * 新しくレコード情報をデータベースに追加する。
      */
     public function insert(): void
     {
         $hash = new Hash();
         foreach ($this->getColumns() as $column) {
-            if ($this->row->isExistKey($column->getPhysicalName())) {
-                $hash->put($column, $this->row->get($column));
+            if ($this->record->isExistKey($column->getPhysicalName())) {
+                $hash->put($column, $this->record->get($column));
             }
         }
         $this->getDatabase()->insert($hash, $this->getTableName());
     }
     
     /**
-     * 行情報を取得して編集を開始する.
+     * レコード情報を取得して編集を開始する。
      * 
      * @throws DataNotFoundException
      */
@@ -84,21 +84,22 @@ abstract class AbstractBindTableRow extends AbstractBindTable
         $sql->append(" WHERE ");
         $sql->append($this->getWhereSet()->buildParameterClause());
         $sql->append(";");
-        $this->setRow($this->getDatabase()->fetchRow($sql, $this->getWhereSet()->buildParameters()));
+        $this->setRecord($this->getDatabase()->fetchRow($sql, $this->getWhereSet()->buildParameters()));
         if ($this->isDeleted() == true) {
             throw new DataNotFoundException();
         }
     }
     
     /**
-     * 編集のため取得したレコードが削除済みかどうかの判定メソッド. これはeditメソッドから自動的に呼び出され編集するかの判定に使われる.
+     * 編集のため取得したレコードが削除済みかどうかの判定メソッド。<br>
+     * これはeditメソッドから自動的に呼び出され編集するかの判定に使われる。
      * 
-     * @return bool 削除済みかどうか
+     * @return bool 削除済みの場合はtrue
      */
     public abstract function isDeleted(): bool;
     
     /**
-     * 編集開始されているレコードを保持している連想配列で上書きする.
+     * 編集開始されているレコードを保持している連想配列で上書きする。
      */
     public function update(): void
     {
@@ -107,15 +108,15 @@ abstract class AbstractBindTableRow extends AbstractBindTable
         }
         $hash = new Hash();
         foreach ($this->getColumns() as $column) {
-            if ($this->row->isExistKey($column->getPhysicalName())) {
-                $hash->put($column, $this->row->get($column));
+            if ($this->record->isExistKey($column->getPhysicalName())) {
+                $hash->put($column, $this->record->get($column));
             }
         }
         $this->getDatabase()->update($hash, $this->getTableName(), $this->getWhereSet());
     }
     
     /**
-     * レコードを物理削除する.
+     * レコードを物理削除する。
      */
     protected function physicalDelete(): void
     {
@@ -132,12 +133,12 @@ abstract class AbstractBindTableRow extends AbstractBindTable
     }
     
     /**
-     * 編集のため取得したレコードを削除する.
+     * 編集のため取得したレコードを削除する。
      */
     public abstract function delete(): void;
     
     /**
-     * レコードが存在するか確認する.
+     * レコードが存在する場合はtrueを返す。
      * 
      * @return bool 
      */
@@ -152,14 +153,14 @@ abstract class AbstractBindTableRow extends AbstractBindTable
         $sql->append(" WHERE ");
         $sql->append($whereSet->buildParameterClause());
         $sql->append(";");
-        $backupRow = $this->row;
+        $backupRow = $this->record;
         try {
-            $this->setRow($this->getDatabase()->fetchRow($sql, $whereSet->buildParameters()));
+            $this->setRecord($this->getDatabase()->fetchRow($sql, $whereSet->buildParameters()));
             return true;
         } catch (Exception $exception) {
             return false;
         } finally {
-            $this->setRow($backupRow);
+            $this->setRecord($backupRow);
         }
     }
     

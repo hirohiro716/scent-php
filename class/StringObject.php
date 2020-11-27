@@ -5,7 +5,7 @@ use Exception;
 use hirohiro716\Scent\Validate\ValueValidator;
 
 /**
- * 文字列のクラス.
+ * 文字列のクラス。
  *
  * @author hiro
  */
@@ -15,7 +15,7 @@ class StringObject extends AbstractObject
     private $value;
 
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param mixed $value
      */
@@ -40,7 +40,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * stringを取得する.
+     * stringを取得する。
      *
      * @return string
      */
@@ -50,7 +50,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * stringを取得する.
+     * stringを取得する。
      *
      * @return string
      */
@@ -66,7 +66,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 改めて文字列をセットする.
+     * 改めて文字列をセットする。
      *
      * @param string $value
      */
@@ -76,7 +76,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 末尾に文字列を追加する.
+     * 末尾に文字列を追加する。
      *
      * @param string $value
      */
@@ -86,7 +86,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の一部を抽出した結果を取得する.
+     * 文字列の一部を抽出した結果を取得する。
      *
      * @param int $start
      * @param int $length
@@ -102,7 +102,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の一部を置き換えた結果を取得する.
+     * 文字列の一部を置き換えた結果を取得する。
      *
      * @param string $search
      * @param string $replacement
@@ -114,7 +114,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の左側を指定した文字列で埋めた結果を取得する.
+     * 文字列の左側を指定した文字列で埋めた結果を取得する。
      *
      * @param int $length
      * @param string $paddingString
@@ -128,7 +128,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の右側を指定した文字列で埋めた結果を取得する.
+     * 文字列の右側を指定した文字列で埋めた結果を取得する。
      *
      * @param int $length
      * @param string $paddingString
@@ -142,7 +142,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の最初および最後から空白文字を取り除いた結果を取得する.
+     * 文字列の最初および最後から空白文字を取り除いた結果を取得する。
      *
      * @return StringObject
      */
@@ -152,7 +152,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の最初から空白文字を取り除いた結果を取得する.
+     * 文字列の最初から空白文字を取り除いた結果を取得する。
      *
      * @return StringObject
      */
@@ -162,7 +162,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の最後から空白文字を取り除いた結果を取得する.
+     * 文字列の最後から空白文字を取り除いた結果を取得する。
      *
      * @return StringObject
      */
@@ -172,7 +172,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * アルファベットを小文字に変換した結果を取得する.
+     * アルファベットを小文字に変換した結果を取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -186,7 +186,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * アルファベットを大文字に変換した結果を取得する.
+     * アルファベットを大文字に変換した結果を取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -200,7 +200,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列を半角に変換した結果を取得する.
+     * 文字列を半角に変換した結果を取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -214,7 +214,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列を全角に変換した結果を取得する.
+     * 文字列を全角に変換した結果を取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -228,7 +228,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列内のカタカナをひらがなに変換した結果を取得する.
+     * 文字列内のカタカナをひらがなに変換した結果を取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -242,7 +242,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列内のひらがなをカタカナに変換した結果を取得する.
+     * 文字列内のひらがなをカタカナに変換した結果を取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -256,7 +256,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列をサニタイジングした結果を取得する.
+     * 文字列をサニタイジングした結果を取得する。
      * 
      * @return StringObject
      */
@@ -266,7 +266,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列をURLエンコードした結果を取得する.
+     * 文字列をURLエンコードした結果を取得する。
      * 
      * @return StringObject
      */
@@ -276,7 +276,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 内部の値を整数に変換する. 変換できなかった場合はnullを返す.
+     * 内部の値を整数に変換する. 変換できなかった場合はnullを返す。
      * 
      * @return int|null
      */
@@ -289,7 +289,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 内部の値を整数または少数に変換する. 変換できなかった場合はnullを返す.
+     * 内部の値を整数または少数に変換する. 変換できなかった場合はnullを返す。
      *
      * @return float|null
      */
@@ -302,7 +302,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 内部の値をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す.
+     * 内部の値をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す。
      * 
      * @return int|null
      */
@@ -312,7 +312,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列を区切り文字で分割して配列を取得する.
+     * 文字列を区切り文字で分割して配列を取得する。
      *
      * @param string $delimiter
      * @param int $limit
@@ -324,7 +324,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字数を取得する.
+     * 文字数を取得する。
      *
      * @param string $encoding
      * @return int
@@ -338,7 +338,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 引数の文字列が最初に見つかった位置を取得する.
+     * 引数の文字列が最初に見つかった位置を取得する。
      *
      * @param string $needle
      * @param string $encoding
@@ -357,7 +357,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 引数の文字列が最後に見つかった位置を取得する.
+     * 引数の文字列が最後に見つかった位置を取得する。
      *
      * @param string $needle
      * @param string $encoding
@@ -376,7 +376,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列が等しいか判定する.
+     * 文字列が等しいか判定する。
      *
      * @param string $compare
      *            比較対象
@@ -388,7 +388,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 正規表現に一致するか判定する.
+     * 正規表現に一致するか判定する。
      * 
      * @param string $regexPattern 正規表現のパターン
      * @return bool
@@ -401,7 +401,7 @@ class StringObject extends AbstractObject
     public const RANDOM_STRING_BASE = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789";
     
     /**
-     * ランダムな英数字で構成された文字列を作成する.
+     * ランダムな英数字で構成された文字列を作成する。
      * 
      * @param int $length 文字数
      * @param string $baseString 使用する文字列

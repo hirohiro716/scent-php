@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * 日時クラス.
+ * 日時クラス。
  *
  * @author hiro
  */
@@ -22,7 +22,7 @@ class Datetime extends AbstractObject
     private $second = 0;
 
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param mixed $datetime
      */
@@ -44,7 +44,7 @@ class Datetime extends AbstractObject
     }
     
     /**
-     * toStringの実装.
+     * toStringの実装。
      * 
      * @return string
      */
@@ -54,7 +54,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 年を変更する.
+     * 年を変更する。
      *
      * @param int $year
      */
@@ -64,7 +64,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 年を取得する.
+     * 年を取得する。
      *
      * @return int
      */
@@ -75,7 +75,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 月を変更する.
+     * 月を変更する。
      *
      * @param int $month
      */
@@ -85,7 +85,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 月を取得する.
+     * 月を取得する。
      *
      * @return int
      */
@@ -96,7 +96,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 日を変更する.
+     * 日を変更する。
      *
      * @param int $day
      */
@@ -106,7 +106,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 日を取得する.
+     * 日を取得する。
      *
      * @return int
      */
@@ -117,7 +117,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 年月日を変更する.
+     * 年月日を変更する。
      *
      * @param int $year
      * @param int $month
@@ -131,7 +131,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 時を変更する.
+     * 時を変更する。
      *
      * @param int $hour
      */
@@ -141,7 +141,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 時を取得する.
+     * 時を取得する。
      *
      * @return int
      */
@@ -152,7 +152,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 分を変更する.
+     * 分を変更する。
      *
      * @param int $minute
      */
@@ -162,7 +162,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 分を取得する.
+     * 分を取得する。
      *
      * @return int
      */
@@ -173,7 +173,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 秒を変更する.
+     * 秒を変更する。
      *
      * @param int $second
      */
@@ -183,7 +183,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 秒を取得する.
+     * 秒を取得する。
      *
      * @return int
      */
@@ -194,7 +194,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 時分秒を変更する.
+     * 時分秒を変更する。
      *
      * @param int $hour
      * @param int $minute
@@ -208,7 +208,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 何曜日かを取得する.
+     * 何曜日かを取得する。
      *
      * @return int (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
      */
@@ -218,7 +218,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 日時をセットする.
+     * 日時をセットする。
      *
      * @param int $year
      * @param int $month
@@ -238,7 +238,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 日付型式文字列をセットする.
+     * 日付型式文字列をセットする。
      *
      * @param string $datetimeString
      */
@@ -254,7 +254,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * タイムスタンプをセットする.
+     * タイムスタンプをセットする。
      *
      * @param int $timestamp
      */
@@ -269,7 +269,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 年を加算する.
+     * 年を加算する。
      *
      * @param int $year
      */
@@ -279,7 +279,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 月を加算する.
+     * 月を加算する。
      *
      * @param int $month
      */
@@ -289,7 +289,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 日を加算する.
+     * 日を加算する。
      *
      * @param int $day
      */
@@ -299,7 +299,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 時を加算する.
+     * 時を加算する。
      *
      * @param int $hour
      */
@@ -309,7 +309,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 分を加算する.
+     * 分を加算する。
      *
      * @param int $minute
      */
@@ -319,7 +319,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 秒を加算する.
+     * 秒を加算する。
      *
      * @param int $second
      */
@@ -329,7 +329,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * タイムスタンプを取得する.
+     * タイムスタンプを取得する。
      *
      * @return int
      */
@@ -339,7 +339,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 日時の文字列を取得する.
+     * 日時の文字列を取得する。
      *
      * @param string $pattern
      * @return string
@@ -351,7 +351,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 指定した曜日で一番近い日のDatetimeオブジェクトを作成する.
+     * 指定した曜日で一番近い日のDatetimeオブジェクトを作成する。
      *
      * @param int $weekNo
      *            (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
@@ -382,7 +382,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 過去に遡って指定曜日のDatetimeのcloneを取得する.
+     * 過去に遡って指定曜日のDatetimeのcloneを取得する。
      *
      * @param int $weekNo
      *            (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
@@ -398,7 +398,7 @@ class Datetime extends AbstractObject
     }
 
     /**
-     * 未来に向かって指定曜日のDatetimeのcloneを取得する.
+     * 未来に向かって指定曜日のDatetimeのcloneを取得する。
      *
      * @param integer $weekNo
      *            (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
@@ -414,7 +414,7 @@ class Datetime extends AbstractObject
     }
     
     /**
-     * 現時刻のタイムスタンプを取得する.
+     * 現時刻のタイムスタンプを取得する。
      * 
      * @return int
      */
@@ -424,7 +424,7 @@ class Datetime extends AbstractObject
     }
     
     /**
-     * 本日00:00:00のタイムスタンプを取得する.
+     * 本日00:00:00のタイムスタンプを取得する。
      * 
      * @return int
      */
@@ -436,7 +436,7 @@ class Datetime extends AbstractObject
     }
     
     /**
-     * 文字列をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す.
+     * 文字列をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す。
      * 
      * @param string $datetimeString
      * @return int|null

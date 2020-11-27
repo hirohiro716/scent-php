@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * PHPの基本的な関数.
+ * PHPの基本的な関数。
  *
  * @author hiro
  */
@@ -10,7 +10,7 @@ class Helper
 {
 
     /**
-     * 変数がnullかどうかを判定する.
+     * 変数がnullかどうかを判定する。
      *
      * @param mixed $value
      * @return bool
@@ -21,7 +21,7 @@ class Helper
     }
 
     /**
-     * オブジェクトまたはスカラの名前を取得する.
+     * オブジェクトまたはスカラの名前を取得する。
      *
      * @param mixed $scalarObject
      * @return string クラス名 または boolean | integer | double | string | array | NULL
@@ -38,7 +38,7 @@ class Helper
     }
 
     /**
-     * オブジェクトまたはスカラが指定した名前と等しいか判定する. クラス名の比較はnamespaceを含めることが可能.
+     * オブジェクトまたはスカラが指定した名前と等しいか判定する. クラス名の比較はnamespaceを含めることが可能。
      *
      * @param mixed $scalarObject
      *            スカラまたはインスタンス
@@ -69,7 +69,7 @@ class Helper
     }
     
     /**
-     * オブジェクトのIDを取得する.
+     * オブジェクトのIDを取得する。
      * 
      * @param mixed $object
      * @return string
@@ -80,7 +80,7 @@ class Helper
     }
     
     /**
-     * 通信が暗号化されているか判定する.
+     * 通信が暗号化されているか判定する。
      *
      * @return bool
      */

@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 /**
- * SMTPでメールを送信するクラス.
+ * SMTPでメールを送信するクラス。
  *
  * @author hiro
  */
@@ -17,7 +17,7 @@ class SmtpEmailTransmitter extends AbstractObject
 {
 
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      */
     public function __construct()
     {
@@ -42,7 +42,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $server;
 
     /**
-     * 送信サーバーをセットする.
+     * 送信サーバーをセットする。
      *
      * @param string $server
      */
@@ -54,7 +54,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $user;
 
     /**
-     * 送信サーバーにログインするユーザー名をセットする.
+     * 送信サーバーにログインするユーザー名をセットする。
      *
      * @param string $user
      */
@@ -66,7 +66,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $password;
 
     /**
-     * 送信サーバーにログインするパスワードをセットする.
+     * 送信サーバーにログインするパスワードをセットする。
      *
      * @param string $password
      */
@@ -78,8 +78,8 @@ class SmtpEmailTransmitter extends AbstractObject
     private $secureMethod;
 
     /**
-     * SMTPコネクションで使用する暗号化をセットする.
-     * "tls"がデフォルト.
+     * SMTPコネクションで使用する暗号化をセットする。
+     * "tls"がデフォルト。
      *
      * @param string $secureMethod
      */
@@ -91,8 +91,8 @@ class SmtpEmailTransmitter extends AbstractObject
     private $port;
 
     /**
-     * 使用するポート番号をセットする.
-     * 587がデフォルト.
+     * 使用するポート番号をセットする。
+     * 587がデフォルト。
      *
      * @param int $port
      */
@@ -104,8 +104,8 @@ class SmtpEmailTransmitter extends AbstractObject
     private $charSet;
 
     /**
-     * 使用する文字コードをセットする.
-     * "UTF-8"がデフォルト.
+     * 使用する文字コードをセットする。
+     * "UTF-8"がデフォルト。
      *
      * @param string $charSet
      */
@@ -117,8 +117,8 @@ class SmtpEmailTransmitter extends AbstractObject
     private $encoding;
 
     /**
-     * 使用するエンコーディングをセットする.
-     * "base64"がデフォルト.
+     * 使用するエンコーディングをセットする。
+     * "base64"がデフォルト。
      *
      * @param string $encoding
      */
@@ -130,7 +130,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $arrayTO;
 
     /**
-     * TO（宛先）を追加する.
+     * TO(宛先)を追加する。
      *
      * @param string $addressTO
      */
@@ -142,7 +142,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $arrayCC;
 
     /**
-     * CCを追加する.
+     * CCを追加する。
      *
      * @param string $addressCC
      */
@@ -154,7 +154,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $arrayBCC;
 
     /**
-     * BCCを追加する.
+     * BCCを追加する。
      *
      * @param string $addressBCC
      */
@@ -166,7 +166,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $addressFROM;
 
     /**
-     * FROM（送信者）をセットする.
+     * FROM(送信者)をセットする。
      *
      * @param string $addressFROM
      */
@@ -178,7 +178,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $title;
 
     /**
-     * タイトル（表題）をセットする.
+     * タイトル(表題)をセットする。
      *
      * @param string $title
      */
@@ -190,7 +190,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $body;
 
     /**
-     * 本文をセットする.
+     * 本文をセットする。
      *
      * @param string $body
      */
@@ -200,7 +200,7 @@ class SmtpEmailTransmitter extends AbstractObject
     }
 
     /**
-     * メールを送信する.
+     * メールを送信する。
      */
     public function send(): void
     {

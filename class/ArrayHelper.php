@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * 配列に関する関数.
+ * 配列に関する関数。
  *
  * @author hiro
  */
@@ -10,7 +10,7 @@ class ArrayHelper
 {
     
     /**
-     * 変数が配列かどうかを判定する.
+     * 変数が配列かどうかを判定する。
      *
      * @param mixed $maybeIsArray
      * @return bool
@@ -21,7 +21,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列内に特定のキーを持つ値があるかどうか判定する.
+     * 配列内に特定のキーを持つ値があるかどうか判定する。
      * 
      * @param array $array
      * @param mixed $key
@@ -33,7 +33,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列内に特定の値があるかどうか厳密な型比較を用いて判定する.
+     * 配列内に特定の値があるかどうか厳密な型比較を用いて判定する。
      * 
      * @param array $array
      * @param mixed $value
@@ -48,7 +48,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列内の特定のキーに対する値を取り除く.
+     * 配列内の特定のキーに対する値を取り除く。
      *
      * @param array $array
      * @param mixed $key
@@ -61,7 +61,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列内の特定の値をすべて取り除く.
+     * 配列内の特定の値をすべて取り除く。
      * 
      * @param array $array
      * @param mixed $value
@@ -76,7 +76,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列の要素数を数える.
+     * 配列の要素数を数える。
      * 
      * @param array $array
      * @return int
@@ -87,7 +87,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列を結合して新しい配列を生成する.
+     * 配列を結合して新しい配列を生成する。
      * 
      * @param array $array1
      * @param array $array2
@@ -99,7 +99,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列のキーをすべて取り出して配列で取得する.
+     * 配列のキーをすべて取り出して配列で取得する。
      * 
      * @param array $array
      * @return array

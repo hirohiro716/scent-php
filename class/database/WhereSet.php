@@ -7,7 +7,7 @@ use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\StringObject;
 
 /**
- * 複数のカラムをANDで連結するWHERE条件クラス.
+ * 複数のカラムをANDで連結するWHERE条件クラス。
  * 
  * @author hiro
  */
@@ -17,7 +17,7 @@ class WhereSet extends AbstractObject
     private $wheres = array();
     
     /**
-     * 追加済みのWhereオブジェクトを取得する.
+     * 追加済みのWhereオブジェクトを取得する。
      * 
      * @return array
      */
@@ -27,12 +27,12 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * WHEREを追加する.
+     * WHEREを追加する。
      * 
      * @param string $column カラム名
      * @param string $comparison 比較演算子
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function add(string $column, string $comparison, $value, bool $isNot): void
     {
@@ -42,11 +42,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「=」を使用したWHEREを追加する.
+     * 「=」を使用したWHEREを追加する。
      * 
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addEqual(string $column, $value, bool $isNot = false): void
     {
@@ -54,11 +54,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「!=」を使用したWHEREを追加する.
+     * 「!=」を使用したWHEREを追加する。
      * 
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addNotEqual(string $column, $value, bool $isNot = false): void
     {
@@ -66,11 +66,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「<」を使用したWHEREを追加する.
+     * 「<」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addLess(string $column, $value, bool $isNot = false): void
     {
@@ -78,11 +78,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「<=」を使用したWHEREを追加する.
+     * 「<=」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addLessEqual(string $column, $value, bool $isNot = false): void
     {
@@ -90,11 +90,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「>」を使用したWHEREを追加する.
+     * 「>」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addGreater(string $column, $value, bool $isNot = false): void
     {
@@ -102,11 +102,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「>=」を使用したWHEREを追加する.
+     * 「>=」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addGreaterEqual(string $column, $value, bool $isNot = false): void
     {
@@ -114,11 +114,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「IN」を使用したWHEREを追加する.
+     * 「IN」を使用したWHEREを追加する。
      * 
      * @param string $column カラム名
      * @param array $values 比較値配列
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addIn(string $column, array $values, bool $isNot = false): void
     {
@@ -126,10 +126,10 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「IS NULL」を使用したWHEREを追加する.
+     * 「IS NULL」を使用したWHEREを追加する。
      * 
      * @param string $column カラム名
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addIsNull(string $column, bool $isNot = false): void
     {
@@ -137,11 +137,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「LIKE」を使用したWHEREを追加する.
+     * 「LIKE」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addLike(string $column, $value, bool $isNot = false): void
     {
@@ -149,12 +149,12 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「BETWEEN」を使用したWHEREを追加する.
+     * 「BETWEEN」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $valueFrom 比較値FROM
      * @param mixed $valueTo 比較値TO
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addBetween(string $column, $valueFrom, $valueTo, bool $isNot = false): void
     {
@@ -162,11 +162,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「SIMILAR TO」を使用したWHEREを追加する.
+     * 「SIMILAR TO」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addSimilarTo(string $column, $value, bool $isNot = false): void
     {
@@ -174,11 +174,11 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「REGEXP」を使用したWHEREを追加する.
+     * 「REGEXP」を使用したWHEREを追加する。
      *
      * @param string $column カラム名
      * @param mixed $value 比較値
-     * @param bool $isNot NOT論理演算子を使用するかどうか
+     * @param bool $isNot NOT論理演算子を使用する場合はtrue
      */
     public function addRegexp(string $column, $value, bool $isNot = false): void
     {
@@ -186,7 +186,7 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * 「カラム1 = ? AND カラム2 = ?」のようなパラメータWhere句を生成する.
+     * 「カラム1 = ? AND カラム2 = ?」のようなパラメータWhere句を生成する。
      * 
      * @return string
      */
@@ -203,7 +203,7 @@ class WhereSet extends AbstractObject
     }
     
     /**
-     * buildParameterClauseメソッドで作成したWhere句に対するパラメータを生成する.
+     * buildParameterClauseメソッドで作成したWhere句に対するパラメータを生成する。
      * 
      * @return array すべてのパラメーターの配列
      */
@@ -221,7 +221,7 @@ class WhereSet extends AbstractObject
 }
 
 /**
- * １つのカラムに対するWHERE条件クラス.
+ * 1つのカラムに対するWHERE条件クラス。
  * 
  * @author hiro
  */
@@ -229,7 +229,7 @@ class Where extends AbstractObject
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param string $column カラム名
      * @param string $comparison 比較演算子
@@ -253,7 +253,7 @@ class Where extends AbstractObject
     private $column;
     
     /**
-     * カラム名を取得する.
+     * カラム名を取得する。
      * 
      * @return string
      */
@@ -265,7 +265,7 @@ class Where extends AbstractObject
     private $comparison;
     
     /**
-     * 比較演算子を取得する.
+     * 比較演算子を取得する。
      * 
      * @return string
      */
@@ -277,7 +277,7 @@ class Where extends AbstractObject
     private $values = array();
     
     /**
-     * 比較値を取得する.
+     * 比較値を取得する。
      * 
      * @return array
      */
@@ -287,7 +287,7 @@ class Where extends AbstractObject
     }
     
     /**
-     * 1番目の比較値を取得する.
+     * 1番目の比較値を取得する。
      * 
      * @return mixed
      */
@@ -297,7 +297,7 @@ class Where extends AbstractObject
     }
     
     /**
-     * 2番目の比較値を取得する.
+     * 2番目の比較値を取得する。
      * 
      * @return mixed
      */
@@ -309,7 +309,7 @@ class Where extends AbstractObject
     private $isNot = false;
     
     /**
-     * WHERE句がNOT論理演算子を使用するかどうか.
+     * WHERE句がNOT論理演算子を使用する場合はtrueを返す。
      * 
      * @return bool
      */
@@ -319,7 +319,7 @@ class Where extends AbstractObject
     }
     
     /**
-     * WHERE句にNOT論理演算子を使用するかどうかをセットする.
+     * WHERE句にNOT論理演算子を使用する場合はtrueをセットする。
      * 
      * @param bool $isNot
      */
@@ -329,7 +329,7 @@ class Where extends AbstractObject
     }
     
     /**
-     * 「カラム = ?」のようなパラメータWHERE句を生成する.
+     * 「カラム = ?」のようなパラメータWHERE句を生成する。
      * 
      * @return string
      */

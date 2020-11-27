@@ -9,7 +9,7 @@ use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
 
 /**
- * Webページの抽象クラス.
+ * Webページの抽象クラス。
  * 
  * @author hiro
  */
@@ -17,7 +17,7 @@ abstract class AbstractWebPage extends AbstractObject
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      */
     public function __construct()
     {
@@ -32,7 +32,7 @@ abstract class AbstractWebPage extends AbstractObject
     private $smarty;
     
     /**
-     * Smartyインスタンスを取得する.
+     * Smartyインスタンスを取得する。
      * 
      * @return Smarty
      */
@@ -42,42 +42,42 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * Smartyのテンプレートディレクトリを取得する.
+     * Smartyのテンプレートディレクトリを取得する。
      *
      * @return string
      */
     public abstract function getTemplateDirectory(): string;
     
     /**
-     * Smartyのキャッシュディレクトリを取得する.
+     * Smartyのキャッシュディレクトリを取得する。
      *
      * @return string
      */
     public abstract function getCompileDirectory(): string;
     
     /**
-     * Smartyの左デリミタを取得する.
+     * Smartyの左デリミタを取得する。
      *
      * @return string
      */
     public abstract function getLeftDelimiter(): string;
     
     /**
-     * Smartyの右デリミタを取得する.
+     * Smartyの右デリミタを取得する。
      *
      * @return string
      */
     public abstract function getRightDelimiter(): string;
     
     /**
-     * Smartyのテンプレートファイルの場所をテンプレートディレクトリからの相対パスで取得する.
+     * Smartyのテンプレートファイルの場所をテンプレートディレクトリからの相対パスで取得する。
      * 
      * @return string
      */
     public abstract function getTemplateFileLocation(): string;
     
     /**
-     * テンプレートファイルを表示する.
+     * テンプレートファイルを表示する。
      */
     public function display(): void
     {
@@ -85,7 +85,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * テンプレートファイルに値を割り当てる.
+     * テンプレートファイルに値を割り当てる。
      * 
      * @param mixed $key キー
      * @param mixed $value 値(stringとarrayは自動sanitizeする)
@@ -96,7 +96,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * 値をサニタイジングする.
+     * 値をサニタイジングする。
      * @param mixed $value 対象の値
      * @return mixed サニタイズ後の値
      */
@@ -118,7 +118,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * ほかのページにリダイレクトする.
+     * ほかのページにリダイレクトする。
      * 
      * @param string $URL
      */
@@ -128,7 +128,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * ほかのページにリダイレクトする.
+     * ほかのページにリダイレクトする。
      *
      * @param string $URL
      */
@@ -139,7 +139,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * 通信が暗号化されているか判定する.
+     * 通信が暗号化されているか判定する。
      * 
      * @return bool
      */
@@ -149,7 +149,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * $_POSTの指定値を取得する.
+     * $_POSTの指定値を取得する。
      * 
      * @param string $name
      * @return mixed
@@ -164,7 +164,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * $_POSTの値をすべて取得する.
+     * $_POSTの値をすべて取得する。
      * 
      * @return Hash
      */
@@ -178,7 +178,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * $_GETの指定値を取得する.
+     * $_GETの指定値を取得する。
      *
      * @param string $name
      * @return mixed
@@ -193,7 +193,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * $_GETの値をすべて取得する.
+     * $_GETの値をすべて取得する。
      *
      * @return Hash
      */
@@ -207,7 +207,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * $_REQUESTの指定値を取得する.
+     * $_REQUESTの指定値を取得する。
      *
      * @param string $name
      * @return mixed
@@ -222,7 +222,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * $_REQUESTの値をすべて取得する.
+     * $_REQUESTの値をすべて取得する。
      *
      * @return Hash
      */

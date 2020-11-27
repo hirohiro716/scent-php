@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * 可逆暗号化するクラス.
+ * 可逆暗号化するクラス。
  * 
  * @author hiro
  */
@@ -16,7 +16,7 @@ class ReversibleEncrypter extends AbstractObject
     private $iv;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param string $key
      * @param string $iv
@@ -29,7 +29,7 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 初期化ベクトルを取得する.
+     * 初期化ベクトルを取得する。
      * 
      * @return string
      */
@@ -45,7 +45,7 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 可逆暗号化する.
+     * 可逆暗号化する。
      * 
      * @param string $target
      * @return string
@@ -57,7 +57,7 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 暗号化されている文字列を復号化する.
+     * 暗号化されている文字列を復号化する。
      * 
      * @param string $encrypted
      * @return string
@@ -68,7 +68,7 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 初期化ベクトルを新規生成する.
+     * 初期化ベクトルを新規生成する。
      * 
      * @return string 生成したIV
      */

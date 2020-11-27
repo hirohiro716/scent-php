@@ -2,7 +2,7 @@
 namespace hirohiro716\Scent;
 
 /**
- * 浮動小数点数のクラス.
+ * 浮動小数点数のクラス。
  * 
  * @author hiro
  */
@@ -12,7 +12,7 @@ class FloatObject extends AbstractObject
     private $value = 0;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      *
      * @param mixed $value
      */
@@ -28,7 +28,7 @@ class FloatObject extends AbstractObject
     }
     
     /**
-     * 値を取得する.
+     * 値を取得する。
      *
      * @return float
      */
@@ -38,7 +38,7 @@ class FloatObject extends AbstractObject
     }
     
     /**
-     * 値をintとして取得する.
+     * 値をintとして取得する。
      *
      * @return int
      */
@@ -48,7 +48,7 @@ class FloatObject extends AbstractObject
     }
     
     /**
-     * 小数以下を四捨五入されたFloatObjectインスタンスを取得する.
+     * 小数以下を四捨五入されたFloatObjectインスタンスを取得する。
      * 
      * @param int $precision
      * @return FloatObject
@@ -59,7 +59,7 @@ class FloatObject extends AbstractObject
     }
     
     /**
-     * 小数以下を切り上げたFloatObjectインスタンスを取得する.
+     * 小数以下を切り上げたFloatObjectインスタンスを取得する。
      * 
      * @return FloatObject
      */
@@ -69,7 +69,7 @@ class FloatObject extends AbstractObject
     }
     
     /**
-     * 小数以下を切り捨てたFloatObjectインスタンスを取得する.
+     * 小数以下を切り捨てたFloatObjectインスタンスを取得する。
      * 
      * @return FloatObject
      */

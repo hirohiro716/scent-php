@@ -5,7 +5,7 @@ use Iterator;
 use ReflectionClass;
 
 /**
- * Enumの抽象クラス.
+ * Enumの抽象クラス。
  * 
  * @author hiro
  */
@@ -17,7 +17,7 @@ abstract class AbstractEnum extends AbstractObject
     private $value;
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param string $name 定数名
      * @param mixed $value 定数
@@ -35,7 +35,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 定数の値を取得する.
+     * 定数の値を取得する。
      * 
      * @return mixed
      */
@@ -45,7 +45,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 定数名を取得する.
+     * 定数名を取得する。
      * 
      * @return string
      */
@@ -55,7 +55,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 定数の値と引数が同じか判定する.
+     * 定数の値と引数が同じか判定する。
      * 
      * @param mixed $value
      * @return bool
@@ -68,7 +68,7 @@ abstract class AbstractEnum extends AbstractObject
     private static $nullValue = null;
     
     /**
-     * 定義されていない値を示す定数を取得する.
+     * 定義されていない値を示す定数を取得する。
      * 
      * @return NullEnum
      */
@@ -80,7 +80,7 @@ abstract class AbstractEnum extends AbstractObject
     private static $instancesArray = null;
     
     /**
-     * すべての定数名の配列を作成する.
+     * すべての定数名の配列を作成する。
      */
     private static function createAllObject(): void
     {
@@ -102,7 +102,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 一意の定数オブジェクトを取得する.
+     * 一意の定数オブジェクトを取得する。
      *
      * @param mixed $constantValue
      * @return self 定数オブジェクト
@@ -120,7 +120,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 一意の定数オブジェクトを検索する.
+     * 一意の定数オブジェクトを検索する。
      * 
      * @param string $name 大文字小文字を区別しないconstの定義名
      * @return self 定数オブジェクト
@@ -140,7 +140,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 定数が定義されているか判定する.
+     * 定数が定義されているか判定する。
      * 
      * @param mixed $constantValue
      * @return bool
@@ -154,7 +154,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * すべての定数を取得する.
+     * すべての定数を取得する。
      *
      * @return EnumValues
      */
@@ -170,7 +170,7 @@ abstract class AbstractEnum extends AbstractObject
 }
 
 /**
- * 未定義の値を示す定数クラス.
+ * 未定義の値を示す定数クラス。
  *
  * @author hiro
  */
@@ -184,7 +184,7 @@ class NullEnum extends AbstractEnum {
 }
 
 /**
- * EnumのIterator実装クラス.
+ * EnumのIterator実装クラス。
  * 
  * @author hiro
  */
@@ -192,7 +192,7 @@ class EnumValues implements Iterator
 {
     
     /**
-     * コンストラクタ.
+     * コンストラクタ。
      * 
      * @param array $values
      */
@@ -204,7 +204,7 @@ class EnumValues implements Iterator
     private $values = array();
     
     /**
-     * すべての定数を配列で取得する.
+     * すべての定数を配列で取得する。
      * 
      * @return array
      */
@@ -216,7 +216,7 @@ class EnumValues implements Iterator
     private $position = 0;
     
     /**
-     * 現在の要素を返す.
+     * 現在の要素を返す。
      * 
      * @return AbstractEnum
      */
@@ -226,7 +226,7 @@ class EnumValues implements Iterator
     }
     
     /**
-     * 現在の要素のキーを返す.
+     * 現在の要素のキーを返す。
      *
      * @return int
      */
@@ -236,7 +236,7 @@ class EnumValues implements Iterator
     }
     
     /**
-     * 次の要素に進む.
+     * 次の要素に進む。
      */
     public function next(): void
     {
@@ -244,7 +244,7 @@ class EnumValues implements Iterator
     }
     
     /**
-     * イテレータの最初の要素に巻き戻す.
+     * イテレータの最初の要素に巻き戻す。
      */
     public function rewind(): void
     {
@@ -252,7 +252,7 @@ class EnumValues implements Iterator
     }
     
     /**
-     * 現在位置が有効かどうかを調べる.
+     * 現在位置が有効な場合はtrueを返す。
      *
      * @return bool
      */
