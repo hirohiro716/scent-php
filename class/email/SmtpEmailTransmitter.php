@@ -35,7 +35,7 @@ class SmtpEmailTransmitter extends AbstractObject
         $this->arrayCC = new Hash();
         $this->arrayBCC = new Hash();
         $this->addressFROM = new StringObject();
-        $this->title = new StringObject();
+        $this->subject = new StringObject();
         $this->body = new StringObject();
     }
 
@@ -175,16 +175,16 @@ class SmtpEmailTransmitter extends AbstractObject
         $this->addressFROM->set($addressFROM);
     }
 
-    private $title;
+    private $subject;
 
     /**
-     * タイトル(表題)をセットする。
+     * 表題をセットする。
      *
-     * @param string $title
+     * @param string $subject
      */
-    public function setTitle(string $title): void
+    public function setSubject(string $subject): void
     {
-        $this->title->set($title);
+        $this->subject->set($subject);
     }
 
     private $body;
@@ -236,7 +236,7 @@ class SmtpEmailTransmitter extends AbstractObject
         foreach ($this->arrayBCC as $bcc) {
             $mailer->addBCC($bcc);
         }
-        $mailer->Subject = $this->title->get();
+        $mailer->Subject = $this->subject->get();
         $mailer->Body = $this->body->get();
         if ($mailer->send() == false) {
             throw new Exception($mailer->ErrorInfo);

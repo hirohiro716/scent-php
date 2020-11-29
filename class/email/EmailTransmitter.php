@@ -25,7 +25,7 @@ class EmailTransmitter extends AbstractObject
         $this->arrayCC = new Hash();
         $this->arrayBCC = new Hash();
         $this->addressFROM = new StringObject();
-        $this->title = new StringObject();
+        $this->subject = new StringObject();
         $this->body = new StringObject();
     }
 
@@ -77,16 +77,16 @@ class EmailTransmitter extends AbstractObject
         $this->addressFROM->set($addressFROM);
     }
 
-    private $title;
+    private $subject;
 
     /**
-     * タイトル(表題)をセットする。
+     * 表題をセットする。
      *
-     * @param string $title
+     * @param string $subject
      */
-    public function setTitle(string $title): void
+    public function setSubject(string $subject): void
     {
-        $this->title->set($title);
+        $this->subject->set($subject);
     }
 
     private $body;
@@ -129,6 +129,6 @@ class EmailTransmitter extends AbstractObject
         if ($headerObject->length() > 0) {
             $header = $headerObject->get();
         }
-        return mb_send_mail($to, $this->title, $this->body, $header);
+        return mb_send_mail($to, $this->subject, $this->body, $header);
     }
 }
