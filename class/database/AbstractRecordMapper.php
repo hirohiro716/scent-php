@@ -11,7 +11,7 @@ use hirohiro716\Scent\StringObject;
  * 
  * @author hiro
  */
-abstract class AbstractTableRecordMapper extends AbstractTableMapper
+abstract class AbstractRecordMapper extends AbstractTableMapper
 {
     
     /**

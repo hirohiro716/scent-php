@@ -12,7 +12,7 @@ use hirohiro716\Scent\Hashes;
  * 
  * @author hiro
  */
-abstract class AbstractTableRecordsMapper extends AbstractTableMapper
+abstract class AbstractMultipleRecordMapper extends AbstractTableMapper
 {
     
     /**
