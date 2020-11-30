@@ -10,7 +10,7 @@ class ArrayHelper
 {
     
     /**
-     * 変数が配列かどうかを判定する。
+     * 変数が配列の場合はtrueを返す。
      *
      * @param mixed $maybeIsArray
      * @return bool
@@ -21,7 +21,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列内に特定のキーを持つ値があるかどうか判定する。
+     * 配列内に特定のキーを持つ値がある場合はtrueを返す。
      * 
      * @param array $array
      * @param mixed $key
@@ -33,7 +33,7 @@ class ArrayHelper
     }
     
     /**
-     * 配列内に特定の値があるかどうか厳密な型比較を用いて判定する。
+     * 厳密な型比較を用いて配列内の値と指定値を比較し、同じものがある場合はtrueを返す。
      * 
      * @param array $array
      * @param mixed $value

@@ -353,8 +353,7 @@ class Datetime extends AbstractObject
     /**
      * 指定した曜日で一番近い日のDatetimeオブジェクトを作成する。
      *
-     * @param int $weekNo
-     *            (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
+     * @param int $weekNo 0:日、1:月、2:火、3:水、4:木、5:金、6:土
      * @return Datetime
      */
     public function createNearWeekDatetime(int $weekNo): Datetime
@@ -384,8 +383,7 @@ class Datetime extends AbstractObject
     /**
      * 過去に遡って指定曜日のDatetimeのcloneを取得する。
      *
-     * @param int $weekNo
-     *            (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
+     * @param int $weekNo 0:日、1:月、2:火、3:水、4:木、5:金、6:土
      * @return Datetime
      */
     public function createBeforeNearWeek(int $weekNo): Datetime
@@ -400,8 +398,7 @@ class Datetime extends AbstractObject
     /**
      * 未来に向かって指定曜日のDatetimeのcloneを取得する。
      *
-     * @param integer $weekNo
-     *            (0:日 1:月 2:火 3:水 4:木 5:金 6:土)
+     * @param integer $weekNo 0:日、1:月、2:火、3:水、4:木、5:金、6:土
      * @return Datetime
      */
     public function createAfterNearWeek(int $weekNo): Datetime

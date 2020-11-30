@@ -102,7 +102,7 @@ class EmailTransmitter extends AbstractObject
     }
 
     /**
-     * メールを送信する。
+     * メールを送信して成功した場合はtrueを返す。
      *
      * @return bool
      */

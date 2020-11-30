@@ -55,7 +55,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 定数の値と引数が同じか判定する。
+     * 定数の値と引数が同じ場合はtrueを返す。
      * 
      * @param mixed $value
      * @return bool
@@ -140,7 +140,7 @@ abstract class AbstractEnum extends AbstractObject
     }
     
     /**
-     * 定数が定義されているか判定する。
+     * 定数が定義されている場合はtrueを返す。
      * 
      * @param mixed $constantValue
      * @return bool

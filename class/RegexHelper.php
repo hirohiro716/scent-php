@@ -10,95 +10,95 @@ class RegexHelper
 {
     
     /**
-     * 半角数値のみ
+     * 半角整数のみ。
      */
     public const INTEGER_NARROW_ONLY = "^[0-9]{0,}$";
     /**
-     * 全角数値のみ
+     * 全角整数のみ。
      */
     public const INTEGER_WIDE_ONLY = "^[０-９]{0,}$";
     /**
-     * 小数のみ
+     * 小数のみ。
      */
     public const DECIMAL = "^[0-9\.]{0,}$";
     /**
-     * 正負小数のみ
+     * 正負小数のみ。
      */
     public const DECIMAL_NEGATIVE = "^[0-9\.\-]{0,}$";
     /**
-     * 電話番号のみ(半角数字及びハイフン)
+     * 電話番号(半角数字及びハイフン)のみ。
      */
     public const TEL_NUMBER_ONLY = "^[0-9\-]{0,}$";
     /**
-     * 日時のみ(半角数字、ハイフン及びスラッシュ及びコロン)
+     * 日時(半角数字、ハイフン及びスラッシュ及びコロン)のみ。
      */
     public const DATETIME_ONLY = "^[0-9\-\/: ]{0,}$";
     /**
-     * 日付のみ(半角数字、ハイフン及びスラッシュ)
+     * 日付(半角数字、ハイフン及びスラッシュ)のみ。
      */
     public const DATE_ONLY = "^[0-9\-\/]{0,}$";
     /**
-     * 時刻のみ(半角数字及びコロン)
+     * 時刻(半角数字及びコロン)のみ。
      */
     public const TIME_ONLY = "^[0-9:]{0,}$";
     /**
-     * アルファベットのみ
+     * アルファベットのみ。
      */
     public const ALPHABET_ONLY = "^[a-zA-Zａ-ｚＡ-Ｚ]{0,}$";
     /**
-     * アルファベット半角のみ
+     * アルファベット半角のみ。
      */
     public const ALPHABET_NARROW_ONLY = "^[a-zA-Z]{0,}$";
     /**
-     * アルファベット全角のみ
+     * アルファベット全角のみ。
      */
     public const ALPHABET_WIDE_ONLY = "^[ａ-ｚＡ-Ｚ]{0,}$";
     /**
-     * アルファベット半角小文字のみ
+     * アルファベット半角小文字のみ。
      */
     public const ALPHABET_NARROW_LOWER_ONLY = "^[a-z]{0,}$";
     /**
-     * アルファベット半角大文字のみ
+     * アルファベット半角大文字のみ。
      */
     public const ALPHABET_NARROW_UPPER_ONLY = "^[A-Z]{0,}$";
     /**
-     * アルファベット全角小文字のみ
+     * アルファベット全角小文字のみ。
      */
     public const ALPHABET_WIDE_LOWER_ONLY = "^[ａ-ｚ]{0,}$";
     /**
-     * アルファベット全角大文字のみ
+     * アルファベット全角大文字のみ。
      */
     public const ALPHABET_WIDE_UPPER_ONLY = "^[Ａ-Ｚ]{0,}$";
     /**
-     * 半角カタカナのみ
+     * 半角カタカナのみ。
      */
     public const KATAKANA_NARROW_ONLY = "^[ｦ-ﾟ]{0,}$";
     /**
-     * 全角カタカナのみ
+     * 全角カタカナのみ。
      */
     public const KATAKANA_WIDE_ONLY = "^[ァ-ヴー]{0,}$";
     /**
-     * ひらがなのみ
+     * ひらがなのみ。
      */
     public const HIRAGANA_ONLY = "^[ぁ-んー]{0,}$";
     /**
-     * 改行のみ
+     * 改行のみ。
      */
     public const LINE_SEPARATOR = "^(\r\n|\r|\n){0,}$";
     /**
-     * タブ文字のみ
+     * タブ文字のみ。
      */
     public const TAB = "^\t{0,}$";
     /**
-     * スペース文字のみ
+     * スペース文字のみ。
      */
     public const SPACE = "^(　| ){0,}$";
     /**
-     * 半角文字のみ
+     * 半角文字のみ。
      */
     public const HALF = "^[\x01-\x7E]{0,}$";
     /**
-     * 全角文字のみ
+     * 全角文字のみ。
      */
     public const WIDE = "^[^\x01-\x7E]{0,}$";
     

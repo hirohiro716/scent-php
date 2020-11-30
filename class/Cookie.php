@@ -13,7 +13,7 @@ class Cookie extends AbstractObject
      * コンストラクタ。
      *
      * @param mixed $lifetimeSecond セッションクッキーの有効期限(秒数)
-     * @param bool $isSecure HTTPSのみ許可するかどうか
+     * @param bool $isSecure HTTPSのみ許可する場合はtrue
      */
     public function __construct($path = "/", $lifetimeSecond = null, bool $isSecure = false)
     {

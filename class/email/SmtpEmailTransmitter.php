@@ -30,7 +30,7 @@ class SmtpEmailTransmitter extends AbstractObject
         $this->port = 587; // setメソッドのdocに記載あり
         $this->charSet = new StringObject("UTF-8"); // setメソッドのdocに記載あり
         $this->encoding = new StringObject("base64"); // setメソッドのdocに記載あり
-                                                      // メール情報
+        // メール情報
         $this->arrayTO = new Hash();
         $this->arrayCC = new Hash();
         $this->arrayBCC = new Hash();
@@ -78,8 +78,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $secureMethod;
 
     /**
-     * SMTPコネクションで使用する暗号化をセットする。
-     * "tls"がデフォルト。
+     * SMTPコネクションで使用する暗号化をセットする。"tls"がデフォルト。
      *
      * @param string $secureMethod
      */
@@ -91,8 +90,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $port;
 
     /**
-     * 使用するポート番号をセットする。
-     * 587がデフォルト。
+     * 使用するポート番号をセットする。587がデフォルト。
      *
      * @param int $port
      */
@@ -104,8 +102,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $charSet;
 
     /**
-     * 使用する文字コードをセットする。
-     * "UTF-8"がデフォルト。
+     * 使用する文字コードをセットする。"UTF-8"がデフォルト。
      *
      * @param string $charSet
      */
@@ -117,8 +114,7 @@ class SmtpEmailTransmitter extends AbstractObject
     private $encoding;
 
     /**
-     * 使用するエンコーディングをセットする。
-     * "base64"がデフォルト。
+     * 使用するエンコーディングをセットする。"base64"がデフォルト。
      *
      * @param string $encoding
      */

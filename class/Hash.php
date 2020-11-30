@@ -35,8 +35,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 内部の配列に対して引数の配列の内容を追加する。
-     * キーが重複する場合は上書きされる。
+     * 内部の配列に対して引数の配列の内容を追加する。キーが重複する場合は上書きされる。
      *
      * @param array $array
      */
@@ -113,7 +112,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * キーが存在するか確認する。
+     * キーが存在する場合はtrueを返す。
      *
      * @param string $key
      * @return bool
@@ -124,7 +123,7 @@ class Hash extends AbstractObject implements Iterator
     }
 
     /**
-     * 値が存在するかを厳密な型比較を用いて確認する。
+     * 厳密な型比較を用いて配列の値と指定値を比較し、値が存在する場合はtrueを返す。
      *
      * @param mixed $value
      * @return bool

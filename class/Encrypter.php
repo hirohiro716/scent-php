@@ -2,11 +2,11 @@
 namespace hirohiro716\Scent;
 
 /**
- * 可逆暗号化するクラス。
+ * 暗号化するクラス。
  * 
  * @author hiro
  */
-class ReversibleEncrypter extends AbstractObject
+class Encrypter extends AbstractObject
 {
     
     private $method = "AES-256-CBC";
@@ -45,7 +45,7 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 可逆暗号化する。
+     * 暗号化する。
      * 
      * @param string $target
      * @return string
@@ -57,7 +57,7 @@ class ReversibleEncrypter extends AbstractObject
     }
     
     /**
-     * 暗号化されている文字列を復号化する。
+     * 復号化する。
      * 
      * @param string $encrypted
      * @return string

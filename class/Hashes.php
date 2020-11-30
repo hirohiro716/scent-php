@@ -36,7 +36,7 @@ class Hashes implements Iterator
     }
     
     /**
-     * 指定のHashが内部に存在するか確認する。
+     * 指定のHashが内部に存在する場合はtrueを返す。
      *
      * @param Hash $hash
      * @return bool

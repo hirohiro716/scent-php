@@ -118,7 +118,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     private $depthOfSubitemSearch = -1;
     
     /**
-     * ディレクトリ内のサブアイテムを取得する深度をセットする. 初期値は無制限。
+     * ディレクトリ内のサブアイテムを取得する深度をセットする。初期値は無制限。
      * 
      * @param int $depth 検索する深度(ゼロで直下のみ)
      */

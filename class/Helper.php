@@ -21,10 +21,10 @@ class Helper
     }
 
     /**
-     * オブジェクトまたはスカラの名前を取得する。
+     * オブジェクトまたはスカラーの名前を取得する。
      *
      * @param mixed $scalarObject
-     * @return string クラス名 または boolean | integer | double | string | array | NULL
+     * @return string boolean、integer、double、string、array、NULL、またはクラス名
      */
     public static function findInstanceName($scalarObject): StringObject
     {
@@ -38,12 +38,10 @@ class Helper
     }
 
     /**
-     * オブジェクトまたはスカラが指定した名前と等しいか判定する. クラス名の比較はnamespaceを含めることが可能。
+     * オブジェクトまたはスカラーが指定した名前と等しいか判定する. クラス名の比較はnamespaceを含めることが可能。
      *
-     * @param mixed $scalarObject
-     *            スカラまたはインスタンス
-     * @param string $name
-     *            bool | boolean | int | integer | double | float | string | array | null | NULL またはクラス名
+     * @param mixed $scalarObject スカラーまたはインスタンス
+     * @param string $name bool、boolean、int、integer、double、float、string、array、null、NULL、またはクラス名
      * @return bool
      */
     public static function instanceIsThisName($scalarObject, string $name): bool
@@ -80,7 +78,7 @@ class Helper
     }
     
     /**
-     * 通信が暗号化されているか判定する。
+     * 通信が暗号化されている場合はtrueを返す。
      *
      * @return bool
      */

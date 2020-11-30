@@ -97,6 +97,7 @@ abstract class AbstractWebPage extends AbstractObject
     
     /**
      * 値をサニタイジングする。
+     * 
      * @param mixed $value 対象の値
      * @return mixed サニタイズ後の値
      */
@@ -139,7 +140,7 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
-     * 通信が暗号化されているか判定する。
+     * 通信が暗号化されている場合はtrueを返す。
      * 
      * @return bool
      */

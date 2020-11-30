@@ -376,10 +376,9 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列が等しいか判定する。
+     * 文字列が等しい場合はtrueを返す。
      *
-     * @param string $compare
-     *            比較対象
+     * @param string $compare 比較対象
      * @return bool
      */
     public function equals(string $compare): bool
@@ -388,7 +387,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 正規表現に一致するか判定する。
+     * 正規表現に一致する場合はtrueを返す。
      * 
      * @param string $regexPattern 正規表現のパターン
      * @return bool

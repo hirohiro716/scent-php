@@ -36,7 +36,7 @@ class PasswordHasher extends AbstractObject
     }
     
     /**
-     * 内部の値とハッシュ値が一致するか検証する。
+     * 内部の値とハッシュ値が一致する場合はtrueを返す。
      * 
      * @param string $hash
      * @return bool

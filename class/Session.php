@@ -15,7 +15,7 @@ class Session extends AbstractObject
      * コンストラクタ。
      * 
      * @param mixed $lifetime セッションクッキーの有効期限(秒数)
-     * @param bool $isSecure HTTPSのみ許可するかどうか
+     * @param bool $isSecure HTTPSのみ許可する場合はtrue
      */
     public function __construct($lifetime = null, bool $isSecure = false)
     {
@@ -75,7 +75,7 @@ class Session extends AbstractObject
     }
 
     /**
-     * セッションの値が存在するか確認する。
+     * セッションの値が存在する場合はtrueを返す。
      *
      * @param mixed $key
      * @return bool
@@ -112,10 +112,9 @@ class Session extends AbstractObject
     }
 
     /**
-     * ユーザーから送信されたTokenと発行したTokenと一致するか判定する。
+     * ユーザーから送信されたTokenと発行したTokenと一致する場合はtrueを返す。
      *
-     * @param string $token
-     *            ユーザーが送信してきたtoken
+     * @param string $token ユーザーが送信してきたtoken
      * @return bool
      */
     public function isValidToken(string $token): bool

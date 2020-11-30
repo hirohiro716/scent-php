@@ -20,8 +20,7 @@ class QRCodeCreator extends AbstractObject
     /**
      * QRコードの大きさのスケールを指定する。
      *
-     * @param float $scale
-     *            デフォルトは1
+     * @param float $scale デフォルトは1
      */
     public function setScale(float $scale): void
     {
@@ -31,10 +30,8 @@ class QRCodeCreator extends AbstractObject
     /**
      * QRコードの画像を作成する。
      *
-     * @param string $data
-     *            内容
-     * @param File $file
-     *            保存場所
+     * @param string $data 内容
+     * @param File $file 保存場所
      */
     public function create(string $data, File $file): void
     {

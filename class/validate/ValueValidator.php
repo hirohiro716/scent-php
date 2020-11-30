@@ -46,6 +46,7 @@ class ValueValidator extends AbstractObject
     
     /**
      * エラーメッセージの定義。
+     * 
      * @var array
      */
     private $messagesArray = array(
@@ -239,8 +240,7 @@ class ValueValidator extends AbstractObject
     /**
      * パラメーターを利用したエラーメッセージを取得する。
      *
-     * @param string $const
-     *            チェック方法
+     * @param string $const チェック方法
      * @return int 定数
      */
     private function buildErrorMessage(int $const): string
@@ -339,7 +339,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * nullまたは空文字かどうかをチェックする。
+     * nullまたは空文字の場合はtrueを返す。
      *
      * @param mixed $value
      * @return bool
@@ -357,7 +357,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 数値かどうかをチェックする。
+     * 整数の場合はtrueを返す。
      *
      * @param mixed $value
      * @return bool
@@ -376,7 +376,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 数値または少数かどうかをチェックする。
+     * 整数または少数の場合はtrueを返す。
      *
      * @param mixed $value
      * @return bool
@@ -395,7 +395,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * メールアドレスに使用できる文字だけで構成されているかをチェックする。
+     * Eメールアドレスに使用できる文字だけで構成されている場合はtrueを返す。
      *
      * @param string $emailAddress
      * @return bool
@@ -413,10 +413,9 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * 日付として有効かどうかチェックする。
+     * 日付として有効な場合はtrueを返す。
      *
-     * @param mixed $value
-     *            日時文字列またはUNIXタイムスタンプ
+     * @param mixed $value 日時文字列またはUNIXタイムスタンプ
      * @return bool
      */
     public static function isDatetime($value): bool
@@ -432,7 +431,7 @@ class ValueValidator extends AbstractObject
     }
 
     /**
-     * ハイフン付き電話番号として有効かどうかチェックする。
+     * ハイフン付き電話番号として有効な場合はtrueを返す。
      *
      * @param string $value
      * @return bool

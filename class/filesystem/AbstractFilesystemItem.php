@@ -56,7 +56,7 @@ abstract class AbstractFilesystemItem extends AbstractObject
     }
     
     /**
-     * ファイルかどうか判定する。
+     * このインスタンスがファイルの場合はtrueを返す。
      *
      * @return bool
      */
@@ -80,7 +80,7 @@ abstract class AbstractFilesystemItem extends AbstractObject
     }
     
     /**
-     * ディレクトリかどうか判定する。
+     * このインスタンスがディレクトリの場合はtrueを返す。
      *
      * @return bool
      */
@@ -202,28 +202,28 @@ abstract class AbstractFilesystemItem extends AbstractObject
     public abstract function delete(): void;
     
     /**
-     * 存在するか確認する。
+     * 存在する場合はtrueを返す。
      *
      * @return bool
      */
     public abstract function isExist(): bool;
     
     /**
-     * 読み取り可能か判定する。
+     * 読み取りな場合はtrueを返す。
      *
      * @return bool
      */
     public abstract function isReadable(): bool;
     
     /**
-     * 書き込み可能か判定する。
+     * 書き込み可能な場合はtrueを返す。
      *
      * @return bool
      */
     public abstract function isWritable(): bool;
     
     /**
-     * リンクアイテムか判定する。
+     * リンクアイテムの場合はtrueを返す。
      *
      * @return bool
      */
@@ -247,7 +247,7 @@ abstract class AbstractFilesystemItem extends AbstractObject
     }
     
     /**
-     * ファイルまたはディレクトリが存在するか確認する。
+     * ファイルまたはディレクトリが存在する場合はtrueを返す。
      * 
      * @param string $location
      * @return bool
