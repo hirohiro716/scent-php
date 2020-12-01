@@ -12,7 +12,7 @@ class CauseProperty
 {
     
     /**
-     * テーブルの行情報の検証例外の原因となったカラムを作成する。
+     * プロパティの検証例外の原因となったカラムを作成する。
      * 
      * @param AbstractProperty $property 検証失敗の原因となったカラムやプロパティ
      * @param string $message 例外メッセージ
@@ -26,7 +26,7 @@ class CauseProperty
     private $property;
     
     /**
-     * 例外の原因となったカラムを取得する。
+     * 例外の原因となったプロパティを取得する。
      * 
      * @return AbstractProperty
      */
