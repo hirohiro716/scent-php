@@ -252,10 +252,10 @@ class ValueValidator extends AbstractObject
         }
         return "";
     }
-
+    
     /**
      * 予約された値の検証を実行する。
-     * 
+     *
      * @param mixed $value
      * @throws ValidationException
      */
@@ -320,24 +320,24 @@ class ValueValidator extends AbstractObject
                     }
                     break;
                 case self::TELEPHONE:
-                    if ($val->isRegexMatch("^[0-9]{1,5}-[0-9]{1,5}-[0-9]{1,5}$") == false) {
+                    if ($val->length() > 0 && $val->isRegexMatch("^[0-9]{1,5}-[0-9]{1,5}-[0-9]{1,5}$") == false) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
                 case self::REGEX:
-                    if ($val->isRegexMatch($parameter) == false) {
+                    if ($val->length() > 0 && $val->isRegexMatch($parameter) == false) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
                 case self::REGEX_REVERSE:
-                    if ($val->isRegexMatch($parameter)) {
+                    if ($val->length() > 0 && $val->isRegexMatch($parameter)) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
             }
         }
     }
-
+    
     /**
      * nullまたは空文字の場合はtrueを返す。
      *
