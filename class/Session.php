@@ -10,14 +10,15 @@ class Session extends AbstractObject
 {
 
     private const KEY_AGENT = "session_key_agent";
-
+    
     /**
      * コンストラクタ。
-     * 
+     *
      * @param mixed $lifetime セッションクッキーの有効期限(秒数)
      * @param bool $isSecure HTTPSのみ許可する場合はtrue
+     * @param bool $isCompareUserAgent ユーザーエージェントが一致しない場合にセッションを無効にする場合はtrue
      */
-    public function __construct($lifetime = null, bool $isSecure = false)
+    public function __construct($lifetime = null, bool $isSecure = true, bool $isCompareUserAgent = true)
     {
         parent::__construct();
         if (session_status() === PHP_SESSION_NONE) {
@@ -38,17 +39,19 @@ class Session extends AbstractObject
             session_start();
         }
         // 別のブラウザからのアクセスなら初期化
-        if (ArrayHelper::isExistKey($_SESSION, self::KEY_AGENT)) {
-            $agent = new StringObject($_SESSION[self::KEY_AGENT]);
-            if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
-                session_unset();
+        if ($isCompareUserAgent) {
+            if (ArrayHelper::isExistKey($_SESSION, self::KEY_AGENT)) {
+                $agent = new StringObject($_SESSION[self::KEY_AGENT]);
+                if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
+                    session_unset();
+                }
             }
+            $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
         }
-        $_SESSION[self::KEY_AGENT] = $_SERVER["HTTP_USER_AGENT"];
         // セッションIDを変更
         session_regenerate_id(true);
     }
-
+    
     /**
      * セッションに値をセットする。
      *
