@@ -231,7 +231,7 @@ abstract class AbstractWebPage extends AbstractObject
     {
         $hash = new Hash();
         foreach (ArrayHelper::extractKeys($_REQUEST) as $key) {
-            $hash->put($key, self::getPostValue($key));
+            $hash->put($key, self::getRequestValue($key));
         }
         return $hash;
     }
