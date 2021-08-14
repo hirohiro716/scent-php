@@ -160,7 +160,17 @@ abstract class AbstractDatabase extends AbstractObject
         $sql->append(");");
         $this->execute($sql, $values->getValues());
     }
-
+    
+    /**
+     * 最後のINSERT文で自動インクリメントされたIDを取得する。
+     * 
+     * @return mixed
+     */
+    public function fetchLastAutoIncrementID()
+    {
+        $this->pdo->lastInsertId();
+    }
+    
     /**
      * 連想配列の情報でテーブルを更新する。
      *
