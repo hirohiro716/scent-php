@@ -99,8 +99,8 @@ class Helper
      */
     public static function isExistURL(string $url): bool
     {
-        $response = @file_get_contents($url, NULL, NULL, 0, 1);
-        if ($response === false) {
+        $response = new StringObject(@get_headers($url)[0]);
+        if ($response->indexOf(" 200 ") == -1) {
             return false;
         }
         return true;
