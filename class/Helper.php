@@ -95,15 +95,21 @@ class Helper
      * 指定されたURLが存在する場合はtrueを返す。
      * 
      * @param string $url
+     * @param int $timeout
      * @return bool
      */
-    public static function isExistURL(string $url): bool
+    public static function isExistURL(string $url, int $timeoutSeconds): bool
     {
-        $response = new StringObject(@get_headers($url)[0]);
-        if ($response->indexOf(" 200 ") == -1) {
-            return false;
+        $curlHandle = curl_init($url);
+        curl_setopt($curlHandle, CURLOPT_NOBODY, true);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, $timeoutSeconds);
+        curl_exec($curlHandle);
+        $statusCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
+        curl_close($curlHandle);
+        if ($statusCode == 200) {
+            return true;
         }
-        return true;
+        return false;
     }
     
 }
