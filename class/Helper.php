@@ -91,4 +91,19 @@ class Helper
         return false;
     }
     
+    /**
+     * 指定されたURLが存在する場合はtrueを返す。
+     * 
+     * @param string $url
+     * @return bool
+     */
+    public static function isExistURL(string $url): bool
+    {
+        $response = @file_get_contents($url, NULL, NULL, 0, 1);
+        if ($response === false) {
+            return false;
+        }
+        return true;
+    }
+    
 }
