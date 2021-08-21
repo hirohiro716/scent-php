@@ -33,7 +33,7 @@ abstract class AbstractTableMapper extends AbstractObject
      * 
      * @return AbstractDatabase
      */
-    public function getDatabase(): AbstractDatabase
+    public function getDatabase()
     {
         return $this->database;
     }
