@@ -78,11 +78,7 @@ class MySQL extends AbstractDatabase
     public function isExistTable(string $tableName): bool
     {
         $parameters = array($tableName);
-        $tableCount = 0;
-        try {
-            $tableCount = $this->fetchOne("SELECT TABLE_SCHEMA FROM information_schema.TABLES WHERE TABLE_NAME = ?;", $parameters);
-        } catch (DataNotFoundException $exception) {
-        }
+        $tableCount = $this->fetchOne("SELECT count(*) FROM information_schema.TABLES WHERE TABLE_NAME = ?;", $parameters);
         return ($tableCount == 1);
     }
     
