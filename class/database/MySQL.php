@@ -60,6 +60,11 @@ class MySQL extends AbstractDatabase
         $this->setPDO($pdo);
     }
     
+    public function fetchLastAutoIncrementID()
+    {
+        return $this->fetchOne("SELECT LAST_INSERT_ID();");
+    }
+    
     public function beginTransaction(): void
     {
         $this->getPDO()->beginTransaction();
@@ -73,16 +78,6 @@ class MySQL extends AbstractDatabase
     public function commit(): void
     {
         $this->getPDO()->commit();
-    }
-    
-    /**
-     * MySQLで最後に自動採番された値を取得する。
-     * 
-     * @return mixed
-     */
-    public function fetchLastAutoIncrementValue()
-    {
-        return $this->fetchOne("SELECT LAST_INSERT_ID();");
     }
     
     public function isExistTable(string $tableName): bool
