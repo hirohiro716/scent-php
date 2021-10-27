@@ -23,7 +23,7 @@ class StringObject extends AbstractObject
     {
         parent::__construct();
         if ($value === null) {
-            $value = "";
+            $this->value = "";
         } else {
             if ($value === true) {
                 $this->value = "true";

@@ -295,17 +295,17 @@ class ValueValidator extends AbstractObject
                     }
                     break;
                 case self::ZERO:
-                    if ($val->toFloat() == 0) {
+                    if ($val->length() > 0 && $val->toFloat() == 0) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
                 case self::MAX_VALUE:
-                    if ($val->toFloat() > $parameter) {
+                    if ($val->length() > 0 && $val->toFloat() > $parameter) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
                 case self::MIN_VALUE:
-                    if ($val->toFloat() < $parameter) {
+                    if ($val->length() > 0 && $val->toFloat() < $parameter) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
@@ -315,7 +315,7 @@ class ValueValidator extends AbstractObject
                     }
                     break;
                 case self::DATETIME:
-                    if ($val->toTimestamp() === null && $val->toInteger() === null || $val->toInteger() < 0) {
+                    if ($val->length() > 0 && $val->toTimestamp() === null && $val->toInteger() === null || $val->length() > 0 && $val->toInteger() < 0) {
                         throw new ValidationException($this->buildErrorMessage($const));
                     }
                     break;
