@@ -80,7 +80,7 @@ class MySQL extends AbstractDatabase
      * 
      * @return mixed
      */
-    public function fetchAutoIncrementedValue()
+    public function fetchLastAutoIncrementValue()
     {
         return $this->fetchOne("SELECT LAST_INSERT_ID();");
     }
