@@ -14,6 +14,16 @@ class MySQL extends AbstractDatabase
 {
     
     /**
+     * MySQLにはBoolean型が無いのでBITで代用する際の有効を表す数値。
+     */
+    public const BOOLEAN_VALUE_ENABLED = 1;
+    
+    /**
+     * MySQLにはBoolean型が無いのでBITで代用する際の無効を表す数値。
+     */
+    public const BOOLEAN_VALUE_DISABLED = 0;
+    
+    /**
      * コンストラクタ。
      *
      * @param string $host データベースホスト
