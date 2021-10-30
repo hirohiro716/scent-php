@@ -85,6 +85,16 @@ abstract class AbstractWebPage extends AbstractObject
     }
     
     /**
+     * テンプレートファイルの内容を取得する。
+     * 
+     * @return string
+     */
+    public function get(): string
+    {
+        $this->smarty->fetch(static::getTemplateFileLocation());
+    }
+    
+    /**
      * テンプレートファイルに値を割り当てる。
      * 
      * @param mixed $key キー
