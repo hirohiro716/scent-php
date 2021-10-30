@@ -91,7 +91,7 @@ abstract class AbstractWebPage extends AbstractObject
      */
     public function get(): string
     {
-        $this->smarty->fetch(static::getTemplateFileLocation());
+        return $this->smarty->fetch(static::getTemplateFileLocation());
     }
     
     /**
