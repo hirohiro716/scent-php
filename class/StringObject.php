@@ -79,6 +79,7 @@ class StringObject extends AbstractObject
      * 末尾に文字列を追加する。
      *
      * @param string $value
+     * @return StringObject このインスタンス
      */
     public function append(string $value): StringObject
     {
@@ -87,11 +88,11 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の一部を置き換えた結果の本インスタンスを取得する。
+     * 文字列の一部を置き換える。
      *
      * @param string $search
      * @param string $replacement
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function replace(string $search, string $replacement): StringObject
     {
@@ -100,11 +101,11 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の左側を指定した文字列で埋めた結果の本インスタンスを取得する。
+     * 文字列の左側を指定した文字列で埋める。
      *
      * @param int $length
      * @param string $paddingString
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function paddingLeft(int $length, string $paddingString): StringObject
     {
@@ -114,11 +115,11 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の右側を指定した文字列で埋めた結果の本インスタンスを取得する。
+     * 文字列の右側を指定した文字列で埋める。
      *
      * @param int $length
      * @param string $paddingString
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function paddingRight(int $length, string $paddingString): StringObject
     {
@@ -128,9 +129,9 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の最初および最後から空白文字を取り除いた結果の本インスタンスを取得する。
+     * 文字列の最初および最後から空白文字を取り除く。
      *
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function trim(): StringObject
     {
@@ -139,9 +140,9 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の最初から空白文字を取り除いた結果の本インスタンスを取得する。
+     * 文字列の最初から空白文字を取り除く。
      *
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function trimLeft(): StringObject
     {
@@ -150,9 +151,9 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列の最後から空白文字を取り除いた結果の本インスタンスを取得する。
+     * 文字列の最後から空白文字を取り除く。
      *
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function trimRight(): StringObject
     {
@@ -161,9 +162,9 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列をサニタイジングした結果の本インスタンスを取得する。
+     * 文字列をサニタイジングする。
      *
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function sanitize(): StringObject
     {
@@ -172,9 +173,9 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列をURLエンコードした結果の本インスタンスを取得する。
+     * 文字列をURLエンコードする。
      *
-     * @return StringObject
+     * @return StringObject このインスタンス
      */
     public function urlencode(): StringObject
     {
@@ -183,7 +184,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列の一部を抽出した結果を取得する。
+     * 文字列の一部を抽出した結果の新しいインスタンスを取得する。
      *
      * @param int $start
      * @param int $length
@@ -199,7 +200,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * アルファベットを小文字に変換した結果を取得する。
+     * アルファベットを小文字に変換した結果の新しいインスタンスを取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -213,7 +214,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * アルファベットを大文字に変換した結果を取得する。
+     * アルファベットを大文字に変換した結果の新しいインスタンスを取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -227,7 +228,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列を半角に変換した結果を取得する。
+     * 文字列を半角に変換した結果の新しいインスタンスを取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -241,7 +242,7 @@ class StringObject extends AbstractObject
     }
 
     /**
-     * 文字列を全角に変換した結果を取得する。
+     * 文字列を全角に変換した結果の新しいインスタンスを取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -255,7 +256,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列内のカタカナをひらがなに変換した結果を取得する。
+     * 文字列内のカタカナをひらがなに変換した結果の新しいインスタンスを取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -269,7 +270,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 文字列内のひらがなをカタカナに変換した結果を取得する。
+     * 文字列内のひらがなをカタカナに変換した結果の新しいインスタンスを取得する。
      *
      * @param string $encoding
      * @return StringObject
@@ -283,7 +284,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 内部の値を整数に変換する. 変換できなかった場合はnullを返す。
+     * 内部の値を整数に変換する。変換できなかった場合はnullを返す。
      * 
      * @return int|null
      */
@@ -296,7 +297,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 内部の値を整数または少数に変換する. 変換できなかった場合はnullを返す。
+     * 内部の値を整数または少数に変換する。変換できなかった場合はnullを返す。
      *
      * @return float|null
      */
@@ -309,7 +310,7 @@ class StringObject extends AbstractObject
     }
     
     /**
-     * 内部の値をUNIXタイムスタンプに変換する. 変換できなかった場合はnullを返す。
+     * 内部の値をUNIXタイムスタンプに変換する。変換できなかった場合はnullを返す。
      * 
      * @return int|null
      */
