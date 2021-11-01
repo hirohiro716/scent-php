@@ -41,7 +41,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
         }
         foreach ($this as $item) {
             $differPart = new StringObject($item->getAbsoluteLocation());
-            $differPart = $differPart->replace($this->getAbsoluteLocation(), "");
+            $differPart->replace($this->getAbsoluteLocation(), "");
             if ($item->isFile()) {
                 $item->copy($destination->getAbsoluteLocation() . $differPart);
             }

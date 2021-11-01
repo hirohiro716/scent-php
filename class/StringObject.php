@@ -80,11 +80,108 @@ class StringObject extends AbstractObject
      *
      * @param string $value
      */
-    public function append(string $value): void
+    public function append(string $value): StringObject
     {
         $this->value .= $value;
+        return $this;
     }
 
+    /**
+     * 文字列の一部を置き換えた結果の本インスタンスを取得する。
+     *
+     * @param string $search
+     * @param string $replacement
+     * @return StringObject
+     */
+    public function replace(string $search, string $replacement): StringObject
+    {
+        $this->value = str_replace($search, $replacement, $this->value);
+        return $this;
+    }
+
+    /**
+     * 文字列の左側を指定した文字列で埋めた結果の本インスタンスを取得する。
+     *
+     * @param int $length
+     * @param string $paddingString
+     * @return StringObject
+     */
+    public function paddingLeft(int $length, string $paddingString): StringObject
+    {
+        $padding = str_repeat($paddingString, $length);
+        $this->value = mb_substr($padding . $this->value, $length * -1);
+        return $this;
+    }
+
+    /**
+     * 文字列の右側を指定した文字列で埋めた結果の本インスタンスを取得する。
+     *
+     * @param int $length
+     * @param string $paddingString
+     * @return StringObject
+     */
+    public function paddingRight(int $length, string $paddingString): StringObject
+    {
+        $padding = str_repeat($paddingString, $length);
+        $this->value = mb_substr($padding . $this->value, 0, $length);
+        return $this;
+    }
+
+    /**
+     * 文字列の最初および最後から空白文字を取り除いた結果の本インスタンスを取得する。
+     *
+     * @return StringObject
+     */
+    public function trim(): StringObject
+    {
+        $this->value = trim($this->value, " 　\t\n\r\0\x0B");
+        return $this;
+    }
+
+    /**
+     * 文字列の最初から空白文字を取り除いた結果の本インスタンスを取得する。
+     *
+     * @return StringObject
+     */
+    public function trimLeft(): StringObject
+    {
+        $this->value = ltrim($this->value, " 　\t\n\r\0\x0B");
+        return $this;
+    }
+
+    /**
+     * 文字列の最後から空白文字を取り除いた結果の本インスタンスを取得する。
+     *
+     * @return StringObject
+     */
+    public function trimRight(): StringObject
+    {
+        $this->value = rtrim($this->value, " 　\t\n\r\0\x0B");
+        return $this;
+    }
+    
+    /**
+     * 文字列をサニタイジングした結果の本インスタンスを取得する。
+     *
+     * @return StringObject
+     */
+    public function sanitize(): StringObject
+    {
+        $this->value = htmlspecialchars($this->value);
+        return $this;
+    }
+    
+    /**
+     * 文字列をURLエンコードした結果の本インスタンスを取得する。
+     *
+     * @return StringObject
+     */
+    public function urlencode(): StringObject
+    {
+        $this->value = urlencode($this->value);
+        return $this;
+    }
+    
     /**
      * 文字列の一部を抽出した結果を取得する。
      *
@@ -100,77 +197,7 @@ class StringObject extends AbstractObject
         }
         return new StringObject(mb_substr($this->value, $start, $length, $encoding));
     }
-
-    /**
-     * 文字列の一部を置き換えた結果を取得する。
-     *
-     * @param string $search
-     * @param string $replacement
-     * @return StringObject
-     */
-    public function replace(string $search, string $replacement): StringObject
-    {
-        return new StringObject(str_replace($search, $replacement, $this->value));
-    }
-
-    /**
-     * 文字列の左側を指定した文字列で埋めた結果を取得する。
-     *
-     * @param int $length
-     * @param string $paddingString
-     * @return StringObject
-     */
-    public function paddingLeft(int $length, string $paddingString): StringObject
-    {
-        $padding = str_repeat($paddingString, $length);
-        $stringObject = new StringObject($padding . $this->value);
-        return $stringObject->subString($length * - 1);
-    }
-
-    /**
-     * 文字列の右側を指定した文字列で埋めた結果を取得する。
-     *
-     * @param int $length
-     * @param string $paddingString
-     * @return StringObject
-     */
-    public function paddingRight(int $length, string $paddingString): StringObject
-    {
-        $padding = str_repeat($paddingString, $length);
-        $stringObject = new StringObject($this->value . $padding);
-        return $stringObject->subString(0, $length);
-    }
-
-    /**
-     * 文字列の最初および最後から空白文字を取り除いた結果を取得する。
-     *
-     * @return StringObject
-     */
-    public function trim(): StringObject
-    {
-        return new StringObject(trim($this->value, " 　\t\n\r\0\x0B"));
-    }
-
-    /**
-     * 文字列の最初から空白文字を取り除いた結果を取得する。
-     *
-     * @return StringObject
-     */
-    public function trimLeft(): StringObject
-    {
-        return new StringObject(ltrim($this->value, " 　\t\n\r\0\x0B"));
-    }
-
-    /**
-     * 文字列の最後から空白文字を取り除いた結果を取得する。
-     *
-     * @return StringObject
-     */
-    public function trimRight(): StringObject
-    {
-        return new StringObject(rtrim($this->value, " 　\t\n\r\0\x0B"));
-    }
-
+    
     /**
      * アルファベットを小文字に変換した結果を取得する。
      *
@@ -253,26 +280,6 @@ class StringObject extends AbstractObject
             $encoding = mb_internal_encoding();
         }
         return new StringObject(mb_convert_kana($this->value, "KC", $encoding));
-    }
-    
-    /**
-     * 文字列をサニタイジングした結果を取得する。
-     * 
-     * @return StringObject
-     */
-    public function sanitize(): StringObject
-    {
-        return new StringObject(htmlspecialchars($this->value));
-    }
-    
-    /**
-     * 文字列をURLエンコードした結果を取得する。
-     * 
-     * @return StringObject
-     */
-    public function urlencode(): StringObject
-    {
-        return new StringObject(urlencode($this->value));
     }
     
     /**
