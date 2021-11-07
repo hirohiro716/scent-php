@@ -135,7 +135,7 @@ class StringObject extends AbstractObject
      */
     public function trim(): StringObject
     {
-        $this->value = trim($this->value, " 　\t\n\r\0\x0B");
+        $this->value = trim($this->value, " 　\t\n\r\0");
         return $this;
     }
 
@@ -146,7 +146,7 @@ class StringObject extends AbstractObject
      */
     public function trimLeft(): StringObject
     {
-        $this->value = ltrim($this->value, " 　\t\n\r\0\x0B");
+        $this->value = ltrim($this->value, " 　\t\n\r\0");
         return $this;
     }
 
@@ -157,7 +157,7 @@ class StringObject extends AbstractObject
      */
     public function trimRight(): StringObject
     {
-        $this->value = rtrim($this->value, " 　\t\n\r\0\x0B");
+        $this->value = rtrim($this->value, " 　\t\n\r\0");
         return $this;
     }
     
