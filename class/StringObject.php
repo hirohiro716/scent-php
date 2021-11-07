@@ -127,7 +127,7 @@ class StringObject extends AbstractObject
         $this->value = mb_substr($padding . $this->value, 0, $length);
         return $this;
     }
-
+    
     /**
      * 文字列の最初および最後から空白文字を取り除く。
      *
@@ -135,10 +135,11 @@ class StringObject extends AbstractObject
      */
     public function trim(): StringObject
     {
-        $this->value = trim($this->value, " 　\t\n\r");
+        $this->value = trim($this->value);
+        $this->value = trim($this->value, "　");
         return $this;
     }
-
+    
     /**
      * 文字列の最初から空白文字を取り除く。
      *
@@ -146,10 +147,11 @@ class StringObject extends AbstractObject
      */
     public function trimLeft(): StringObject
     {
-        $this->value = ltrim($this->value, " 　\t\n\r");
+        $this->value = ltrim($this->value);
+        $this->value = ltrim($this->value, "　");
         return $this;
     }
-
+    
     /**
      * 文字列の最後から空白文字を取り除く。
      *
@@ -157,7 +159,8 @@ class StringObject extends AbstractObject
      */
     public function trimRight(): StringObject
     {
-        $this->value = rtrim($this->value, " 　\t\n\r");
+        $this->value = rtrim($this->value);
+        $this->value = rtrim($this->value, "　");
         return $this;
     }
     
