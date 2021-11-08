@@ -135,9 +135,7 @@ class StringObject extends AbstractObject
      */
     public function trim(): StringObject
     {
-        $this->value = trim($this->value);
-        $this->value = trim($this->value, "　");
-        return $this;
+        return $this->trimLeft()->trimRight();
     }
     
     /**
@@ -147,8 +145,7 @@ class StringObject extends AbstractObject
      */
     public function trimLeft(): StringObject
     {
-        $this->value = ltrim($this->value);
-        $this->value = ltrim($this->value, "　");
+        $this->value = preg_replace("@^[ 　\t\r\n]{1,}@u", "", $this->value);
         return $this;
     }
     
@@ -159,8 +156,7 @@ class StringObject extends AbstractObject
      */
     public function trimRight(): StringObject
     {
-        $this->value = rtrim($this->value);
-        $this->value = rtrim($this->value, "　");
+        $this->value = preg_replace("@[ 　\t\r\n]{1,}$@u", "", $this->value);
         return $this;
     }
     
