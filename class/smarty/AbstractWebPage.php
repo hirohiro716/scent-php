@@ -7,6 +7,7 @@ use hirohiro716\Scent\ArrayHelper;
 use hirohiro716\Scent\Hash;
 use hirohiro716\Scent\AbstractObject;
 use hirohiro716\Scent\Helper;
+use hirohiro716\Scent\Hashes;
 
 /**
  * Webページの抽象クラス。
@@ -114,15 +115,29 @@ abstract class AbstractWebPage extends AbstractObject
     private function sanitize($value)
     {
         switch (Helper::findInstanceName($value)) {
+            case "string":
+                $valueObject = new StringObject($value);
+                return $valueObject->sanitize()->get();
+            case "hirohiro716\Scent\StringObject":
+                return $value->sanitize()->get();
             case "array":
                 $array = array();
                 foreach ($value as $key => $innerValue) {
                     $array[$key] = self::sanitize($innerValue);
                 }
                 return $array;
-            case "string":
-                $valueObject = new StringObject($value);
-                return $valueObject->sanitize()->get();
+            case "hirohiro716\Scent\Hashes":
+                $sanitizedHashes = new Hashes();
+                foreach ($value as $hash) {
+                    $sanitizedHashes->add(self::sanitize($hash));
+                }
+                return $sanitizedHashes;
+            case "hirohiro716\Scent\Hash":
+                $sanitizedHash = new Hash();
+                foreach ($value->getKeys() as $key) {
+                    $sanitizedHash->put($key, self::sanitize($value->get($key)));
+                }
+                return $sanitizedHash;
             default:
                 return $value;
         }
