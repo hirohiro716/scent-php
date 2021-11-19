@@ -126,18 +126,18 @@ abstract class AbstractWebPage extends AbstractObject
                     $array[$key] = self::sanitize($innerValue);
                 }
                 return $array;
-            case "hirohiro716\Scent\Hashes":
-                $sanitizedHashes = new Hashes();
-                foreach ($value as $hash) {
-                    $sanitizedHashes->add(self::sanitize($hash));
-                }
-                return $sanitizedHashes;
             case "hirohiro716\Scent\Hash":
                 $sanitizedHash = new Hash();
                 foreach ($value->getKeys() as $key) {
                     $sanitizedHash->put($key, self::sanitize($value->get($key)));
                 }
                 return $sanitizedHash;
+            case "hirohiro716\Scent\Hashes":
+                $sanitizedHashes = new Hashes();
+                foreach ($value as $hash) {
+                    $sanitizedHashes->add(self::sanitize($hash));
+                }
+                return $sanitizedHashes;
             default:
                 return $value;
         }
