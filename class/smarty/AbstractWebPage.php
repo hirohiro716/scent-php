@@ -99,11 +99,22 @@ abstract class AbstractWebPage extends AbstractObject
      * テンプレートファイルに値を割り当てる。
      * 
      * @param mixed $key キー
-     * @param mixed $value 値(stringとarrayは自動sanitizeする)
+     * @param mixed $value 値(string|array|StringObject|Hash|Hashesは自動sanitizeする)
      */
     public function assign($key, $value): void
     {
         $this->smarty->assign($key, self::sanitize($value));
+    }
+    
+    /**
+     * テンプレートファイルに値をsanitizeせずに割り当てる。
+     *
+     * @param mixed $key キー
+     * @param mixed $value
+     */
+    public function assignWithoutSanitize($key, $value): void
+    {
+        $this->smarty->assign($key, $value);
     }
     
     /**
