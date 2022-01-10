@@ -59,7 +59,7 @@ class ValueValidator extends AbstractObject
         self::ZERO => "にゼロは入力できません。",
         self::MAX_VALUE => "は最大で「" . self::ERROR_MESSAGE_ARGUMENT . "」まで入力できます。",
         self::MIN_VALUE => "は「" . self::ERROR_MESSAGE_ARGUMENT . "」以上である必要があります。",
-        self::EMAIL_CHARS => "にメールアドレスが正しくありません。",
+        self::EMAIL_CHARS => "が正しくありません。",
         self::DATETIME => "は日付または時刻として有効ではありません。",
         self::TELEPHONE => "は電話番号(ハイフン有り)として正しくありません。",
         self::REGEX => "が正しくありません。",
