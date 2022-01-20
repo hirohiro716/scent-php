@@ -45,5 +45,4 @@ class PasswordHasher extends AbstractObject
     {
         return password_verify($this->value, $hash);
     }
-    
 }

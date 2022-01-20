@@ -167,5 +167,4 @@ class RegexHelper
         }
         return $result;        
     }
-    
 }

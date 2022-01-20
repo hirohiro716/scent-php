@@ -159,5 +159,4 @@ abstract class AbstractMultipleRecordMapper extends AbstractTableMapper
         }
         return false;
     }
-    
 }

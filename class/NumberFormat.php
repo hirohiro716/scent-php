@@ -36,5 +36,4 @@ class NumberFormat extends AbstractObject
         }
         return new StringObject(number_format($floatValue, $this->decimals));
     }
-    
 }

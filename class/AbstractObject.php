@@ -32,5 +32,4 @@ abstract class AbstractObject
     {
         throw new ErrorException($message, 0, $severity, $file, $line);
     }
-    
 }

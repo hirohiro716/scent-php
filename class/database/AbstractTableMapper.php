@@ -158,5 +158,4 @@ abstract class AbstractTableMapper extends AbstractObject
         }
         return $this->getDatabase()->fetchRecords($sql, $wheresParameters->getValues());
     }
-    
 }

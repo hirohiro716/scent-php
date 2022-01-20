@@ -49,5 +49,4 @@ class JSON extends AbstractObject {
         $encoded = json_encode($array);
         return new JSON($encoded);
     }
-    
 }

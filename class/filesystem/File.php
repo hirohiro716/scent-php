@@ -2,6 +2,7 @@
 namespace hirohiro716\Scent\Filesystem;
 
 use ErrorException;
+use hirohiro716\Scent\StringObject;
 
 /**
  * Fileのクラス。
@@ -109,6 +110,52 @@ class File extends AbstractFilesystemItem
     }
     
     /**
+     * ファイルの内容を読み込む。
+     * 
+     * @param ProcessAfterReadingCharacter $processAfterReadingCharacter
+     * @param string $fromEncoding
+     * @param string $toEncoding
+     */
+    public function readCharacters(ProcessAfterReadingCharacter $processAfterReadingCharacter, string $fromEncoding = null, string $toEncoding = null): void
+    {
+        $handle = fopen($this->getAbsoluteLocation(), "r");
+        $result = fread($handle, 1);
+        while ($result !== false) {
+            $character = new StringObject($result);
+            if ($processAfterReadingCharacter->call($character->get($fromEncoding, $toEncoding)) == false) {
+                break;
+            }
+            $result = fread($handle, 1);
+        }
+        if (is_resource($result)) {
+            fclose($result);
+        }
+    }
+    
+    /**
+     * ファイルの内容を読み込む。
+     *
+     * @param ProcessAfterReadingLine $processAfterReadingLine
+     * @param string $fromEncoding
+     * @param string $toEncoding
+     */
+    public function readLines(ProcessAfterReadingLine $processAfterReadingLine, string $fromEncoding = null, string $toEncoding = null): void
+    {
+        $handle = fopen($this->getAbsoluteLocation(), "r");
+        $result = fgets($handle);
+        while ($result !== false) {
+            $line = new StringObject($result);
+            if ($processAfterReadingLine->call($line->get($fromEncoding, $toEncoding)) == false) {
+                break;
+            }
+            $result = fgets($handle);
+        }
+        if (is_resource($result)) {
+            fclose($result);
+        }
+    }
+    
+    /**
      * ファイルに文字列を書き込む。
      * 
      * @param string $contents 書き込む内容
@@ -124,4 +171,15 @@ class File extends AbstractFilesystemItem
         }
     }
     
+    /**
+     * ファイルに文字列を書き込む
+     *
+     * @param TextWritingProcess $textWritingProcess
+     */
+    public function write(TextWritingProcess $textWritingProcess): void
+    {
+        $textWriter = new TextWriter($this);
+        $textWritingProcess->call($textWriter);
+        $textWriter->close();
+    }
 }

@@ -77,5 +77,4 @@ class Encrypter extends AbstractObject
         $instance = new self("");
         return $instance->getIV();
     }
-    
 }

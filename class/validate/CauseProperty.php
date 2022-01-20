@@ -46,5 +46,4 @@ class CauseProperty
     {
         return $this->message;
     }
-    
 }

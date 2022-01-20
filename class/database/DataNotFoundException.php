@@ -26,5 +26,4 @@ class DataNotFoundException extends PDOException
         }
         parent::__construct($newMessage, $code, $previous);
     }
-
 }

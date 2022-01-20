@@ -446,5 +446,4 @@ class Datetime extends AbstractObject
         }
         return $timestamp;
     }
-    
 }

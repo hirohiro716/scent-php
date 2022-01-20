@@ -447,6 +447,5 @@ class ValueValidator extends AbstractObject
             return false;
         }
     }
-
 }
 

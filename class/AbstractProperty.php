@@ -42,7 +42,6 @@ abstract class AbstractProperty extends AbstractEnum
     {
         return new Properties(static::values()->toArray());
     }
-    
 }
 
 /**
@@ -122,5 +121,4 @@ class Properties implements Iterator
     {
         return ArrayHelper::isExistKey($this->values, $this->position);
     }
-    
 }

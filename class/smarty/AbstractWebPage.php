@@ -271,5 +271,4 @@ abstract class AbstractWebPage extends AbstractObject
         }
         return $hash;
     }
-    
 }

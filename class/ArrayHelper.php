@@ -108,5 +108,4 @@ class ArrayHelper
     {
         return array_keys($array);
     }
-    
 }

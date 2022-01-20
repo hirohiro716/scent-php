@@ -217,7 +217,6 @@ class WhereSet extends AbstractObject
         }
         return $parameters;
     }
-    
 }
 
 /**
@@ -369,5 +368,4 @@ class Where extends AbstractObject
         }
         return $where;
     }
-    
 }

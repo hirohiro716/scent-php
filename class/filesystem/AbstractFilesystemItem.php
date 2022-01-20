@@ -294,5 +294,4 @@ abstract class AbstractFilesystemItem extends AbstractObject
             throw new IOException($location, $exception->getMessage(), $exception->getCode());
         }
     }
-    
 }

@@ -36,5 +36,4 @@ class IOException extends Exception
     {
         return $this->location;
     }
-    
 }

@@ -77,5 +77,4 @@ class FloatObject extends AbstractObject
     {
         return new self(floor($this->value));
     }
-    
 }

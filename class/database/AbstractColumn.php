@@ -43,7 +43,6 @@ abstract class AbstractColumn extends AbstractProperty
     {
         return new Columns(static::values()->toArray());
     }
-    
 }
 
 /**
@@ -123,5 +122,4 @@ class Columns implements Iterator
     {
         return ArrayHelper::isExistKey($this->values, $this->position);
     }
-    
 }

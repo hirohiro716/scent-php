@@ -163,5 +163,4 @@ abstract class AbstractRecordMapper extends AbstractTableMapper
             $this->setRecord($backupRecord);
         }
     }
-    
 }

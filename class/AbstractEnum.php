@@ -166,7 +166,6 @@ abstract class AbstractEnum extends AbstractObject
         $instances = self::$instancesArray->get($className);
         return new EnumValues($instances->getValues());
     }
-    
 }
 
 /**
@@ -180,7 +179,6 @@ class NullEnum extends AbstractEnum {
     {
         return "";
     }
-    
 }
 
 /**
@@ -260,5 +258,4 @@ class EnumValues implements Iterator
     {
         return ArrayHelper::isExistKey($this->values, $this->position);
     }
-    
 }
