@@ -121,7 +121,28 @@ abstract class AbstractDatabase extends AbstractObject
         $hashes->addArray(...$rows);
         return $hashes;
     }
-
+    
+    /**
+     * SELECT文が取得したすべてのレコードの配列を処理する。
+     *
+     * @param string $sql
+     * @param array $parameters
+     * @param ProcessAfterReadingRecord $processAfterReadingRecord
+     */
+    public function fetchAndProcessRecords(string $sql, array $parameters, ProcessAfterReadingRecord $processAfterReadingRecord): void
+    {
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($parameters);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        while ($row !== false) {
+            $hash = new Hash($row);
+            if ($processAfterReadingRecord->call($hash) == false) {
+                break;
+            }
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+    }
+    
     /**
      * テーブルのレコード数を取得する。
      *
