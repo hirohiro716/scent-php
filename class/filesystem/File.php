@@ -172,7 +172,7 @@ class File extends AbstractFilesystemItem
     }
     
     /**
-     * ファイルに文字列を書き込む
+     * ファイルに文字列を書き込む。
      *
      * @param TextWritingProcess $textWritingProcess
      */
@@ -181,5 +181,20 @@ class File extends AbstractFilesystemItem
         $textWriter = new TextWriter($this);
         $textWritingProcess->call($textWriter);
         $textWriter->close();
+    }
+    
+    /**
+     * ファイルを転送してダウンロードさせる。
+     * 
+     * @param string $filename
+     */
+    public function transfer(string $filename): void
+    {
+        header("Content-Type: application/octet-stream");
+        header("Content-Disposition: attachment; filename=" . $filename);
+        while (ob_get_level()) {
+            ob_end_flush();
+        }
+        readfile($this->getAbsoluteLocation());
     }
 }

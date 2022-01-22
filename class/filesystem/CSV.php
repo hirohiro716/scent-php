@@ -74,7 +74,7 @@ class CSV extends File
     }
     
     /**
-     * ファイルに文字列を書き込む
+     * ファイルに文字列を書き込む。
      *
      * @param CSVWritingProcess $csvWritingProcess
      */
