@@ -20,6 +20,16 @@ abstract class AbstractObject
     }
     
     /**
+     * このオブジェクトのIDを取得する。
+     * 
+     * @return int
+     */
+    public function getObjectID(): int
+    {
+        return spl_object_id($this);
+    }
+    
+    /**
      * エラーをExceptionに変換するハンドラー。
      * 
      * @param int $severity
