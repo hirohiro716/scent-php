@@ -108,4 +108,31 @@ class ArrayHelper
     {
         return array_keys($array);
     }
+    
+    /**
+     * 配列のキーを数値として比較して昇順でソートする。
+     * 
+     * @param array $array
+     * @return array
+     */
+    public static function sortAscByKey(array $array): array
+    {
+        $resultArray = $array;
+        ksort($resultArray, SORT_NUMERIC);
+        return $resultArray;
+    }
+    
+    /**
+     * 配列のキーを数値として比較して降順でソートする。
+     *
+     * @param array $array
+     * @return array
+     */
+    public static function sortDescByKey(array $array): array
+    {
+        $resultArray = $array;
+        ksort($resultArray, SORT_NUMERIC);
+        $resultArray = array_reverse($resultArray, true);
+        return $resultArray;
+    }
 }
