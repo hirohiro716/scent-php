@@ -375,7 +375,7 @@ class StringObject extends AbstractObject
         if ($encoding === null) {
             $encoding = mb_internal_encoding();
         }
-        $index = mb_strrpos($this->value, $search, null, $encoding);
+        $index = mb_strrpos($this->value, $search, 0, $encoding);
         if ($index === false) {
             return -1;
         }
