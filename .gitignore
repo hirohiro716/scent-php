@@ -1,3 +1,6 @@
 vendor/
 vendor
 index.php
+/.buildpath
+/.project
+/.settings
