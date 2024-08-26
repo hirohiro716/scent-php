@@ -203,7 +203,7 @@ class Hash extends AbstractObject implements Iterator
      * 
      * @return mixed
      */
-    public function current(): mixed
+    public function current()
     {
         $key = $this->getKeys()[$this->position];
         return $this->array[$key];
