@@ -5,7 +5,6 @@ namespace hirohiro716\Scent\Filesystem;
  * テキストをファイルに書き込むクラス。
  *
  * @author hiro
- *
  */
 class TextWriter
 {

@@ -5,7 +5,6 @@ namespace hirohiro716\Scent\Filesystem;
  * ファイルの一文字を読み込んだ後の処理インターフェース。
  *
  * @author hiro
- *
  */
 interface ProcessAfterReadingCharacter
 {

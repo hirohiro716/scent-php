@@ -8,7 +8,6 @@ use hirohiro716\Scent\Hash;
  * CSVをファイルに書き込むクラス。
  *
  * @author hiro
- *
  */
 class CSVWriter
 {

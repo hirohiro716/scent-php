@@ -5,7 +5,6 @@ namespace hirohiro716\Scent\Filesystem;
  * CSV書き込みの処理インターフェース。
  *
  * @author hiro
- *
  */
 interface CSVWritingProcess
 {

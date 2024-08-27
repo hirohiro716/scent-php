@@ -7,7 +7,6 @@ use hirohiro716\Scent\Hash;
  * ファイルの行を読み込んだ後の処理インターフェース。
  *
  * @author hiro
- *
  */
 interface ProcessAfterReadingRow
 {

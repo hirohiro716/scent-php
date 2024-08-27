@@ -5,7 +5,6 @@ namespace hirohiro716\Scent\Filesystem;
  * 文字列書き込みの処理インターフェース。
  *
  * @author hiro
- *
  */
 interface TextWritingProcess
 {
