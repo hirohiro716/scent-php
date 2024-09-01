@@ -27,7 +27,7 @@ class ArrayHelper
      * @param mixed $key
      * @return bool
      */
-    public static function isExistKey(array &$array, $key): bool
+    public static function existsKey(array &$array, $key): bool
     {
         return array_key_exists($key, $array);
     }
@@ -39,7 +39,7 @@ class ArrayHelper
      * @param mixed $value
      * @return bool
      */
-    public static function isExistValue(array &$array, $value): bool
+    public static function existsValue(array &$array, $value): bool
     {
         if (array_search($value, $array, true) === false) {
             return false;
@@ -55,7 +55,7 @@ class ArrayHelper
      */
     public static function removeKey(array &$array, $key): void
     {
-        if (self::isExistKey($array, $key)) {
+        if (self::existsKey($array, $key)) {
             unset($array[$key]);
         }
     }

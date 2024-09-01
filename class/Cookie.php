@@ -52,7 +52,7 @@ class Cookie extends AbstractObject
      */
     public function get($key)
     {
-        if ($this->isExistKey($key)) {
+        if ($this->existsKey($key)) {
             return $_COOKIE[$key];
         }
         return null;
@@ -64,7 +64,7 @@ class Cookie extends AbstractObject
      * @param mixed $key
      * @return bool
      */
-    public function isExistKey($key): bool
+    public function existsKey($key): bool
     {
         return isset($_COOKIE[$key]);
     }
@@ -76,7 +76,7 @@ class Cookie extends AbstractObject
      */
     public function remove($key): void
     {
-        if ($this->isExistKey($key)) {
+        if ($this->existsKey($key)) {
             $datetime = new Datetime();
             $datetime->addSecond(-1800);
             setcookie($key, null, $datetime->toTimestamp(), $this->path, null, $this->isSecure, true);

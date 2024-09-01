@@ -134,7 +134,7 @@ class PropertyValidationException extends ValidationException implements Iterato
     public function valid()
     {
         $key = $this->causeProperties->getKeys()[$this->position];
-        return $this->causeProperties->isExistKey($key);
+        return $this->causeProperties->existsKey($key);
     }
 }
 

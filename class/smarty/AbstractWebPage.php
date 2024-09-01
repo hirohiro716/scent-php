@@ -194,7 +194,7 @@ abstract class AbstractWebPage extends AbstractObject
     public function getPostValue(string $name)
     {
         $hash = new Hash($_POST);
-        if ($hash->isExistKey($name) == false) {
+        if ($hash->existsKey($name) == false) {
             return "";
         }
         return $hash->get($name);
@@ -223,7 +223,7 @@ abstract class AbstractWebPage extends AbstractObject
     public function getGetValue(string $name)
     {
         $hash = new Hash($_GET);
-        if ($hash->isExistKey($name) == false) {
+        if ($hash->existsKey($name) == false) {
             return "";
         }
         return $hash->get($name);
@@ -252,7 +252,7 @@ abstract class AbstractWebPage extends AbstractObject
     public function getRequestValue(string $name)
     {
         $hash = new Hash($_REQUEST);
-        if ($hash->isExistKey($name) == false) {
+        if ($hash->existsKey($name) == false) {
             return "";
         }
         return $hash->get($name);

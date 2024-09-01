@@ -84,7 +84,7 @@ class Helper
      */
     public static function isHTTPS(): bool
     {
-        if (ArrayHelper::isExistKey($_SERVER, "HTTPS")) {
+        if (ArrayHelper::existsKey($_SERVER, "HTTPS")) {
             $https = new StringObject($_SERVER["HTTPS"]);
             return $https->equals("off") == false;
         }
@@ -98,7 +98,7 @@ class Helper
      * @param int $timeout
      * @return bool
      */
-    public static function isExistURL(string $url, int $timeoutSeconds): bool
+    public static function existsURL(string $url, int $timeoutSeconds): bool
     {
         $curlHandle = curl_init($url);
         curl_setopt($curlHandle, CURLOPT_NOBODY, true);

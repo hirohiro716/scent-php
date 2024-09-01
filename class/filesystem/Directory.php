@@ -36,7 +36,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
     public function copy(string $destinationLocation): Directory
     {
         $destination = new Directory($destinationLocation);
-        if ($destination->isExist() == false) {
+        if ($destination->exists() == false) {
             $destination->create();
         }
         foreach ($this as $item) {
@@ -47,7 +47,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
             }
             if ($item->isDirectory()) {
                 $directory = new Directory($destination->getAbsoluteLocation() . $differPart);
-                if ($directory->isExist() == false) {
+                if ($directory->exists() == false) {
                     $directory->create();
                 }
             }
@@ -87,7 +87,7 @@ class Directory extends AbstractFilesystemItem implements Iterator
         }
     }
     
-    public function isExist(): bool
+    public function exists(): bool
     {
         return file_exists($this->getLocation()) && is_dir($this->getAbsoluteLocation());
     }
@@ -241,6 +241,6 @@ class Directory extends AbstractFilesystemItem implements Iterator
     public function valid(): bool
     {
         $this->prepareSubItems();
-        return $this->items->isExistKey($this->position);
+        return $this->items->existsKey($this->position);
     }
 }

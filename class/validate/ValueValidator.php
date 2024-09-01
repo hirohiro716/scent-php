@@ -245,7 +245,7 @@ class ValueValidator extends AbstractObject
      */
     private function buildErrorMessage(int $const): string
     {
-        if ($this->parameters->isExistKey($const)) {
+        if ($this->parameters->existsKey($const)) {
             $message = new StringObject($this->messagesArray[$const]);
             $parameter = new StringObject($this->parameters->get($const));
             return $this->targetName . $message->replace(self::ERROR_MESSAGE_ARGUMENT, $parameter);

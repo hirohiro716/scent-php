@@ -78,7 +78,7 @@ class SQLite extends AbstractDatabase
         $this->execute("COMMIT;");
     }
     
-    public function isExistTable(string $tableName): bool
+    public function existsTable(string $tableName): bool
     {
         $parameters = array($tableName);
         $tableCount = $this->fetchOne("SELECT COUNT(*) FROM sqlite_master WHERE type='table' and name = ?;", $parameters);

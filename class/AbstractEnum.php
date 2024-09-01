@@ -92,7 +92,7 @@ abstract class AbstractEnum extends AbstractObject
         }
         $class = new ReflectionClass(static::class);
         $className = $class->getName();
-        if (self::$instancesArray->isExistKey($className) == false) {
+        if (self::$instancesArray->existsKey($className) == false) {
             $instances = new Hash();
             foreach ($class->getConstants() as $name => $value) {
                 $instances->put($value, new static($name, $value));
@@ -113,7 +113,7 @@ abstract class AbstractEnum extends AbstractObject
         $class = new ReflectionClass(static::class);
         $className = $class->getName();
         $instances = self::$instancesArray->get($className);
-        if ($instances->isExistKey($constantValue) == false) {
+        if ($instances->existsKey($constantValue) == false) {
             return self::$nullValue;
         }
         return $instances->get($constantValue);
@@ -145,7 +145,7 @@ abstract class AbstractEnum extends AbstractObject
      * @param mixed $constantValue
      * @return bool
      */
-    public static function isExistConstant($constantValue): bool
+    public static function existsConstant($constantValue): bool
     {
         if (static::const($constantValue) === self::$nullValue) {
             return false;
@@ -256,6 +256,6 @@ class EnumValues implements Iterator
      */
     public function valid(): bool
     {
-        return ArrayHelper::isExistKey($this->values, $this->position);
+        return ArrayHelper::existsKey($this->values, $this->position);
     }
 }

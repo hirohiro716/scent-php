@@ -244,7 +244,7 @@ abstract class AbstractDatabase extends AbstractObject
      * @param string $tableName
      * @return bool
      */
-    public abstract function isExistTable(string $tableName): bool;
+    public abstract function existsTable(string $tableName): bool;
 
     /**
      * テーブルのカラムをすべて取得する。

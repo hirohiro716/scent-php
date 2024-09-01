@@ -120,6 +120,6 @@ class Columns implements Iterator
      */
     public function valid(): bool
     {
-        return ArrayHelper::isExistKey($this->values, $this->position);
+        return ArrayHelper::existsKey($this->values, $this->position);
     }
 }

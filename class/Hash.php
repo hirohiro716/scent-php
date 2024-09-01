@@ -85,7 +85,7 @@ class Hash extends AbstractObject implements Iterator
      */
     public function get(string $key)
     {
-        if ($this->isExistKey($key)) {
+        if ($this->existsKey($key)) {
             return $this->array[$key];
         }
         return null;
@@ -117,9 +117,9 @@ class Hash extends AbstractObject implements Iterator
      * @param string $key
      * @return bool
      */
-    public function isExistKey(string $key): bool
+    public function existsKey(string $key): bool
     {
-        return ArrayHelper::isExistKey($this->array, $key);
+        return ArrayHelper::existsKey($this->array, $key);
     }
 
     /**
@@ -128,9 +128,9 @@ class Hash extends AbstractObject implements Iterator
      * @param mixed $value
      * @return bool
      */
-    public function isExistValue($value): bool
+    public function existsValue($value): bool
     {
-        return ArrayHelper::isExistValue($this->array, $value);
+        return ArrayHelper::existsValue($this->array, $value);
     }
 
     /**
@@ -140,7 +140,7 @@ class Hash extends AbstractObject implements Iterator
      */
     public function removeKey(string $key): void
     {
-        if ($this->isExistKey($key)) {
+        if ($this->existsKey($key)) {
             ArrayHelper::removeKey($this->array, $key);
         }
     }
@@ -246,6 +246,6 @@ class Hash extends AbstractObject implements Iterator
             return false;
         }
         $key = $this->getKeys()[$this->position];
-        return $this->isExistKey($key);
+        return $this->existsKey($key);
     }
 }

@@ -40,7 +40,7 @@ class Session extends AbstractObject
         }
         // 別のブラウザからのアクセスなら初期化
         if ($isCompareUserAgent) {
-            if (ArrayHelper::isExistKey($_SESSION, self::KEY_AGENT)) {
+            if (ArrayHelper::existsKey($_SESSION, self::KEY_AGENT)) {
                 $agent = new StringObject($_SESSION[self::KEY_AGENT]);
                 if ($agent->equals($_SERVER["HTTP_USER_AGENT"]) === false) {
                     session_unset();
@@ -71,7 +71,7 @@ class Session extends AbstractObject
      */
     public function get($key)
     {
-        if ($this->isExistKey($key)) {
+        if ($this->existsKey($key)) {
             return $_SESSION[$key];
         }
         return null;
@@ -83,7 +83,7 @@ class Session extends AbstractObject
      * @param mixed $key
      * @return bool
      */
-    public function isExistKey($key): bool
+    public function existsKey($key): bool
     {
         return isset($_SESSION[$key]);
     }
@@ -95,7 +95,7 @@ class Session extends AbstractObject
      */
     public function remove($key): void
     {
-        if ($this->isExistKey($key)) {
+        if ($this->existsKey($key)) {
             unset($_SESSION[$key]);
         }
     }
@@ -122,7 +122,7 @@ class Session extends AbstractObject
      */
     public function isValidToken(string $token): bool
     {
-        if ($this->isExistKey(self::KEY_TOKEN)) {
+        if ($this->existsKey(self::KEY_TOKEN)) {
             $masterToken = new StringObject($this->get(self::KEY_TOKEN));
             if ($masterToken->equals($token) && $masterToken->length() > 0) {
                 return true;

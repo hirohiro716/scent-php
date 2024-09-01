@@ -62,7 +62,7 @@ abstract class AbstractRecordMapper extends AbstractTableMapper
     {
         $hash = new Hash();
         foreach ($this->getColumns() as $column) {
-            if ($this->record->isExistKey($column->getPhysicalName())) {
+            if ($this->record->existsKey($column->getPhysicalName())) {
                 $hash->put($column, $this->record->get($column));
             }
         }
@@ -108,7 +108,7 @@ abstract class AbstractRecordMapper extends AbstractTableMapper
         }
         $hash = new Hash();
         foreach ($this->getColumns() as $column) {
-            if ($this->record->isExistKey($column->getPhysicalName())) {
+            if ($this->record->existsKey($column->getPhysicalName())) {
                 $hash->put($column, $this->record->get($column));
             }
         }
@@ -142,7 +142,7 @@ abstract class AbstractRecordMapper extends AbstractTableMapper
      * 
      * @return bool 
      */
-    public function isExist(): bool
+    public function exists(): bool
     {
         if ($this->whereSetIsNull()) {
             throw new Exception("Search condition is not specified.");

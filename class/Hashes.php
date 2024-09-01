@@ -41,9 +41,9 @@ class Hashes implements Iterator
      * @param Hash $hash
      * @return bool
      */
-    public function isExist(Hash $hash): bool
+    public function exists(Hash $hash): bool
     {
-        return $this->hashes->isExistValue($hash);
+        return $this->hashes->existsValue($hash);
     }
     
     /**
@@ -151,6 +151,6 @@ class Hashes implements Iterator
             return false;
         }
         $key = $this->hashes->getKeys()[$this->position];
-        return $this->hashes->isExistKey($key);
+        return $this->hashes->existsKey($key);
     }
 }

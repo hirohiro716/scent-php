@@ -206,7 +206,7 @@ abstract class AbstractFilesystemItem extends AbstractObject
      *
      * @return bool
      */
-    public abstract function isExist(): bool;
+    public abstract function exists(): bool;
     
     /**
      * 読み取りな場合はtrueを返す。
@@ -252,7 +252,7 @@ abstract class AbstractFilesystemItem extends AbstractObject
      * @param string $location
      * @return bool
      */
-    public static function isExistItem(string $location): bool
+    public static function existsItem(string $location): bool
     {
         return file_exists($location);
     }
@@ -266,11 +266,11 @@ abstract class AbstractFilesystemItem extends AbstractObject
     public static function createInstance(string $location)
     {
         $file = new File($location);
-        if ($file->isExist()) {
+        if ($file->exists()) {
             return $file;
         }
         $directory = new Directory($location);
-        if ($directory->isExist()) {
+        if ($directory->exists()) {
             return $directory;
         }
         return null;

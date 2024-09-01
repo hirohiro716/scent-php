@@ -58,7 +58,7 @@ class File extends AbstractFilesystemItem
         }
     }
     
-    public function isExist(): bool
+    public function exists(): bool
     {
         return file_exists($this->getLocation()) && is_file($this->getAbsoluteLocation());
     }

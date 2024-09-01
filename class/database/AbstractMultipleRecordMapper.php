@@ -128,7 +128,7 @@ abstract class AbstractMultipleRecordMapper extends AbstractTableMapper
         foreach ($this->getRecords() as $record) {
             $hash = new Hash();
             foreach ($this->getColumns() as $column) {
-                if ($record->isExistKey($column->getPhysicalName())) {
+                if ($record->existsKey($column->getPhysicalName())) {
                     $hash->put($column, $record->get($column));
                 }
             }
@@ -141,7 +141,7 @@ abstract class AbstractMultipleRecordMapper extends AbstractTableMapper
      * 
      * @return bool
      */
-    public function isExist(): bool {
+    public function exists(): bool {
         if ($this->whereSetIsNull() && $this->isPermittedSearchConditioEmptyUpdate() == false) {
             throw new Exception("Search condition is not specified.");
         }

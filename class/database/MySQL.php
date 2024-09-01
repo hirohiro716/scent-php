@@ -90,7 +90,7 @@ class MySQL extends AbstractDatabase
         $this->getPDO()->commit();
     }
     
-    public function isExistTable(string $tableName): bool
+    public function existsTable(string $tableName): bool
     {
         $parameters = array($tableName);
         $tableCount = $this->fetchOne("SELECT count(*) FROM information_schema.TABLES WHERE TABLE_NAME = ?;", $parameters);
